@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 19:21:27 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/01 17:38:55 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/12 00:07:04 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	first_step_algorithm_long(t_stack **a, t_stack **b)
 	t_stack_free(&lis);
 }
 
-void	second_step_algorithm_long(t_stack **a, t_stack **b, t_limits lmts)
+static void	second_step_algorithm_long(t_stack **a, t_stack **b, t_limits lmts)
 {
 	t_path	p;
 
@@ -69,7 +69,7 @@ void	second_step_algorithm_long(t_stack **a, t_stack **b, t_limits lmts)
 	}
 }
 
-void	third_step_algorithm_long(t_stack **a, t_stack **b, t_limits lmts)
+static void	third_step_algorithm_long(t_stack **a, t_stack **b, t_limits lmts)
 {
 	int	min_index;
 
