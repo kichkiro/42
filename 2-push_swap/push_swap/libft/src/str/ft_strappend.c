@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:54:31 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/10 17:21:56 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/14 17:50:31 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ char	*ft_strappend(char *s1, char *s2, bool free_s1, bool free_s2)
 		str[i++] = s2[j];
 	str[i] = 0;
 	if (free_s1)
-		ft_free((void **)&s1);
+		free(s1);
 	if (free_s2)
-		ft_free((void **)&s2);
+		free(s2);
 	return (str);
 }

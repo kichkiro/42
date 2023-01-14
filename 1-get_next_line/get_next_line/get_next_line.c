@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 10:51:11 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/10 15:44:38 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/14 17:54:36 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*!
 * @brief 
-	Read and returns a line from a single or multiple file descriptor.
+	Returns one line at a time from a text file.
 * @param fd 
 	The file descriptor to read from.
 * @return 
 	Read line: correct behavior.
-	NULL if there is nothing else to read, or an error occurred
+	NULL if there is nothing else to read, or an error occurred.
  */
 char	*get_next_line(int fd)
 {

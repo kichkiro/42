@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:41:32 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/10 17:20:00 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/14 17:49:29 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@
  * @param len
 	The maximum length of the substring.
  * @param split
-	If set to 1, If set to 1, truncates string s, up to the position of the 
-	substring.
+	If set to 1, truncates string s, up to the position of the substring.
 	If set to -1 it frees the string s.
  * @return 
 	The substring.
