@@ -21,7 +21,7 @@
 	Read line: correct behavior.
 	NULL if there is nothing else to read, or an error occurred.
  */
-char	*get_next_line(int fd)
+char	*ft_get_next_line(int fd)
 {
 	static char	*lines;
 	char		*buf;
