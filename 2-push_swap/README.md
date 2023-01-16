@@ -51,7 +51,7 @@ that sorts the integers received as arguments.
 
 <br>
 
-## Beckhmarks 📈
+## Benchmark 📈
 
 [push_swap_visualizer](https://github.com/o-reo/push_swap_visualizer)
 
