@@ -69,8 +69,9 @@ that sorts the integers received as arguments.
 
 [push_swap_tester](https://github.com/LeoFu9487/push_swap_tester)
 
-<br>
+![push_swap](https://github.com/kichkiro/42_cursus/blob/assets/push_swap_tester.png?raw=true)
 
+<br>
 
 ## License ⚖️
 
