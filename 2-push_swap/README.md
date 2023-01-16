@@ -55,7 +55,7 @@ that sorts the integers received as arguments.
 
 [push_swap_visualizer](https://github.com/o-reo/push_swap_visualizer)
 
-<img src="https://github.com/kichkiro/42_cursus/blob/assets/push_swap_visualizer.gif?raw=true" alt="push_swap_visualizer" width="100%"/>
+<img src="https://github.com/kichkiro/42_cursus/blob/assets/push_swap_visualizer_light.gif?raw=true" alt="push_swap_visualizer" width="100%"/>
 
 <br>
 
