@@ -17,13 +17,12 @@ on the standard output the smallest program, made of Push swap language instruct
 that sorts the integers received as arguments.
 <br>Easy?
 <br>We’ll see.."</i>
-
-<hr><br>
+<br>
 
 ## Project Tree 🌳 
 
 ```js
-├── README
+├── README.md
 ├── project
 │   ├── Makefile
 │   ├── include
@@ -59,22 +58,23 @@ that sorts the integers received as arguments.
     └── en.subject.pdf
 ```
 
-<hr><br>
+<br>
 
 ## Beckhmarks 📈
 
 [push_swap_visualizer](https://github.com/o-reo/push_swap_visualizer)
 
-![push_swap](https://github.com/kichkiro/42_cursus/blob/assets/push_swap_visualizer.gif?raw=true)
+<img src="https://github.com/kichkiro/42_cursus/blob/assets/push_swap_visualizer.gif?raw=true" alt="push_swap_visualizer" width="100%"/>
+
+<br>
 
 [push_swap_tester](https://github.com/LeoFu9487/push_swap_tester)
 
-![push_swap](https://github.com/kichkiro/42_cursus/blob/assets/push_swap_tester.png?raw=true)
+<img src="https://github.com/kichkiro/42_cursus/blob/assets/push_swap_tester.png?raw=true" alt="push_swap_tester" width="100%"/>
+
 
 <br>
 
 ## License ⚖️
-
-<hr>
 
 See [LICENSE](https://github.com/kichkiro/42_cursus/blob/main/LICENSE)
