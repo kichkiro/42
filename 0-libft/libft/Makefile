@@ -6,40 +6,130 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 10:44:14 by kichkiro          #+#    #+#              #
-#    Updated: 2023/01/10 15:25:46 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/01/16 12:33:52 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME   		= libft.a
-CC	   		= clang
-CFLAGS 		= -Wall -Wextra -Werror
-SRCS   		= ft_isalnum.c ft_isprint.c ft_strncmp.c ft_isalpha.c ft_isascii.c \
-		  		ft_strlen.c ft_isdigit.c ft_strnstr.c ft_strchr.c ft_strrchr.c \
-		  		ft_strlcpy.c ft_strlcat.c ft_memset.c ft_bzero.c ft_memcpy.c \
-		  		ft_memmove.c ft_memchr.c ft_memcmp.c ft_toupper.c ft_tolower.c \
-		  		ft_atoi.c ft_strdup.c ft_calloc.c ft_substr.c ft_strjoin.c \
-		  		ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
-		  		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c 
-BONUS_SRCS	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-				ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-				ft_lstmap.c
-OBJS   		= $(SRCS:.c=.o)
-BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
-AR 			= ar -rcs
-RM	   		= rm -f
+# Config ---------------------------------------------------------------------->
+
+NAME        := libft.a
+SRCS        := \
+	_get_next_line/ft_get_next_line.c \
+	\
+	_printf/ft_printf_assembly_line.c \
+	_printf/ft_printf_format.c \
+	_printf/ft_printf.c \
+	\
+	algo/ft_lds.c \
+	algo/ft_lis.c \
+	\
+	fd/ft_putchar_fd.c \
+	fd/ft_putendl_fd.c \
+	fd/ft_putnbr_fd.c \
+	fd/ft_putstr_fd.c \
+	fd/ft_exit.c \
+	\
+	hex/ft_hexlen.c \
+	hex/ft_ultoa_hex.c \
+	hex/ft_utoa_hex.c \
+	\
+	is/ft_isalnum.c \
+	is/ft_isalpha.c \
+	is/ft_isascii.c \
+	is/ft_isdigit.c \
+	is/ft_isprint.c \
+	\
+	_printf/lst/t_print_add_back.c \
+	_printf/lst/t_print_add_front.c \
+	_printf/lst/t_print_add_inside.c \
+	_printf/lst/t_print_del_last.c \
+	_printf/lst/t_print_last.c \
+	_printf/lst/t_print_new.c \
+	_printf/lst/t_print_size.c \
+	_printf/lst/t_print_split_str.c \
+	\
+	mem/ft_calloc.c \
+	mem/ft_free.c \
+	mem/ft_bzero.c \
+	mem/ft_memchr.c \
+	mem/ft_memcmp.c \
+	mem/ft_memcpy.c \
+	mem/ft_memmove.c \
+	mem/ft_memset.c \
+	\
+	str/ft_atoi.c \
+	str/ft_char_append.c \
+	str/ft_itoa.c \
+	str/ft_n_is_in_arr.c \
+	str/ft_split_substr.c \
+	str/ft_split.c \
+	str/ft_strappend.c \
+	str/ft_strchr.c \
+	str/ft_strdup.c \
+	str/ft_stridx.c \
+	str/ft_striteri.c \
+	str/ft_strjoin.c \
+	str/ft_strlcat.c \
+	str/ft_strlcpy.c \
+	str/ft_strlen.c \
+	str/ft_strmapi.c \
+	str/ft_strncmp.c \
+	str/ft_strnstr.c \
+	str/ft_strrchr.c \
+	str/ft_strrev.c \
+	str/ft_strtrim.c \
+	str/ft_substr.c \
+	str/ft_tolower.c \
+	str/ft_toupper.c \
+	str/ft_utoa.c
+SRC_DIR     := src
+BUILD_DIR   := .build
+SRCS        := $(SRCS:%=$(SRC_DIR)/%)
+OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+DEPS        := $(OBJS:.o=.d)
+CC          := clang
+CFLAGS      := -Wall -Wextra -Werror
+CPPFLAGS    := -MMD -MP -I include
+AR          := ar
+ARFLAGS     := -r -c -s
+RM          := rm -rf
+MAKEFLAGS   := --no-print-directory
+DIR_DUP     = mkdir -p $(@D)
+
+.PHONY: clean fclean re
+.SILENT:
+
+# Rules ----------------------------------------------------------------------->
 
 all: $(NAME)
 
-$(NAME): $(OBJS) 
-	$(AR) $(NAME) $(OBJS) 
+$(NAME): $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	$(info ${BOLD}Creating  -> ${YELLOW}$(NAME)${NO_COLOR})
 
-clean: 
-	$(RM) $(OBJS) $(BONUS_OBJS)
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(DIR_DUP)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	$(info ${BOLD}Compiling -> ${YELLOW}$@${NO_COLOR})
+
+-include $(DEPS)
+
+clean:
+	$(RM) $(BUILD_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re:
+	$(MAKE) fclean
+	$(MAKE) all
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
+# Style ----------------------------------------------------------------------->
+
+RED 		:= ${shell tput setaf 1}
+YELLOW		:= ${shell tput setaf 3}
+BLUE		:= ${shell tput setaf 4}
+NO_COLOR	:= $(shell tput sgr0)
+BOLD		:= $(shell tput bold)
+
+# ------------------------------------------------------------------------------

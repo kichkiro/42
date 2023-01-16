@@ -95,9 +95,9 @@ static void	third_step_algorithm_long(t_stack **a, t_stack **b, t_limits lmts)
  * @brief 
 	The algorithm is divided into three steps:
 	  - In the first phase all the elements that are not part of the longest 
-		incremental subsequence are transferred to stack 'b'.
+		incremental subsequence are transferred to stack 'b';
 	  - As long as stack 'b' is not empty, each time the element that "costs" 
-	  	less in terms of actions is identified and transferred.
+	  	less in terms of actions is identified and transferred;
 	  - Finally, if the smallest element is not on the first node, the list is
 	    rotated.
  * @param a 

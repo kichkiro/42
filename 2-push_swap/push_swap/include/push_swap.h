@@ -6,14 +6,48 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:32:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/01 15:51:54 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:55:29 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/include/libft.h"
+# include "../../../0-libft/libft/include/libft.h"
+
+// Linked List ---------------------------------------------------------------->
+
+/*!
+ * @brief 
+	Bidirectional linked list where the data of each node is an integer.
+ */
+typedef struct stack
+{
+	int				data;
+	struct stack	*next;
+	struct stack	*prev;
+}	t_stack;
+
+t_stack	*t_stack_new(int data);
+void	t_stack_add_back(t_stack **lst, t_stack *new_node);
+int		t_stack_size(t_stack *lst);
+void	t_stack_set_to_head(t_stack **lst);
+bool	t_stack_n_is_inside(t_stack *lst, int n);
+t_stack	*t_stack_head(t_stack *lst);
+t_stack	*t_stack_last(t_stack *lst);
+int		*t_stack_to_arr(t_stack *lst);
+t_stack	*t_stack_from_arr(long *arr, int size, bool need_to_free);
+int		t_stack_min(t_stack *lst);
+int		t_stack_max(t_stack *lst);
+int		t_stack_second_min(t_stack *lst, int min);
+bool	t_stack_is_sorted(t_stack *lst);
+bool	t_stack_n_is_inside(t_stack *lst, int n);
+void	t_stack_del_last(t_stack **lst);
+bool	t_stack_check_dup(t_stack *lst);
+void	t_stack_free(t_stack **lst);
+int		t_stack_index_data(t_stack *lst, int data);
+
+// Main Functions ------------------------------------------------------------->
 
 typedef struct path
 {

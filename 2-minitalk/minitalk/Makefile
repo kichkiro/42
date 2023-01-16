@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/01/08 17:16:01 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/01/16 12:40:48 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ OBJS_CLIENT := $(SRCS_CLIENT:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS_SERVER := $(OBJS_SERVER:.o=.d)
 DEPS_CLIENT := $(OBJS_CLIENT:.o=.d)
 LIB         := ft
-LIB_TARGET  := libft/libft.a 
-INCS        := ./includes libft/include
+LIB_TARGET  := ../../0-libft/libft/libft.a 
+INCS        := ./includes ../../0-libft/libft/include
 CC          := clang
 CFLAGS      := -Wall -Wextra -Werror
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP

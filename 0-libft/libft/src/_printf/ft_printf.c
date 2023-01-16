@@ -6,11 +6,11 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 13:54:58 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/16 13:06:21 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/01 18:36:46 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int	ft_flags_get_value_ext(char *raw, int *i, char ph)
 {

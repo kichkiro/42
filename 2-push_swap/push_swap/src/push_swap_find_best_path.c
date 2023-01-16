@@ -43,15 +43,15 @@ static int	index_down(t_stack *lst, int n, t_limits lmtst)
 
 /*!
  * @brief 
-	Find the right insertion position of 'n' in 'lst'. 
+	Find the right insertion position of 'n' in 'lst'; 
 
 	The right insertion position is when 'n' is greater than the previous
 	element and less than the following one, since 'lst' is a list of integers 
-	in ascending order.
+	in ascending order;
 
-	If the index is on a "conjunction", i.e. the position where PREV is greater 
+	If the index is on a "conjunction", i.e the position where PREV is greater 
 	than NEXT 'n' must be, depending on the case, less/equal to MAX or 
-	greater/equal to MIN.
+	greater/equal to MIN;
 
 	The check goes both ways, so from HEAD to LAST and will then return a 
 	positive integer, and from LAST to HEAD and will return a negative integer.
@@ -65,7 +65,7 @@ static int	index_down(t_stack *lst, int n, t_limits lmtst)
  * @param lmtst 
 	A structure that contains two integers corresponding to the smallest element 
 	and the biggest element.
- * @return
+ * @return 
 	An integer representing the insertion index.
  */
 int	insert_index(t_stack *lst, int n, t_limits lmtst)
@@ -149,7 +149,7 @@ static void	set_t_path(t_path *dest, t_path src, bool to_null, bool no_actions)
 	actions from stack 'b' to stack 'a' and returns the coordinates of the right 
 	element in stack 'b', the insertion position in stack 'a' and number of 
 	actions	needed to perform this transfer.
- * @param a
+ * @param a 
 	The address of a pointer to the first node of stack_a.
  * @param b 
 	The address of a pointer to the first node of stack_b.

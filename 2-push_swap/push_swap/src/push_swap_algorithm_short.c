@@ -92,17 +92,17 @@ static void	five_numbers_algorithm(t_stack **a, t_stack **b, t_limits limits)
 
 /*!
  * @brief 
-	Algorithm for sorting a list of integers consisting of 2 to 5 elements.
+	Algorithm for sorting a list of integers consisting of 2 to 5 elements;
 
 	The algorithm works as follows:
 	  - If the number of elements is greater than 3, the smallest excess 
 	  	elements are transferred to stack 'b' in the least number of actions and
-		sorted in descending order.
+		sorted in descending order;
 	  - When there are 3 or less elements in stack 'a', the goal of the 
 	  	algorithm is to locate the largest element and move it with a single 
-		action to the last node.
+		action to the last node;
 	  - If the element at the first node is greater than the second element they 
-	  	are swapped.
+	  	are swapped;
 	  - Finally (if there are elements in stack 'b') the two stacks are merged.
  * @param a 
 	The address of a pointer to the first node of stack_a.

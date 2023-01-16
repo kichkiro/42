@@ -1,19 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
+/*   t_stack_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 16:57:24 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/16 12:26:04 by kichkiro         ###   ########.fr       */
+/*   Created: 2022/12/26 00:47:39 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/01/16 12:58:46 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_BONUS_H
-# define MINITALK_BONUS_H
+#include "push_swap.h"
 
-# include "../../../0-libft/libft/include/libft.h"
-# include <signal.h>
+/*!
+ * @brief 
+	Delete and frees the lst.
+ * @param lst 
+	Linked list.
+ */
+void	t_stack_free(t_stack **lst)
+{
+	t_stack	*tmp;
 
-#endif
+	tmp = 0;
+	if (*lst)
+	{
+		t_stack_set_to_head(lst);
+		while ((*lst)->next)
+		{
+			*lst = (*lst)->next;
+			tmp = (*lst)->prev;
+			free(tmp);
+			(*lst)->prev = 0;
+		}
+		free(*lst);
+		*lst = 0;
+	}
+}

@@ -92,11 +92,11 @@ static void	reverse_rotate(t_stack **lst)
 /*!
  * @brief
 	Performs the 11 permitted actions.
- * @param a
+ * @param a 
 	Bidirectional linked list represent Stack A.
- * @param b
+ * @param b 
 	Bidirectional linked list represent Stack B.
- * @param action
+ * @param action 
 	sa (swap a): Swap the first 2 elements at the top of stack a.
 		Do nothing if there is only one or no elements.
 	sb (swap b): Swap the first 2 elements at the top of stack b.

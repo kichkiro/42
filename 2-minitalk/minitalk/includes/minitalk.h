@@ -6,14 +6,14 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 19:19:29 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/08 16:02:45 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:26:08 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# include "../libft/include/libft.h"
+# include "../../../0-libft/libft/include/libft.h"
 # include <signal.h>
 
 #endif
