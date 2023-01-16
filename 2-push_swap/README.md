@@ -63,6 +63,7 @@ that sorts the integers received as arguments.
 
 ## Beckhmarks 📈
 
+![Readme](https://github.com/{username}/{repo}/blob/{branch}/2-push_swap/README.md)
 
 ![push_swap](https://github.com/kichkiro/42_cursus/blob/56bfc57e52873260be0c23db23d1941a38ec8cb0/push_swap_visualizer.gif)
 
