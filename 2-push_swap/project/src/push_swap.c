@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 12:06:59 by kichkiro          #+#    #+#             */
-/*   Updated: 2022/12/30 16:12:11 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:04:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static t_stack	*stack_init(t_stack **lst, char **argv)
 	if (t_stack_check_dup(*lst))
 	{
 		write(2, "Error\n", 6);
+		t_stack_free(lst);
 		exit(0);
 	}
 	t_stack_set_to_head(&(*lst));
@@ -72,6 +73,7 @@ int	main(int argc, char **argv)
 				push_swap_algorithm_long(&a, &b);
 		}
 		t_stack_free(&a);
+		t_stack_free(&b);
 	}
 	else if (argc == 1)
 		exit(0);

@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 00:47:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/16 12:58:46 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:48:21 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param lst 
 	Linked list.
  */
-void	t_stack_free(t_stack **lst)
+void	*t_stack_free(t_stack **lst)
 {
 	t_stack	*tmp;
 
@@ -36,4 +36,5 @@ void	t_stack_free(t_stack **lst)
 		free(*lst);
 		*lst = 0;
 	}
+	return (0);
 }

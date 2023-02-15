@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:40:34 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/10 17:21:56 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:45:39 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,18 @@ static int	ft_printf_xp(va_list args, t_flags flags, char placeholder)
 	return (ft_print_result(result, placeholder));
 }
 
+/*!
+ * @brief 
+	Handles the conversion of format string placeholders.
+ * @param args 
+	va_list with arguments.
+ * @param ph 
+	Placeholder character.
+ * @param flags 
+	Flags for the placeholder.
+ * @return 
+	Number of characters printed.
+ */
 int	ft_printf_format(va_list args, char ph, t_flags flags)
 {
 	if (ph == 'c')

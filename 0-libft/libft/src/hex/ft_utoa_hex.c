@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:01:59 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/10 16:36:19 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:10:14 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 	The string representing the unsigned integer in exadecimal format.
 	NULL if the allocation fails.
  */
-char	*ft_utoa_hex(unsigned int n, char is_upper)
+char	*ft_utoa_hex(unsigned int n, bool is_upper)
 {
 	char	*base;
 	char	*str;

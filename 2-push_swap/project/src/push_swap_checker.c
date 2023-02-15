@@ -6,11 +6,11 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:37:58 by kichkiro          #+#    #+#             */
-/*   Updated: 2022/12/29 14:19:59 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:26:52 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 static bool	check_limits(char **m)
 {
@@ -100,20 +100,24 @@ static int	actions_to_int(char *action)
 static bool	lists_init(t_stack **actions, t_stack **a, char **argv)
 {
 	char	*line;
+	int		actions_int;
 
 	while (true)
 	{
 		line = ft_get_next_line(0);
-		if (!line)
+		if (!line && !ft_free((void **)&line))
 			break ;
-		t_stack_add_back(actions, t_stack_new(actions_to_int(line)));
-		ft_free((void **)&line);
+		actions_int = actions_to_int(line);
+		free(line);
+		if (!actions_int && !t_stack_free(actions) && !t_stack_free(a))
+			ft_exit("Error\n", 0, 2, 1);
+		t_stack_add_back(actions, t_stack_new(actions_int));
 	}
 	if (*actions)
 		t_stack_set_to_head(actions);
 	while (*argv)
-		t_stack_add_back(&(*a), t_stack_new(ft_atoi(*argv++)));
-	if (t_stack_check_dup(*a))
+		t_stack_add_back(a, t_stack_new(ft_atoi(*argv++)));
+	if (t_stack_check_dup(*a) && !t_stack_free(actions) && !t_stack_free(a))
 		exit(0);
 	if (*a)
 		t_stack_set_to_head(a);
@@ -129,18 +133,22 @@ int	main(int argc, char **argv)
 	actions = 0;
 	a = 0;
 	b = 0;
-	if (argc > 2 && !check_limits(argv))
+	if (argc < 3 || check_limits(argv))
+		exit(0);
+	lists_init(&actions, &a, ++argv);
+	while (actions && actions->next)
 	{
-		lists_init(&actions, &a, ++argv);
-		while (actions)
-		{
-			push_swap_actions(&a, &b, actions_to_str(actions->data), false);
-			actions = actions->next;
-		}
-		if (t_stack_is_sorted(a) && !b)
-			ft_printf("OK\n");
-		else
-			ft_printf("KO\n");
+		push_swap_actions(&a, &b, actions_to_str(actions->data), false);
+		actions = actions->next;
 	}
+	if (actions)
+		push_swap_actions(&a, &b, actions_to_str(actions->data), false);
+	if (t_stack_is_sorted(a) && !b)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
+	t_stack_free(&actions);
+	t_stack_free(&a);
+	t_stack_free(&b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 13:50:00 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/15 23:42:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:36:54 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 	Read line: correct behavior.
 	NULL if there is nothing else to read, or an error occurred.
  */
-char	*get_next_line(int fd)
+char	*ft_get_next_line(int fd)
 {
 	static char	*lines;
 	char		*buf;

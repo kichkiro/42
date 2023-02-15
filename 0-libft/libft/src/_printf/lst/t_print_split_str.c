@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:06:42 by kichkiro          #+#    #+#             */
-/*   Updated: 2022/12/28 18:05:49 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:11:46 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @return 
 	New malloc() allocated linked list.
  */
-t_print	*t_print_split_str(char *str, char need_to_free)
+t_print	*t_print_split_str(char *str, bool need_to_free)
 {
 	t_print	*lst;
 	int		i;

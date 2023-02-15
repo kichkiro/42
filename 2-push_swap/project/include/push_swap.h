@@ -6,16 +6,43 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:32:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/16 12:55:29 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:48:33 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../../../0-libft/libft/include/libft.h"
+// Libraries ------------------------------------------------------------------>
 
-// Linked List ---------------------------------------------------------------->
+# include "../lib/libft/include/libft.h"
+
+// Structures ----------------------------------------------------------------->
+
+typedef struct path
+{
+	int	src;
+	int	dst;
+	int	actions;
+}	t_path;
+
+typedef struct limits
+{
+	int	min;
+	int	max;
+}	t_limits;
+
+typedef struct check_limits
+{
+	int		i;
+	int		j;
+	int		n;
+	bool	sign;
+	size_t	s_len;
+	size_t	n_len;	
+}	t_check_limits;
+
+// Linked Lists --------------------------------------------------------------->
 
 /*!
  * @brief 
@@ -44,33 +71,10 @@ bool	t_stack_is_sorted(t_stack *lst);
 bool	t_stack_n_is_inside(t_stack *lst, int n);
 void	t_stack_del_last(t_stack **lst);
 bool	t_stack_check_dup(t_stack *lst);
-void	t_stack_free(t_stack **lst);
+void	*t_stack_free(t_stack **lst);
 int		t_stack_index_data(t_stack *lst, int data);
 
 // Main Functions ------------------------------------------------------------->
-
-typedef struct path
-{
-	int	src;
-	int	dst;
-	int	actions;
-}	t_path;
-
-typedef struct limits
-{
-	int	min;
-	int	max;
-}	t_limits;
-
-typedef struct check_limits
-{
-	int		i;
-	int		j;
-	int		n;
-	bool	sign;
-	size_t	s_len;
-	size_t	n_len;	
-}	t_check_limits;
 
 bool	push_swap_actions(t_stack **a, t_stack **b, char *action, bool print);
 void	push_swap_algorithm_long(t_stack **a, t_stack **b);

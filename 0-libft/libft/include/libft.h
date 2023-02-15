@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:15:10 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/16 12:43:19 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:11:54 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ ssize_t	ft_stridx(char *s, int c);
 char	*ft_split_substr(char **s, int start, size_t len, char split);
 size_t	ft_hexlen(size_t n);
 char	*ft_utoa(unsigned int nb);
-char	*ft_utoa_hex(unsigned int n, char is_upper);
+char	*ft_utoa_hex(unsigned int n, bool is_upper);
 char	*ft_ultoa_hex(uintptr_t n);
 
 /*!
@@ -123,7 +123,7 @@ bool	ft_n_is_in_arr(int *arr, int size, int n);
 // Get-Next-Line -------------------------------------------------------------->
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 420
 # endif
 
 char	*ft_get_next_line(int fd);
@@ -142,7 +142,7 @@ typedef struct char_node
 }	t_print;
 
 t_print	*t_print_new(char data);
-t_print	*t_print_split_str(char *str, char need_to_free);
+t_print	*t_print_split_str(char *str, bool need_to_free);
 void	t_print_add_back(t_print **lst, t_print *new);
 void	t_print_add_front(t_print **lst, t_print *new);
 void	t_print_add_inside(t_print **head, size_t start, size_t len, char data);

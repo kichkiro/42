@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 10:44:14 by kichkiro          #+#    #+#              #
-#    Updated: 2023/01/16 12:33:52 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/01/17 18:52:11 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ DIR_DUP     = mkdir -p $(@D)
 
 # Rules ----------------------------------------------------------------------->
 
-all: $(NAME)
+all: header $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
@@ -129,7 +129,11 @@ re:
 RED 		:= ${shell tput setaf 1}
 YELLOW		:= ${shell tput setaf 3}
 BLUE		:= ${shell tput setaf 4}
-NO_COLOR	:= $(shell tput sgr0)
-BOLD		:= $(shell tput bold)
+NO_COLOR	:= ${shell tput sgr0}
+BOLD		:= ${shell tput bold}
+
+header:
+	${info }
+	${info ${BOLD}${YELLOW}LIBFT${NO_COLOR}}
 
 # ------------------------------------------------------------------------------

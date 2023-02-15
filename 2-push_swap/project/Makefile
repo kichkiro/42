@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/01/16 12:56:51 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/02/14 14:31:54 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,10 @@
 
 NAME        := push_swap
 LIB        	:= ft 
-LIB_TARGET 	:= ../../0-libft/libft/libft.a 
-INCS        := ./include ../../0-libft/libft/include
+LIB_TARGET 	:= lib/libft/libft.a
+INCS        := \
+	./include \
+	lib/libft/include
 SRC_DIR     := src
 SRCS        := \
 	push_swap.c \
@@ -42,12 +44,23 @@ SRCS        := \
 	lst/t_stack_to_arr.c \
 	lst/t_stack_index_data.c
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
-CHECKER		:= src/push_swap_checker.c
+CHECKER		:= \
+	lib/libft/src/_get_next_line/ft_get_next_line.c \
+	src/push_swap_checker.c \
+	src/push_swap_actions.c \
+	src/lst/t_stack_is_sorted.c \
+	src/lst/t_stack_add_back.c \
+	src/lst/t_stack_set_to_head.c \
+	src/lst/t_stack_new.c \
+	src/lst/t_stack_check_dup.c \
+	src/lst/t_stack_n_is_inside.c \
+	src/lst/t_stack_free.c
+	
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
 CC          := clang
-CFLAGS      := -Wall -Wextra -Werror
+CFLAGS      := -g -Wall -Wextra -Werror
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
 LDFLAGS     := $(addprefix -L,$(dir $(LIB_TARGET)))
 LDLIB      	:= $(addprefix -l,$(LIB))
@@ -64,6 +77,7 @@ all: header $(NAME)
 
 $(NAME): $(OBJS) $(LIB_TARGET)
 	$(CC) $(LDFLAGS) $(OBJS) $(LDLIB) -o $(NAME)
+	${info }
 	${info ${BOLD}Creating  -> ${BLUE}$(NAME)${NO_COLOR}}
 
 $(LIB_TARGET):
@@ -72,7 +86,7 @@ $(LIB_TARGET):
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-	${info ${BOLD}Compiling -> ${YELLOW}$@${NO_COLOR}}
+	${info ${BOLD}Compiling -> ${BLUE}$@${NO_COLOR}}
 
 -include $(DEPS)
 
@@ -93,8 +107,7 @@ re:
 	$(MAKE) all
 
 bonus: header $(LIB_TARGET)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(CHECKER) src/push_swap_actions.c \
-		$(LIB_TARGET) -o checker
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(CHECKER) $(LIB_TARGET) -o checker
 	${info ${BOLD}Creating  -> ${BLUE}checker${NO_COLOR}}
 
 # Style ----------------------------------------------------------------------->
