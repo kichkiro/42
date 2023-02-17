@@ -6,12 +6,13 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 10:51:17 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/10 15:41:20 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:14:54 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
