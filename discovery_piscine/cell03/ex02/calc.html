@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Calculator</title>
+	</head>
+	<body>
+		<input type="text" id="first_field">
+		<select id="operation">
+			<option value="Addition">+</option>
+			<option value="Subtraction">-</option>
+			<option value="Multiplication">*</option>
+			<option value="Division">/</option>
+			<option value="Module">%</option>
+		</select>
+		<input type="text" id="second_field">
+		<button type="submit" onclick="calculator()">Try me!</button>
+		
+		<script>
+			window.setInterval(function() {
+				alert("Please, use me..");
+			}, 30000)
+
+			function calculator() {
+				var first_field = document.getElementById("first_field").value;
+				var	operation = document.getElementById("operation").value;
+				var second_field = document.getElementById("second_field").value;
+				var result = 0;
+
+				if (parseInt(first_field) < 0 || parseInt(second_field) < 0)
+					alert("Error :(");
+				else if (second_field == "0" && (operation == Division || operation == Module))
+					alert("It's over 9000!")
+				else if (operation == "Addition")
+					result = parseInt(first_field) + parseInt(second_field);
+				else if (operation == "Subtraction")
+					result = parseInt(first_field) - parseInt(second_field);
+				else if (operation == "Multiplication")
+					result = parseInt(first_field) * parseInt(second_field);
+				else if (operation == "Division")
+					result = parseInt(first_field) / parseInt(second_field);
+				else if (operation == "Module")
+					result = parseInt(first_field) % parseInt(second_field);
+				alert(result);
+				console.log(result);
+			}
+		</script>
+	</body>
+</html>
