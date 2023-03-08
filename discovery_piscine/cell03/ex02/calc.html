@@ -5,46 +5,98 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Calculator</title>
+		<style>
+			div {
+				font-family: Arial, sans-serif;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				margin: auto;
+				max-width: 500px;
+				padding: 20px;
+				background-color: #fff;
+				box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			}
+
+			h1 {
+				text-align: center;
+				font-size: 32px;
+				margin-top: 0;
+			}
+
+			form {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			input, select {
+				font-size: 20px;
+				padding: 10px;
+				border: none;
+				background-color: #f2f2f2;
+				width: 120px;
+				text-align: center;
+			}
+
+			button {
+				background-color: #ad0a0a;
+				color: #fff;
+				padding: 10.1px;
+				font-size: 20px;
+				border: none;
+				cursor: pointer;
+			}
+
+			button:hover {
+				background-color: #5c0606;
+			}
+		</style>
 	</head>
 	<body>
-		<input type="text" id="first_field">
-		<select id="operation">
-			<option value="Addition">+</option>
-			<option value="Subtraction">-</option>
-			<option value="Multiplication">*</option>
-			<option value="Division">/</option>
-			<option value="Module">%</option>
-		</select>
-		<input type="text" id="second_field">
-		<button type="submit" onclick="calculator()">Try me!</button>
-		
+		<div>
+			<h1>Calculator</h1>
+			<form>
+				<input type="text" id="first_field">
+				<select id="operation">
+					<option value="addition">+</option>
+					<option value="subtraction">-</option>
+					<option value="multiplication">*</option>
+					<option value="division">/</option>
+					<option value="module">%</option>
+				</select>
+				<input type="text" id="second_field">
+				<button type="submit" onclick="calculator()">Try me!</button>
+			</form>
+		</div>
 		<script>
 			window.setInterval(function() {
 				alert("Please, use me..");
 			}, 30000)
 
 			function calculator() {
-				var first_field = document.getElementById("first_field").value;
-				var	operation = document.getElementById("operation").value;
-				var second_field = document.getElementById("second_field").value;
-				var result = 0;
+				var n1 = document.getElementById("first_field").value;
+				var	op = document.getElementById("operation").value;
+				var n2 = document.getElementById("second_field").value;
+				var res = 0;
 
-				if (parseInt(first_field) < 0 || parseInt(second_field) < 0)
+				if (parseInt(n1) < 0 || parseInt(n2) < 0)
 					alert("Error :(");
-				else if (second_field == "0" && (operation == Division || operation == Module))
+				else if (n2 == "0" && (op == "division" || op == "module"))
 					alert("It's over 9000!")
-				else if (operation == "Addition")
-					result = parseInt(first_field) + parseInt(second_field);
-				else if (operation == "Subtraction")
-					result = parseInt(first_field) - parseInt(second_field);
-				else if (operation == "Multiplication")
-					result = parseInt(first_field) * parseInt(second_field);
-				else if (operation == "Division")
-					result = parseInt(first_field) / parseInt(second_field);
-				else if (operation == "Module")
-					result = parseInt(first_field) % parseInt(second_field);
-				alert(result);
-				console.log(result);
+				else if (op == "addition")
+					res = parseInt(n1) + parseInt(n2);
+				else if (op == "subtraction")
+					res = parseInt(n1) - parseInt(n2);
+				else if (op == "multiplication")
+					res = parseInt(n1) * parseInt(n2);
+				else if (op == "division")
+					res = parseInt(n1) / parseInt(n2);
+				else if (op == "module")
+					res = parseInt(n1) % parseInt(n2);
+				alert(res);
+				console.log(res);
 			}
 		</script>
 	</body>
