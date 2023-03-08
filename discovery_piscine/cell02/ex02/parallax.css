@@ -1,0 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parallax.css                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/08 11:07:00 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/03/08 11:07:01 by kichkiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+body {
+  margin: 0;
+}
+
+span {
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	color: white;
+	text-align: center;
+	font-size: small;
+}
+
+.img {
+	position: relative;
+	background-attachment: fixed;
+	background-position: no-repeat;
+	background-size: cover;
+	height: 100vh;
+}
+
+.black_banner {
+	background-color: black;
+	height: 500px;
+	position: relative;
+}
+
+.img1 {
+	background-image: url("img/abstract.jpg");
+}
+
+.img2 {
+	background-image: url("img/abstract2.jpg");
+}
