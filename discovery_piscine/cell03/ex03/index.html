@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				margin: 0;
+				padding: 0;
+			}
+
+			h1 {
+				text-align: center;
+				margin-top: 30px;
+			}
+			
+			#ft_list {
+				max-width: 600px;
+				margin: 50px auto;
+				padding: 20px;
+				background-color: #fff;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			}
+			
+			button {
+				background-color: #4CAF50;
+				color: #fff;
+				border: none;
+				padding: 10px 20px;
+				cursor: pointer;
+				font-size: 16px;
+			}
+			
+			button:hover {
+				background-color: #3e8e41;
+			}
+			
+			div {
+				padding: 10px;
+				margin: 10px 0;
+				background-color: #f2f2f2;
+				cursor: pointer;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			}
+			
+			div:hover {
+				background-color: #e6e6e6;
+			}
+		</style>
+		<title>Todo List</title>
+	</head>
+	<body>
+		<h1>TODO LIST</h1>
+		<div id="ft_list">
+			<button name="New" onclick="add_task(this)">Add New Task</button>
+		</div>
+		<script src="todo.js"></script>
+	</body>
+</html>

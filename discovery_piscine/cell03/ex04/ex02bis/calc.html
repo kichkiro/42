@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Calculator</title>
+		<style>
+			div {
+				font-family: Arial, sans-serif;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				margin: auto;
+				max-width: 500px;
+				padding: 20px;
+				background-color: #fff;
+				box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			}
+
+			h1 {
+				text-align: center;
+				font-size: 32px;
+				margin-top: 0;
+			}
+
+			form {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			input, select {
+				font-size: 20px;
+				padding: 10px;
+				border: none;
+				background-color: #f2f2f2;
+				width: 120px;
+				text-align: center;
+			}
+
+			button {
+				background-color: #ad0a0a;
+				color: #fff;
+				padding: 10.1px;
+				font-size: 20px;
+				border: none;
+				cursor: pointer;
+			}
+
+			button:hover {
+				background-color: #5c0606;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>Calculator</h1>
+			<form>
+				<input type="text" id="first_field">
+				<select id="operation">
+					<option value="addition">+</option>
+					<option value="subtraction">-</option>
+					<option value="multiplication">*</option>
+					<option value="division">/</option>
+					<option value="module">%</option>
+				</select>
+				<input type="text" id="second_field">
+				<button type="submit" onclick="calculator()">Try me!</button>
+			</form>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script>
+			setInterval(function() {
+				alert("Please, use me..");
+			}, 30000);
+		
+			function calculator() {
+				var n1 = $("#first_field").val();
+				var op = $("#operation").val();
+				var n2 = $("#second_field").val();
+				var res = 0;
+		
+				if (parseInt(n1) < 0 || parseInt(n2) < 0)
+					alert("Error :(");
+				else if (n2 == "0" && (op == "division" || op == "module"))
+					alert("It's over 9000!");
+				else if (op == "addition")
+					res = parseInt(n1) + parseInt(n2);
+				else if (op == "subtraction")
+					res = parseInt(n1) - parseInt(n2);
+				else if (op == "multiplication")
+					res = parseInt(n1) * parseInt(n2);
+				else if (op == "division")
+					res = parseInt(n1) / parseInt(n2);
+				else if (op == "module")
+					res = parseInt(n1) % parseInt(n2);
+				alert(res);
+				console.log(res);
+			}
+		</script>
+	</body>
+</html>
