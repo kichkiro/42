@@ -1,3 +1,5 @@
+<img src="https://github.com/kichkiro/42_cursus/blob/assets/banner_push_swap.png?raw=true" width="100%"/>
+
 # Push Swap
 
 <i>"The Push swap project is a very simple and a highly straightforward algorithm project: data must be sorted.
@@ -8,7 +10,7 @@ on the standard output the smallest program, made of Push swap language instruct
 that sorts the integers received as arguments.
 <br>Easy?
 <br>We’ll see.."</i>
-<br>
+#### <i>[subject](_subject/en.subject.pdf) v.6</i>
 
 ## Project Tree 🌳 
 

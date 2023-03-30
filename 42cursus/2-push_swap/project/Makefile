@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/02/14 14:31:54 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/03/30 14:10:08 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ DIR_DUP     = mkdir -p $(@D)
 
 # Rules ----------------------------------------------------------------------->
 
-all: header $(NAME) 
+all: banner $(NAME) 
 
 $(NAME): $(OBJS) $(LIB_TARGET)
 	$(CC) $(LDFLAGS) $(OBJS) $(LDLIB) -o $(NAME)
@@ -106,7 +106,7 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-bonus: header $(LIB_TARGET)
+bonus: banner $(LIB_TARGET)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(CHECKER) $(LIB_TARGET) -o checker
 	${info ${BOLD}Creating  -> ${BLUE}checker${NO_COLOR}}
 
@@ -118,14 +118,14 @@ BLUE		:= ${shell tput setaf 4}
 NO_COLOR	:= ${shell tput sgr0}
 BOLD		:= ${shell tput bold}
 
-header: 
+banner:
 	${info ${RED}}
-	${info ________              ______       ________                         }
-	${info ___  __ \___  ___________  /_      __  ___/__      _______ ________ }
-	${info __  /_/ /  / / /_  ___/_  __ \     _____ \__ | /| / /  __ `/__  __ \}
-	${info _  ____// /_/ /_ __   _  / / /     ____/ /__ |/ |/ // /_/ /__  /_/ /}
-	${info /_/     \__,_/ /____/ /_/ /_/      /____/ ____/|__/ \__,_/ _  .___/ }
-	${info                                                            /_/      }
+	${info ________             __ _ _ _______                    }
+	${info ___/ __ \__  _______/ /_ _ _ / ___/      ______ _____  }
+	${info __/ /_/ / / / / ___/ __ \_ _ \__ \ | /| / / __ `/ __ \ }
+	${info _/ ____/ /_/ (__  ) / / /_ _ _ / / |/ |/ / /_/ / /_/ / }
+	${info /_/    \__,_/____/_/ /_/_ _/____/|__/|__/\__,_/ .___/  }
+	${info _                                            /_/       }
 	${info ${NO_COLOR}}
 
 # ------------------------------------------------------------------------------
