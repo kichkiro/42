@@ -2,14 +2,17 @@
 
 # Push Swap
 
-<i>"The Push swap project is a very simple and a highly straightforward algorithm project: data must be sorted.
-<br>You have at your disposal a set of integer values, 2 stacks, and a set of instructions
-to manipulate both stacks.
-<br>Your goal? Write a program in C called push_swap which calculates and displays
-on the standard output the smallest program, made of Push swap language instructions,
-that sorts the integers received as arguments.
-<br>Easy?
-<br>We’ll see.."</i>
+<i>
+    "The Push swap project is a very simple and a highly straightforward algorithm project: data must be sorted.
+    <br>You have at your disposal a set of integer values, 2 stacks, and a set of instructions
+    to manipulate both stacks.
+    <br>Your goal? Write a program in C called push_swap which calculates and displays
+    on the standard output the smallest program, made of Push swap language instructions,
+    that sorts the integers received as arguments.
+    <br>Easy?
+    <br>We’ll see.."
+</i>
+
 #### <i>[subject](_subject/en.subject.pdf) v.6</i>
 
 ## 🌳 - Project Tree 
@@ -20,6 +23,8 @@ that sorts the integers received as arguments.
 │   ├── Makefile
 │   ├── include
 │   │   └── push_swap.h
+│   ├── lib
+│   │   └── libft
 │   └── src
 │       ├── push_swap_actions.c
 │       ├── push_swap_algorithm_long.c
@@ -99,9 +104,6 @@ The algorithm is divided into three steps:
 [push_swap_tester](https://github.com/LeoFu9487/push_swap_tester)
 
 <img src="https://github.com/kichkiro/42_cursus/blob/assets/push_swap_tester.png?raw=true" alt="push_swap_tester" width="100%"/>
-
-
-<br>
 
 ## ⚖️ - License
 
