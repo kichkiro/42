@@ -12,7 +12,7 @@ that sorts the integers received as arguments.
 <br>We’ll see.."</i>
 #### <i>[subject](_subject/en.subject.pdf) v.6</i>
 
-## Project Tree 🌳 
+## 🌳 - Project Tree 
 
 ```js
 ├── README.md
@@ -51,15 +51,50 @@ that sorts the integers received as arguments.
     └── en.subject.pdf
 ```
 
-<br>
+## 🛠️ - How to use? 
 
-## Benchmark 📈
+#### Use Subversion to download the project with the following command:
+```
+svn export https://github.com/kichkiro/42/trunk/42cursus/2-push_swap push_swap_kichkiro
+rm -rf push_swap_kichkiro/project/lib/libft
+svn export https://github.com/kichkiro/42/trunk/42cursus/0-libft/libft push_swap_kichkiro/project/lib/libft
+```
+#### Or clone the entire repository:
+```
+git clone https://github.com/kichkiro/42.git 42_kichkiro
+cd 42_kichkiro/42cursus/2-push_swap/
+```
+
+## 📈 - Sorting Algorithms
+
+### Algorithm for numbers >= 2 && <= 5
+
+The algorithm works as follows:
+- If the number of elements is greater than 3, the smallest excess 
+    elements are transferred to stack 'b' in the least number of actions and
+    sorted in descending order;
+- When there are 3 or less elements in stack 'a', the goal of the 
+    algorithm is to locate the largest element and move it with a single 
+    action to the last node;
+- If the element at the first node is greater than the second element they 
+    are swapped;
+- Finally (if there are elements in stack 'b') the two stacks are merged.
+
+### Algorithm for numbers > 5
+
+The algorithm is divided into three steps:
+- In the first phase all the elements that are not part of the longest 
+    incremental subsequence are transferred to stack 'b';
+- As long as stack 'b' is not empty, each time the element that "costs" 
+    less in terms of actions is identified and transferred;
+- Finally, if the smallest element is not on the first node, the list is
+	    rotated.
+
+## 📉 - Benchmark
 
 [push_swap_visualizer](https://github.com/o-reo/push_swap_visualizer)
 
 <img src="https://github.com/kichkiro/42_cursus/blob/assets/push_swap_visualizer.gif?raw=true" alt="push_swap_visualizer" width="100%"/>
-
-<br>
 
 [push_swap_tester](https://github.com/LeoFu9487/push_swap_tester)
 
@@ -68,6 +103,6 @@ that sorts the integers received as arguments.
 
 <br>
 
-## License ⚖️
+## ⚖️ - License
 
 See [LICENSE](https://github.com/kichkiro/42_cursus/blob/main/LICENSE)
