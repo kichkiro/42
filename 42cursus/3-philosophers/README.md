@@ -55,9 +55,14 @@
 
 ## 🛠️ - How to use? 
 
-#### To clone this project, run the following command:
+#### Use Subversion to download the project with the following command:
 ```
 svn export https://github.com/kichkiro/42/trunk/42cursus/3-philosophers philosophers_kichkiro
+```
+#### Or clone the entire repository:
+```
+git clone https://github.com/kichkiro/42.git 42_kichkiro
+cd 42/42cursus/3-philosophers/
 ```
 
 ## 📈 - Tester
