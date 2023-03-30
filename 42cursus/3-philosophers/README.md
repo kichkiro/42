@@ -35,7 +35,30 @@
 
 ## 🌳 - Project tree
 
+``` js
+├── README.md
+├── project
+│   ├── philo
+│   │   ├── Makefile
+│   │   ├── include
+│   │   │   └── philo.h
+│   │   └── src
+│   │       ├── main.c
+│   │       ├── state_handler.c
+│   │       ├── thread_handler.c
+│   │       └── utils.c
+│   └── philo_bonus
+│       └── TODO
+└── _subject
+    └── en.subject.pdf
+```
+
 ## 🛠️ - How to use? 
+
+#### To clone this project, run the following command:
+```
+svn export https://github.com/kichkiro/42/trunk/42cursus/3-philosophers philosophers_kichkiro
+```
 
 ## ⚖️ - License 
 
