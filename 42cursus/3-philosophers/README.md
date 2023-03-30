@@ -62,7 +62,7 @@ svn export https://github.com/kichkiro/42/trunk/42cursus/3-philosophers philosop
 #### Or clone the entire repository:
 ```
 git clone https://github.com/kichkiro/42.git 42_kichkiro
-cd 42/42cursus/3-philosophers/
+cd 42_kichkiro/42cursus/3-philosophers/
 ```
 
 ## 📈 - Tester
