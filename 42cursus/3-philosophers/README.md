@@ -60,6 +60,32 @@
 svn export https://github.com/kichkiro/42/trunk/42cursus/3-philosophers philosophers_kichkiro
 ```
 
+## 📈 - Tester
+
+<img src="https://github.com/kichkiro/42_cursus/blob/assets/banner_philosophers_tester.png?raw=true" width="100%"/>
+
+Check [philosophers_tester](https://github.com/kichkiro/philosophers_tester), this is my own tester, and it runs the following tests:
+- make:
+    - compile the project.
+- norminette:
+    - run norminette.
+- global variables:
+    - check if global variables are present.
+- death_1:
+    - test the program with a single philosopher, it should die in the following sequence:
+    	- timestamp_in_ms X has taken a fork
+		- timestamp_in_ms X died
+- death_2:
+    - in this test, no philosopher should die.
+- death_3:
+    - in this test, a philosopher should die.
+- Valgrind Memcheck:
+    - to check for memory leaks.
+- Valgrind Helgrind:
+    - to check for concurrency issues such as, race conditions and deadlocks.
+- Thread Sanitize:
+	- recompile the program with the -fsanitize=thread option. ThreadSanitize is another concurrency error checking tool.
+
 ## ⚖️ - License 
 
 See [LICENSE](https://github.com/kichkiro/42_cursus/blob/main/LICENSE)
