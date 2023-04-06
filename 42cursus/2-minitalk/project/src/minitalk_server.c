@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 19:27:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/08 16:25:50 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:58:02 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 volatile char	*g_received_bits = 0;
 
+/**
+ * @brief 
+	Decodes 8 bits into a character.
+ * @details 
+	The function takes a global char array containing 8 bits, and decodes the 
+	bits into a character using bitwise operators.
+ * @param bits 
+	The 8 bits to be decoded.
+ * @return 
+	The decoded character.
+ */
 static char	decode_bits(volatile char *bits)
 {
 	char	c;
@@ -32,6 +43,17 @@ static char	decode_bits(volatile char *bits)
 	return (c);
 }
 
+/**
+ * @brief 
+	Handles signal events sent to the process
+ * @details 
+	When a SIGUSR1 or SIGUSR2 signal is received, this function appends a 
+	corresponding bit to the global variable g_received_bits; 
+	If the sequence of bits reaches 8 characters, the sequence is decoded into a 
+	character and printed to the standard output.
+ * @param sig 
+	The signal number that was received.
+ */
 static void	sig_handler(int sig)
 {
 	char	c;
@@ -50,6 +72,23 @@ static void	sig_handler(int sig)
 	}
 }
 
+/**
+ * @brief 
+	Main function for the server process.
+ * @details 
+	The function initializes a signal handler for SIGUSR1 and SIGUSR2 and waits 
+	for incoming signals; 
+	Once a signal is received, the signal handler function is called and the 
+	corresponding bit is appended to a global char array; 
+	Once 8 bits are received, they are decoded into a character and printed to 
+	the standard output using the write function; 
+ * @param argc 
+	The number of arguments passed to the function.
+ * @param argv 
+	The arguments passed to the function.
+ * @return 
+	The exit status of the function.
+ */
 int	main(int argc, char **argv)
 {
 	struct sigaction	act;

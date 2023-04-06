@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/03/30 14:10:08 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/04/06 23:13:22 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ INCS        := \
 SRC_DIR     := src
 SRCS        := \
 	push_swap.c \
-	push_swap_actions.c \
-	push_swap_algorithm_short.c \
-	push_swap_algorithm_long.c \
-	push_swap_find_best_path.c \
+	perform_actions.c \
+	algorithm_short.c \
+	algorithm_long.c \
+	find_best_path.c \
 	\
 	lst/t_stack_add_back.c \
 	lst/t_stack_check_dup.c \

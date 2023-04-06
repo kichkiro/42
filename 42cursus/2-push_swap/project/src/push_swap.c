@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 12:06:59 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/19 14:04:30 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:05:29 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ int	main(int argc, char **argv)
 		if (!t_stack_is_sorted(a))
 		{
 			if (t_stack_size(a) <= 5)
-				push_swap_algorithm_short(&a, &b);
+				algorithm_short(&a, &b);
 			else
-				push_swap_algorithm_long(&a, &b);
+				algorithm_long(&a, &b);
 		}
 		t_stack_free(&a);
 		t_stack_free(&b);

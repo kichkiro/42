@@ -26,12 +26,12 @@
 │   ├── lib
 │   │   └── libft
 │   └── src
-│       ├── push_swap_actions.c
-│       ├── push_swap_algorithm_long.c
-│       ├── push_swap_algorithm_short.c
 │       ├── push_swap.c
-│       ├── push_swap_checker.c
-│       ├── push_swap_find_best_path.c
+│       ├── perform_actions.c
+│       ├── algorithm_short.c
+│       ├── algorithm_long.c
+│       ├── find_best_path.c
+│       ├── checker.c  
 │       └── lst
 │           ├── t_stack_add_back.c
 │           ├── t_stack_check_dup.c

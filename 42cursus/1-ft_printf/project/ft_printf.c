@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 13:54:58 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/16 13:06:21 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:29:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ static t_flags	ft_flags_init(char *s, int *i)
 /*!
  * @brief 
 	Function that mimics the original printf();
-
+ * @details
 	The logic of my own ft_printf() is divided into the following three steps:
 	  - In the first step I write character after character as long as different 
 		from "%", otherwise I save in an array of char everything between "%" 
@@ -141,22 +141,17 @@ int	ft_printf(const char *s, ...)
 	t_flags	flags;
 
 	len = 0;
-	i = 0;
+	i = -1;
 	va_start(args, s);
-	while (s[i])
+	while (s[++i])
 	{
-		if (s[i] == '%')
+		if (s[i] == '%' && ++i)
 		{
-			i++;
 			flags = ft_flags_init((char *)s, &i);
 			len += ft_printf_format(args, s[i], flags);
 		}
 		else
-		{
-			write(1, &(s[i]), 1);
-			len++;
-		}
-		i++;
+			len += write(1, &(s[i]), 1);
 	}
 	va_end(args);
 	return (len);

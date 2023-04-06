@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_find_best_path.c                         :+:      :+:    :+:   */
+/*   find_best_path.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 15:38:50 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/01 17:15:59 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:09:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	index_down(t_stack *lst, int n, t_limits lmtst)
 /*!
  * @brief 
 	Find the right insertion position of 'n' in 'lst'; 
-
+ * @details
 	The right insertion position is when 'n' is greater than the previous
 	element and less than the following one, since 'lst' is a list of integers 
 	in ascending order;

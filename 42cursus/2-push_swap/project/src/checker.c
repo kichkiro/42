@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_checker.c                                :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:37:58 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/02/14 16:26:52 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:10:17 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,11 +138,11 @@ int	main(int argc, char **argv)
 	lists_init(&actions, &a, ++argv);
 	while (actions && actions->next)
 	{
-		push_swap_actions(&a, &b, actions_to_str(actions->data), false);
+		perform_actions(&a, &b, actions_to_str(actions->data), false);
 		actions = actions->next;
 	}
 	if (actions)
-		push_swap_actions(&a, &b, actions_to_str(actions->data), false);
+		perform_actions(&a, &b, actions_to_str(actions->data), false);
 	if (t_stack_is_sorted(a) && !b)
 		ft_printf("OK\n");
 	else

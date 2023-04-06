@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_actions.c                                :+:      :+:    :+:   */
+/*   perform_actions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 11:59:43 by kichkiro          #+#    #+#             */
-/*   Updated: 2022/12/29 14:14:03 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:10:43 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,32 +92,34 @@ static void	reverse_rotate(t_stack **lst)
 /*!
  * @brief
 	Performs the 11 permitted actions.
+ * @details
+	sa (swap a): Swap the first 2 elements at the top of stack a;
+		Do nothing if there is only one or no elements;
+	sb (swap b): Swap the first 2 elements at the top of stack b;
+		Do nothing if there is only one or no elements;
+	ss : sa and sb at the same time;
+	pa (push a): Take the first element at the top of b and put it at the 
+		top	of a; Do nothing if a is empty;
+	pb (push b): Take the first element at the top of a and put it at the 
+		top of b; Do nothing if a is empty;
+	ra (rotate a): Shift up all elements of stack a by 1;
+		The first element becomes the last one;
+	rb (rotate b): Shift up all elements of stack b by 1;
+		The first element becomes the last one;
+	rr : ra and rb at the same time;
+	rra (reverse rotate a): Shift down all elements of stack a by 1;
+		The last element becomes the first one;
+	rrb (reverse rotate b): Shift down all elements of stack b by 1;
+		The last element becomes the first one;
+	rrr : rra and rrb at the same time;
  * @param a 
 	Bidirectional linked list represent Stack A.
  * @param b 
 	Bidirectional linked list represent Stack B.
  * @param action 
-	sa (swap a): Swap the first 2 elements at the top of stack a.
-		Do nothing if there is only one or no elements.
-	sb (swap b): Swap the first 2 elements at the top of stack b.
-		Do nothing if there is only one or no elements.
-	ss : sa and sb at the same time.
-	pa (push a): Take the first element at the top of b and put it at the 
-		top	of a. Do nothing if a is empty.
-	pb (push b): Take the first element at the top of a and put it at the 
-		top of b. Do nothing if a is empty.
-	ra (rotate a): Shift up all elements of stack a by 1.
-		The first element becomes the last one.
-	rb (rotate b): Shift up all elements of stack b by 1.
-		The first element becomes the last one.
-	rr : ra and rb at the same time.
-	rra (reverse rotate a): Shift down all elements of stack a by 1.
-		The last element becomes the first one.
-	rrb (reverse rotate b): Shift down all elements of stack b by 1.
-		The last element becomes the first one.
-	rrr : rra and rrb at the same time.
+	The action to perform.
  */
-bool	push_swap_actions(t_stack **a, t_stack **b, char *action, bool print)
+bool	perform_actions(t_stack **a, t_stack **b, char *action, bool print)
 {
 	if (!ft_strncmp(action, "sa", 3) || !ft_strncmp(action, "ss", 3))
 		swap(&(*a));

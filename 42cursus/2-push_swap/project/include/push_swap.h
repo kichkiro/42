@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:32:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/02/14 13:48:33 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:12:23 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int		t_stack_index_data(t_stack *lst, int data);
 
 // Main Functions ------------------------------------------------------------->
 
-bool	push_swap_actions(t_stack **a, t_stack **b, char *action, bool print);
-void	push_swap_algorithm_long(t_stack **a, t_stack **b);
-void	push_swap_algorithm_short(t_stack **a, t_stack **b);
+bool	perform_actions(t_stack **a, t_stack **b, char *action, bool print);
+void	algorithm_long(t_stack **a, t_stack **b);
+void	algorithm_short(t_stack **a, t_stack **b);
 int		insert_index(t_stack *lst, int n, t_limits limits);
 t_path	find_best_path(t_stack *a, t_stack *b, t_limits limits);
 

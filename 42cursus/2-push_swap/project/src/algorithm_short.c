@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_algorithm_short.c                        :+:      :+:    :+:   */
+/*   algorithm_short.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 16:06:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/01 17:29:32 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:10:17 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ static void	three_numbers_algorithm(t_stack **a, t_stack **b, t_limits limits)
 	if (!max_index)
 	{
 		if (t_stack_size(*b) == 2 && t_stack_is_sorted(*b))
-			push_swap_actions(a, b, "rr", true);
+			perform_actions(a, b, "rr", true);
 		else
-			push_swap_actions(a, b, "ra", true);
+			perform_actions(a, b, "ra", true);
 	}
 	else if (max_index == 1)
 	{
 		if (t_stack_size(*b) == 2 && t_stack_is_sorted(*b))
-			push_swap_actions(a, b, "rrr", true);
+			perform_actions(a, b, "rrr", true);
 		else
-			push_swap_actions(a, b, "rra", true);
+			perform_actions(a, b, "rra", true);
 	}
 	if ((*a)->data > (*a)->next->data)
-		push_swap_actions(a, b, "sa", true);
+		perform_actions(a, b, "sa", true);
 	if (t_stack_size(*b) == 2 && t_stack_is_sorted(*b))
-		push_swap_actions(a, b, "rb", true);
+		perform_actions(a, b, "rb", true);
 }
 
 static void	four_numbers_algorithm(t_stack **a, t_stack **b, t_limits limits)
@@ -43,25 +43,25 @@ static void	four_numbers_algorithm(t_stack **a, t_stack **b, t_limits limits)
 
 	min_index = t_stack_index_data(*a, limits.min);
 	if (!min_index)
-		push_swap_actions(a, b, "pb", true);
+		perform_actions(a, b, "pb", true);
 	else if (min_index == 1)
 	{
-		push_swap_actions(a, b, "ra", true);
-		push_swap_actions(a, b, "pb", true);
+		perform_actions(a, b, "ra", true);
+		perform_actions(a, b, "pb", true);
 	}
 	else if (min_index == 2)
 	{
-		push_swap_actions(a, b, "ra", true);
-		push_swap_actions(a, b, "ra", true);
-		push_swap_actions(a, b, "pb", true);
+		perform_actions(a, b, "ra", true);
+		perform_actions(a, b, "ra", true);
+		perform_actions(a, b, "pb", true);
 	}
 	else if (min_index == 3)
 	{
-		push_swap_actions(a, b, "rra", true);
-		push_swap_actions(a, b, "pb", true);
+		perform_actions(a, b, "rra", true);
+		perform_actions(a, b, "pb", true);
 	}
 	three_numbers_algorithm(a, b, limits);
-	push_swap_actions(a, b, "pa", true);
+	perform_actions(a, b, "pa", true);
 }
 
 static void	five_numbers_algorithm(t_stack **a, t_stack **b, t_limits limits)
@@ -74,26 +74,26 @@ static void	five_numbers_algorithm(t_stack **a, t_stack **b, t_limits limits)
 	m_i = t_stack_index_data(*a, limits.min);
 	sm_i = t_stack_index_data(*a, second_min);
 	if (!m_i || !sm_i)
-		push_swap_actions(a, b, "pb", true);
-	else if ((m_i == 1 || sm_i == 1) && push_swap_actions(a, b, "ra", true))
-		push_swap_actions(a, b, "pb", true);
-	else if ((m_i == 4 || sm_i == 4) && push_swap_actions(a, b, "rra", true))
-		push_swap_actions(a, b, "pb", true);
+		perform_actions(a, b, "pb", true);
+	else if ((m_i == 1 || sm_i == 1) && perform_actions(a, b, "ra", true))
+		perform_actions(a, b, "pb", true);
+	else if ((m_i == 4 || sm_i == 4) && perform_actions(a, b, "rra", true))
+		perform_actions(a, b, "pb", true);
 	else if (m_i == 2 || sm_i == 2)
 	{
-		push_swap_actions(a, b, "ra", true);
-		push_swap_actions(a, b, "ra", true);
-		push_swap_actions(a, b, "pb", true);
+		perform_actions(a, b, "ra", true);
+		perform_actions(a, b, "ra", true);
+		perform_actions(a, b, "pb", true);
 	}
 	limits.min = t_stack_min(*a);
 	four_numbers_algorithm(a, b, limits);
-	push_swap_actions(a, b, "pa", true);
+	perform_actions(a, b, "pa", true);
 }
 
 /*!
  * @brief 
-	Algorithm for sorting a list of integers consisting of 2 to 5 elements;
-
+	Sorting algorithm for numbers >= 2 and <= 5.
+ * @details
 	The algorithm works as follows:
 	  - If the number of elements is greater than 3, the smallest excess 
 	  	elements are transferred to stack 'b' in the least number of actions and
@@ -109,7 +109,7 @@ static void	five_numbers_algorithm(t_stack **a, t_stack **b, t_limits limits)
  * @param b 
 	The address of a pointer to the first node of stack_b.
  */
-void	push_swap_algorithm_short(t_stack **a, t_stack **b)
+void	algorithm_short(t_stack **a, t_stack **b)
 {
 	t_limits	limits;
 

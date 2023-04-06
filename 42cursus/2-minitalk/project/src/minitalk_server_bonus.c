@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 16:22:50 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/08 17:18:05 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:52:37 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 volatile char	*g_received_bits = 0;
 
+/**
+ * @brief 
+	Decodes 8 bits into a character.
+ * @details 
+	The function takes a global char array containing 8 bits, and decodes the 
+	bits into a character using bitwise operators.
+ * @param bits 
+	The 8 bits to be decoded.
+ * @return 
+	The decoded character.
+ */
 static char	decode_bits(volatile char *bits)
 {
 	char	c;
@@ -32,6 +43,23 @@ static char	decode_bits(volatile char *bits)
 	return (c);
 }
 
+/**
+ * @brief 
+	Signal handler for incoming signals.
+ * @details 
+	The function takes a signal, signal information and a context; 
+	It reads the signal and appends '1' or '0' to a global char array depending 
+	on the signal received; 
+	If the length of the array is equal to 8, the 8 bits are decoded into a 
+	character and printed to the standard output using the write function; 
+	The global char array is then freed.
+ * @param sig 
+	The signal received.
+ * @param info 
+	Information about the signal.
+ * @param context 
+	Context of the signal.
+ */
 static void	sig_handler(int sig, siginfo_t *info, void *context)
 {
 	char	c;
@@ -52,6 +80,25 @@ static void	sig_handler(int sig, siginfo_t *info, void *context)
 	kill(info->si_pid, SIGUSR1);
 }
 
+/**
+ * @brief 
+	Main function for the server process.
+ * @details 
+	The function initializes a signal handler for SIGUSR1 and SIGUSR2 and waits 
+	for incoming signals; 
+	Once a signal is received, the signal handler function is called and the 
+	corresponding bit is appended to a global char array; 
+	Once 8 bits are received, they are decoded into a character and printed to 
+	the standard output using the write function; 
+	The server process then sends a signal back to the client process to 
+	indicate that the character has been received.
+ * @param argc 
+	The number of arguments passed to the function.
+ * @param argv 
+	The arguments passed to the function.
+ * @return 
+	The exit status of the function.
+ */
 int	main(int argc, char **argv)
 {
 	struct sigaction	act;
