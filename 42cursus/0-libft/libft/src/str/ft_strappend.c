@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:54:31 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/14 17:50:31 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:42:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,27 @@
  */
 char	*ft_strappend(char *s1, char *s2, bool free_s1, bool free_s2)
 {
-	char	*str;
-	long	i;
-	long	j;
+	char	*s;
+	ssize_t	i;
+	ssize_t	j;
 
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!str)
+	if (!s1)
+		s = (char *)ft_calloc(ft_strlen(s2) + 1, sizeof(char));
+	else
+		s = (char *)ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
+	if (!s)
 		return (0);
 	i = -1;
-	while (s1[++i])
-		str[i] = s1[i];
+	while (s1 && s1[++i])
+		s[i] = s1[i];
 	j = -1;
-	while (s2[++j])
-		str[i++] = s2[j];
-	str[i] = 0;
-	if (free_s1)
-		free(s1);
-	if (free_s2)
-		free(s2);
-	return (str);
+	if (!s1)
+		i++;
+	while (s2 && s2[++j])
+		s[i++] = s2[j];
+	if (free_s1 && s1)
+		ft_free((void **)&s1);
+	if (free_s2 && s2)
+		ft_free((void **)&s2);
+	return (s);
 }

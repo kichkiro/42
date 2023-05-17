@@ -6,80 +6,71 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:31:54 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/10 15:22:37 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:01:14 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_struct_init(struct s_split *s, char c)
+size_t	ft_size_word(char const *s, char c, size_t k)
 {
-	(*s).set[0] = c;
-	(*s).i = 0;
-	(*s).j = 0;
-	(*s).k = 0;
-	(*s).l = 0;
+	size_t	len;
+
+	len = 0;
+	while (s[k + len] != c && s[k + len] != '\0')
+		len++;
+	return (len);
 }
 
-static int	ft_count_str(char const *s, char c)
+size_t	ft_count_words(char const *s, char c)
 {
-	size_t	i;
-	size_t	j;
+	size_t	k;
+	size_t	words;
+	size_t	hold;
 
-	i = 0;
-	j = 0;
-	while (s[i])
+	k = 0;
+	words = 1;
+	hold = 1;
+	while (s[k] != '\0')
 	{
-		if (s[i] == c && ++j)
+		if (hold && s[k] == c)
 		{
-			while (s[i] && s[i] == c)
-				i++;
+			hold = 0;
+			words++;
 		}
-		i++;
+		else if (s[k] != c)
+			hold = 1;
+		k++;
 	}
-	if (!*s)
-		return (0);
-	return (j);
+	if (hold == 0)
+		words--;
+	return (words + 1);
 }
 
-/*!
- * @brief 
-	Allocates (with malloc(3)) and returns an array	of strings obtained by 
-	splitting ’s’ using the	character ’c’ as a delimiter;
-	The array must end with a NULL pointer.
- * @param s 
-	The string to be split.
- * @param c 
-	The delimiter character.
- * @return 
-	The array of new strings resulting from the split.
-	NULL if the allocation fails.
- */
 char	**ft_split(char const *s, char c)
 {
-	struct s_split	var;
-	char			*trimmed;
-	char			**arr;
+	char	**str_matx;
+	size_t	k;
+	size_t	nbr_str;
+	size_t	w_size;
 
-	ft_struct_init(&var, c);
-	trimmed = ft_strtrim(s, var.set);
-	if (!trimmed || !*trimmed)
-		return (ft_calloc(1, sizeof(char *)));
-	arr = ft_calloc((ft_count_str(trimmed, c) + 2), sizeof(char *));
-	while (trimmed[var.i])
+	k = 0;
+	nbr_str = 0;
+	w_size = 0;
+	str_matx = (char **) ft_calloc(ft_count_words(s, c), sizeof(char *));
+	if (!str_matx || !s)
+		return (NULL);
+	while (s[k] != '\0')
 	{
-		if (trimmed[var.i] == c)
+		if (s[k] == c)
+			k++;
+		else
 		{
-			while (trimmed[var.i] == c)
-				var.i++;
-			arr[var.k++] = ft_substr(trimmed, var.j, var.l);
-			var.j = var.i;
-			var.l = 0;
+			w_size = ft_size_word(s, c, k);
+			str_matx[nbr_str++] = ft_substr(s, k, w_size);
+			k += w_size;
 		}
-		var.l++;
-		var.i++;
 	}
-	arr[var.k] = ft_substr(trimmed, var.j, var.l);
-	free(trimmed);
-	return (arr);
+	str_matx[nbr_str] = NULL;
+	return (str_matx);
 }

@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:28:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/10 13:21:37 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:19:33 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,22 @@ static bool	check_set(char c, char const *set)
 */
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
+	char	*tmp;
+	char	*ret;
 	size_t	i;
 
 	i = 0;
 	while (check_set(s1[i], set))
 		i++;
-	str = ft_substr(s1, i, ft_strlen(s1) - i);
-	if (!str)
+	tmp = ft_substr(s1, i, ft_strlen(s1) - i);
+	if (!tmp)
 		return (0);
-	i = ft_strlen(str) - 1;
-	while (check_set(str[i], set))
+	i = ft_strlen(tmp) - 1;
+	while (check_set(tmp[i], set))
 		i--;
-	str = ft_substr(str, 0, i + 1);
-	if (!str)
+	ret = ft_substr(tmp, 0, i + 1);
+	free(tmp);
+	if (!ret)
 		return (0);
-	return (str);
+	return (ret);
 }

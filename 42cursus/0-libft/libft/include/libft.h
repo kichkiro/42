@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:15:10 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/25 20:11:54 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:01:31 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,6 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
-
-struct s_split
-{
-	char	set[1];
-	size_t	i;
-	size_t	j;
-	size_t	k;
-	size_t	l;
-};
-
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -119,6 +109,9 @@ typedef struct s_ls
 t_ls	*ft_lis(int *arr, int size, bool need_to_free);
 t_ls	*ft_lds(int *arr, int size, bool need_to_free);
 bool	ft_n_is_in_arr(int *arr, int size, int n);
+void	ft_strmatrixfree(char ***matrix);
+char	**ft_strmatrixjoin(char **mtx, char *s, bool free_mtx, bool free_s);
+size_t	ft_strmatrixlen(char **matrix);
 
 // Get-Next-Line -------------------------------------------------------------->
 

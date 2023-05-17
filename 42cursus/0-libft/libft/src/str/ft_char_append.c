@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 13:53:45 by kichkiro          #+#    #+#             */
-/*   Updated: 2022/12/14 12:00:40 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:07:15 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
  * @return 
 	Return new allocated string which is the result of s + c.
  */
-char	*ft_char_append(char *s, char c, bool need_to_free)
+char	*ft_char_append(char *s, char c, bool to_free)
 {
 	size_t	i;
 	char	*str;
@@ -48,7 +48,7 @@ char	*ft_char_append(char *s, char c, bool need_to_free)
 	str[i--] = 0;
 	while (i--)
 		str[i] = s[i];
-	if (need_to_free)
+	if (to_free && s)
 		ft_free((void **)&s);
 	return (str);
 }
