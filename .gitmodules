@@ -1,0 +1,3 @@
+[submodule "42cursus/3-philosophers/_tester2"]
+	path = 42cursus/3-philosophers/_tester
+	url = https://github.com/kichkiro/philosophers_tester.git
