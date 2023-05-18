@@ -36,21 +36,37 @@
 ## 🌳 - Project tree
 
 ``` js
+.
 ├── README.md
-├── project
-│   ├── philo
-│   │   ├── Makefile
-│   │   ├── include
-│   │   │   └── philo.h
-│   │   └── src
-│   │       ├── main.c
-│   │       ├── state_handler.c
-│   │       ├── thread_handler.c
-│   │       └── utils.c
-│   └── philo_bonus
-│       └── TODO
-└── _subject
-    └── en.subject.pdf
+├── _subject
+│   └── en.subject.pdf
+├── _tester
+│   └── -> philosophers_tester
+└── project
+    ├── philo
+    │   ├── include
+    │   │   └── philo.h
+    │   ├── src
+    │   │   ├── main.c
+    │   │   ├── state_handler.c
+    │   │   ├── thread_handler.c
+    │   │   └── utils.c
+    │   └── Makefile
+    └── philo_bonus
+        ├── include
+        │   └── philo_bonus.h
+        ├── src
+        │   ├── utils
+        │   │   ├── ft_calloc.c
+        │   │   ├── ft_error_handler.c
+        │   │   ├── ft_get_timestamp.c
+        │   │   ├── ft_itoa.c
+        │   │   ├── ft_strappend.c
+        │   │   └── ft_strlen.c
+        │   ├── main.c
+        │   └── philos.c
+        └── Makefile
+
 ```
 
 ## 🛠️ - How to use? 
@@ -61,7 +77,7 @@ svn export https://github.com/kichkiro/42/trunk/42cursus/3-philosophers philosop
 ```
 #### Or clone the entire repository:
 ```
-git clone https://github.com/kichkiro/42.git 42_kichkiro
+git clone --recurse-submodules https://github.com/kichkiro/42.git 42_kichkiro
 cd 42_kichkiro/42cursus/3-philosophers/
 ```
 
