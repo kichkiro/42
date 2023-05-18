@@ -1,3 +1,6 @@
 [submodule "42cursus/3-philosophers/_tester2"]
 	path = 42cursus/3-philosophers/_tester
 	url = https://github.com/kichkiro/philosophers_tester.git
+[submodule "42cursus/3-minishell"]
+	path = 42cursus/3-minishell
+	url = https://github.com/kichkiro/minishell.git
