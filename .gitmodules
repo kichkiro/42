@@ -4,3 +4,6 @@
 [submodule "42cursus/3-minishell"]
 	path = 42cursus/3-minishell
 	url = https://github.com/kichkiro/minishell.git
+[submodule "42cursus/4-cub3d"]
+	path = 42cursus/4-cub3d
+	url = https://github.com/kichkiro/cub3d.git
