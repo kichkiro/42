@@ -6,6 +6,7 @@
 	<b><i>Projects developed at <a href="https://42firenze.it/">42 Florence </a> programming school.</i></b><br>
 	Start date: <b>03/10/2022</b><br>
 </p>
+<br>
 <div align="center">
 
 |CIRCLE	|PROJECT							                                                              |TECHNOLOGY				|EXPERIENCE|STATUS	            |
