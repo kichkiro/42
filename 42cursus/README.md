@@ -7,11 +7,11 @@
 	Start date: <b>03/10/2022</b><br>
 </p>
 
-## 🌌 42's curriculum
+## 🌌 - 42 curriculum
 
 **42cursus** comprises two groups of projects: the first one being known as _"inner circle"_ and the second one, _"outer treks"_ - due to the **Holy Graph** layout (see image below).
 
-The **inner circle** is the basic curriculum, with all projects being mandatory to attain level 7 - which is the minimum level required for activities such as internships and interchange.
+The **inner circle** is the __Common Core__, with all projects being mandatory to attain level 7 - which is the minimum level required for activities such as internships and interchange.
 
 The **outer treks** is a collection of diverse project trails in subjects ranging from operational systems to web development which allows cadets to specialize on whatever subject they prefer.
 
@@ -20,10 +20,8 @@ The **outer treks** is a collection of diverse project trails in subjects rangin
 ![holy graph](https://github.com/kichkiro/42_cursus/blob/assets/holy_graph.png?raw=true)
 	
 </div>
-	
-The table below presents the cursus curriculum in the chronological order in which it was (or is to be) completed by me - projects order and corresponding attained level may vary among students.
 
-### Inner Circle
+### Common Core
 	
 |CIRCLE	|PROJECT							                                                              |TECHNOLOGY				|EXPERIENCE|STATUS	            |
 |:-:	|:--								                                                              |:--					    |--:     |:--		            |

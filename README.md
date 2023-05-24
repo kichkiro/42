@@ -3,14 +3,15 @@
 ![42](https://github.com/kichkiro/42_cursus/blob/assets/42_logo.jpg?raw=true)
 
 ---
-## About 42 School :
+## 🌌 - About 42
 
-[42](https://www.42network.org/) is a global education initiative that offers a new way of learning technology:
-no teachers, no classrooms, students learning from their fellow students (peer to peer
-learning), with a methodology that develops both computing and life skills. The [42cursus](42cursus) is
-free for whoever is approved in its selection process* - the so-called "Piscine" - becoming 42's students.
+[42 School](https://www.42network.org/) is a global education initiative that offers a unique approach to learning technology. With a focus on practical skills and self-directed learning, 42 School provides an immersive environment where students learn from their peers.
 
-## 🛠️ Skills developed at 42
+There are no traditional classrooms or teachers at 42 School. Instead, students engage in peer-to-peer learning, collaborating on projects and challenges to develop their skills.
+
+The [42cursus](42cursus), the curriculum at 42 School, covers a wide range of technical topics and fosters the development of critical skills such as problem-solving and teamwork.
+
+## 🛠️ - Skills Developed
 
 ### Hard-skills
 
