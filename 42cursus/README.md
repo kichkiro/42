@@ -6,7 +6,8 @@
 	<b><i>Projects developed at <a href="https://42firenze.it/">42 Florence </a> programming school.</i></b><br>
 	Start date: <b>03/10/2022</b><br>
 </p>
-	
+<div align="center">
+
 |CIRCLE	|PROJECT							                                                              |TECHNOLOGY				|EXPERIENCE|STATUS	            |
 |:-:	|:--								                                                              |:--					    |--:     |:--		            |
 |0		|[Libft](https://github.com/kichkiro/42/tree/main/42cursus/0-libft)                               |C - Libraries			|462 XP  | ✅125/125          |
@@ -31,3 +32,4 @@
 |-      | __EXAM-RANK-06__                                                                                |                         |        |                      |
 |6  	|[ft_transcendence]()                                                                             |?				        |24360 XP|                      |
 
+</div>
