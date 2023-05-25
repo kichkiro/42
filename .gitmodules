@@ -7,3 +7,9 @@
 [submodule "42cursus/4-cub3d"]
 	path = 42cursus/4-miniRT
 	url = https://github.com/kichkiro/cub3d.git
+[submodule "tester/philosophers_tester"]
+	path = tester/philosophers_tester
+	url = https://github.com/kichkiro/philosophers_tester
+[submodule "tester/minishell_tester"]
+	path = tester/minishell_tester
+	url = https://github.com/kichkiro/minishell_tester
