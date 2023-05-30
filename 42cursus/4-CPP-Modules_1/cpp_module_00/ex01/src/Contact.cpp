@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 22:24:16 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/05/30 01:45:40 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:00:53 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 Contact::Contact(void)
 {
-	this->first_name = "";
-	this->last_name = "";
-	this->nickname = "";
-	this->phone_number = "";
-	this->darkest_secret = "";
+    this->first_name = "";
+    this->last_name = "";
+    this->nickname = "";
+    this->phone_number = "";
+    this->darkest_secret = "";
 }
 
 void Contact::add_info(void)
 {
+    cout << endl << "Enter contact information:" << endl;
     cout << "First Name: ";
     cin >> this->first_name;
     cout << "Last Name: ";
@@ -37,9 +38,10 @@ void Contact::add_info(void)
 
 void Contact::get_info(void)
 {
-	cout << "First Name:     " << this->first_name << endl;
-	cout << "Last Name:      " << this->last_name << endl;
-	cout << "Nickname:       " << this->nickname << endl;
-	cout << "Phone Number:   " << this->phone_number << endl;
-	cout << "Darkest Secret: " << this->darkest_secret << endl;
+    cout << endl << "Contact information:" << endl;
+    cout << "First Name:     " << this->first_name << endl;
+    cout << "Last Name:      " << this->last_name << endl;
+    cout << "Nickname:       " << this->nickname << endl;
+    cout << "Phone Number:   " << this->phone_number << endl;
+    cout << "Darkest Secret: " << this->darkest_secret << endl;
 }

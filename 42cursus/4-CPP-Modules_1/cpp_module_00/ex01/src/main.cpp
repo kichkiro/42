@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:36:29 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/05/30 02:08:49 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:04:20 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,20 @@ int main(void)
     PhoneBook   phone_book;
     Contact     contact;
     string      command;
-    int         index;
 
     while (true)
     {
-        cout << YELLOW << "Enter a command (ADD, SEARCH, EXIT): " << RESET;
+        cout << endl << YELLOW_B << "Enter a command [ADD/SEARCH/EXIT]: ";
+        cout << RESET;
         cin >> command;
         if (command == "ADD")
         {
             contact = Contact();
             contact.add_info();
             phone_book.add_contact(contact);
-            cout << "Contact added successfully." << endl;
         }
         else if (command == "SEARCH")
-        {
-            // TODO
-        }
+            phone_book.display_contacts();
         else if (command == "EXIT")
             break;
     }
