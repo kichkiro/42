@@ -14,7 +14,7 @@
 
 using namespace std;
 
-int		main( void )
+int main( void )
 {
 
     typedef vector<Account::t>							    accounts_t;
