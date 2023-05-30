@@ -25,7 +25,7 @@
 |-      | __EXAM-RANK-04__                                                                                |                         |        | 🚧 WiP             |
 |4		|[NetPractice](https://github.com/kichkiro/42/tree/main/42cursus/4-NetPractice)			          |Networking 			    |3160 XP | 🚧 WiP             |
 |4		|[miniRT](https://github.com/kichkiro/miniRT/tree/3ea3f512a50bb17c22af7aae6d26808c98140dac)       |C - RayTracing           |5775 XP | 🚧 WiP             |
-|4		|[CPP-Modules_1]()                                          			                          |C++			            |9960 XP |                     |
+|4		|[CPP-Modules_1](https://github.com/kichkiro/42/tree/main/42cursus/4-CPP-Modules_1)               |C++			            |9660 XP | 🚧 WiP             |
 |-      | __EXAM-RANK-05__                                                                                |                         |        |                     |
 |5		|[CPP-Modules_2]()                                                                                |C++			            |10042 XP|                     |
 |5		|[inception]()																                      |Docker			        |10042 XP|                     |
