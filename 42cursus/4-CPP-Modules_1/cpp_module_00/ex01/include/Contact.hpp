@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:25:55 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/05/30 05:02:17 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:41:00 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ using std::string;
 class Contact
 {
     public:
+    
         Contact(void);
 
         string	first_name;

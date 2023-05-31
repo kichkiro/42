@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 22:23:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/05/30 12:12:42 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:40:34 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void PhoneBook::add_contact(const Contact &contact)
         this->_counter = 0;
     if (this->_total_contacts < 8)
         this->_total_contacts++;
-    this->contacts[this->_counter] = contact;
+    this->_contacts[this->_counter] = contact;
     this->_counter++;
     cout << endl << BLUE_B << "Contact added successfully." << RESET << endl;
 }
@@ -40,9 +40,9 @@ void PhoneBook::display_contacts(void)
     {
         cout << "+---------+----------+----------+----------+" << endl;
         cout << "|" << setw(9) << i << "|";
-        this->_format_table(this->contacts[i].first_name);
-        this->_format_table(this->contacts[i].last_name);
-        this->_format_table(this->contacts[i].nickname);
+        this->_format_table(this->_contacts[i].first_name);
+        this->_format_table(this->_contacts[i].last_name);
+        this->_format_table(this->_contacts[i].nickname);
         cout << endl;
     }
     cout << "+------------------------------------------+" << endl << endl;
@@ -50,7 +50,7 @@ void PhoneBook::display_contacts(void)
     cin >> index;
     if (index >= 0 && index < this->_total_contacts)
     {
-        contact = this->contacts[index];
+        contact = this->_contacts[index];
         contact.get_info();
     }
     else

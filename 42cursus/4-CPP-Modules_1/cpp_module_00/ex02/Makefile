@@ -6,17 +6,20 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 17:59:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/05/29 21:35:06 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/05/30 12:39:42 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
-NAME        := account
-SRCS        := Account.cpp
+NAME		:= account
+SRCS		:= Account.cpp tests.cpp
+SRC_DIR     := src
+SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
-OBJS        := $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
+OBJS        := $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
+INCS        := ./include
 CC          := g++
 CFLAGS      := -Wall -Wextra -Werror -std=c++98
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
@@ -36,7 +39,7 @@ $(NAME): $(OBJS)
 	${info }
 	${info ${BOLD}Creating  -> ${WHITE}$(NAME)${NO_COLOR}}
 
-$(BUILD_DIR)/%.o: %.cpp
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 	${info ${BOLD}Compiling -> ${WHITE}$@${NO_COLOR}}
@@ -49,7 +52,7 @@ clean:
 	${info ${BOLD}${YELLOW}Cleaning in progress...${NO_COLOR}    🧹 🧹 🧹}
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME_CLIENT)
 
 re:
 	$(MAKE) fclean
