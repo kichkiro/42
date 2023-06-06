@@ -22,7 +22,7 @@
 |-      | __EXAM-RANK-03__                                                                                |                         |        | ✅100/100          |
 |3		|[minishell](https://github.com/kichkiro/minishell/tree/ffa6bbfea21015e019a7c7cbcd02ce83cbbbb1df) |C - Processes and FDs    | 2814 XP| ✅125/125          |
 |3		|[Philosophers](https://github.com/kichkiro/42/tree/main/42cursus/3-philosophers)			      |C - Threads and Processes|3360 XP | ✅125/125          |
-|-      | __EXAM-RANK-04__                                                                                |                         |        | 🚧 WiP             |
+|-      | __EXAM-RANK-04__                                                                                |                         |        | ✅100/100          |
 |4		|[NetPractice](https://github.com/kichkiro/42/tree/main/42cursus/4-NetPractice)			          |Networking 			    |3160 XP | 🚧 WiP             |
 |4		|[miniRT](https://github.com/kichkiro/miniRT/tree/3ea3f512a50bb17c22af7aae6d26808c98140dac)       |C - RayTracing           |5775 XP | 🚧 WiP             |
 |4		|[CPP-Modules_1](https://github.com/kichkiro/42/tree/main/42cursus/4-CPP-Modules_1)               |C++			            |9660 XP | 🚧 WiP             |
