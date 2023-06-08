@@ -18,11 +18,11 @@ This project is a general practical exercise to let you discover networking.
     ├── level2.json
     ├── level3.json
     ├── level4.json
-	├── level5.json
-	├── level6.json
-	├── level7.json
-	├── level8.json
-	├── level9.json
+    ├── level5.json
+    ├── level6.json
+    ├── level7.json
+    ├── level8.json
+    ├── level9.json
     └── level10.json
 ```
 
@@ -63,7 +63,7 @@ network_addr = "".join(str(int(byte, 2)) + "." for byte in
 # Visualization -------------------------------------------------------------->
 
 print(
-    f"IP Address         {ip_addr_b} -> {ip_addr}\n"
+	f"IP Address         {ip_addr_b} -> {ip_addr}\n"
 	f"                                   AND\n"
 	f"Netmask            {netmask_b} -> /{netmask}\n"
 	f"                   -----------------------------------\n"
