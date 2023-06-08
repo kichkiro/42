@@ -106,7 +106,7 @@ def add_spaces(string):
     return ' '.join(string[i:i + 8] for i in range(0, 32, 8))
 
 print(
-    f"Network Address    {add_spaces(network_addr_b)} -> {network}\n"
+	f"Network Address    {add_spaces(network_addr_b)} -> {network}\n"
 	f"                   -----------------------------------\n"
 	f"Broadcast Address  {add_spaces(broadcast_addr_b)} -> {broadcast_addr}"
 )
