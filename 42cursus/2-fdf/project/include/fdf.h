@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:24:02 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/02/14 11:07:32 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:46:28 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 // Libraries ------------------------------------------------------------------>
 
-# include "../lib/libft/include/libft.h"
-# include "../lib/libmlx/include/mlx.h"
+# include "../lib/libft.h"
+# include "../lib/libmlx.h"
 
 # include <fcntl.h>
 # include <math.h>

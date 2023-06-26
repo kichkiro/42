@@ -25,8 +25,10 @@
 │   ├── include
 │   │   └── fdf.h
 │   ├── lib
-│   │   ├── libft
-│   │   └── libmlx
+│   │   ├── libft.a
+│   │   ├── libft.h
+│   │   ├── libmlx.a
+│   │   └── libmlx.h
 │   ├── maps
 │   │   ├── 100-6.fdf
 │   │   ├── 10-2.fdf
@@ -51,9 +53,9 @@
 │   │   ├── t1.fdf
 │   │   └── t2.fdf
 │   └── src
+│       ├── main.c
 │       ├── clean.c
 │       ├── draw.c
-│       ├── fdf.c
 │       ├── hooks.c
 │       └── lst
 │           ├── t_map_add_back.c
