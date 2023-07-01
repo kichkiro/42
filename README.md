@@ -1,5 +1,3 @@
-
-
 ![42](https://github.com/kichkiro/42_cursus/blob/assets/42_logo.jpg?raw=true)
 
 ---

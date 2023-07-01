@@ -1,6 +1,12 @@
+<img src="https://github.com/kichkiro/42_cursus/blob/assets/banner_netpractice.jpg?raw=true" width="100%"/>
+
 # Net Practice
 
-This project is a general practical exercise to let you discover networking.
+<i>
+    <p>
+        This project is a general practical exercise to let you discover networking.
+    </p>
+</i>
 
 #### <i>[subject](_subject/en.subject.pdf) v.2</i>
 
