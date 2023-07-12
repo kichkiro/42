@@ -6,18 +6,15 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:25:55 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/05/30 12:41:00 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:29:38 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#pragma once
 
 // Libraries ------------------------------------------------------------------>
 
 #include "common.hpp"
-
-// Using ---------------------------------------------------------------------->
 
 using std::string;
 
@@ -38,5 +35,3 @@ class Contact
         void	add_info(void);
         void	get_info(void);
 };
-
-#endif

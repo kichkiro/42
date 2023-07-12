@@ -6,12 +6,11 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:52:04 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/05/30 12:03:52 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:30:18 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_HPP
-#define COMMON_HPP
+#pragma once
 
 // Libraries ------------------------------------------------------------------>
 
@@ -21,8 +20,6 @@
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
-
-// Using ---------------------------------------------------------------------->
 
 using std::string;
 using std::cin;
@@ -38,5 +35,3 @@ using std::left;
 #define BLUE_B 		"\033[1;34m"
 #define YELLOW_B	"\033[1;33m"
 #define WHITE_B		"\033[1;37m"
-
-#endif

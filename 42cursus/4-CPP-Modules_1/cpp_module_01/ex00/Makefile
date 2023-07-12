@@ -5,15 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/05 17:59:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/12 14:52:46 by kichkiro         ###   ########.fr        #
+#    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
+#    Updated: 2023/07/12 21:10:43 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
-NAME		:= phonebook
-SRCS		:= main.cpp PhoneBook.cpp Contact.cpp
+NAME        := zombie
+SRCS        := \
+				main.cpp \
+				Zombie.cpp \
+				newZombie.cpp \
+				randomChump.cpp
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build

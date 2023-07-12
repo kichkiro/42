@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 23:25:52 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/12 17:27:29 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/12 17:17:37 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/12 20:51:16 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,29 @@
 
 // Libraries ------------------------------------------------------------------>
 
-#include "Contact.hpp"
-#include "common.hpp"
+#include <iostream>
+
+using std::string;
+using std::cout;
+using std::endl;
 
 // Class ---------------------------------------------------------------------->
 
-class PhoneBook
+class Zombie
 {
-    public:	
-    
-        PhoneBook(void);
-        
-        void	add_contact(const Contact &contact);
-        void	display_contacts(void);
+	public:
+	
+		Zombie(const string &name);
+		~Zombie(void);
 
-    private:
-
-        Contact	_contacts[8];
-        int		_counter;
-        int     _total_contacts;
-        
-        void	_format_table(string str);
+		void	announce(void);
+		
+	private:
+	
+		string	_name;
 };
+
+// Functions ------------------------------------------------------------------>
+
+Zombie *newZombie(string name);
+void	randomChump(string name);

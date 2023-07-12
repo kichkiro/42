@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 17:59:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/05/29 21:24:01 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/12 14:52:31 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS        := megaphone.cpp
 BUILD_DIR   := .build
 OBJS        := $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
-CC          := g++
+CC          := c++
 CFLAGS      := -Wall -Wextra -Werror -std=c++98
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP    
 RM          := rm -rf
