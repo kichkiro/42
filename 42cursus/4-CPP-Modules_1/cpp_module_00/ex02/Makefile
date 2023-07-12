@@ -6,13 +6,13 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 17:59:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/05/30 12:39:42 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/12 14:26:29 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
-NAME		:= account
+NAME		:= test
 SRCS		:= Account.cpp tests.cpp
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
@@ -21,7 +21,7 @@ OBJS        := $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
 INCS        := ./include
 CC          := g++
-CFLAGS      := -Wall -Wextra -Werror -std=c++98
+CFLAGS      := -std=c++98 -Wall -Wextra -Werror
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
 RM          := rm -rf
 MAKEFLAGS   := --no-print-directory
