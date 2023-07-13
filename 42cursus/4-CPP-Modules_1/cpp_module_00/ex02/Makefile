@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 17:59:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/12 14:52:38 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/13 11:05:48 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ clean:
 	${info ${BOLD}${YELLOW}Cleaning in progress...${NO_COLOR}    🧹 🧹 🧹}
 
 fclean: clean
-	$(RM) $(NAME) $(NAME_CLIENT)
+	$(RM) $(NAME)
 
 re:
 	$(MAKE) fclean

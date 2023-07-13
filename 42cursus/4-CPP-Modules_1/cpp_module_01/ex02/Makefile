@@ -6,27 +6,21 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/13 10:38:58 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/13 10:44:10 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
-NAME        := zombie
-SRCS        := \
-				main.cpp \
-				Zombie.cpp \
-				newZombie.cpp \
-				randomChump.cpp
-SRC_DIR     := src
+NAME        := brain
+SRCS        := main.cpp
+SRC_DIR     := .
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
-INCS        := ./include
 CC          := c++
-CFLAGS      := -Wall -Wextra -Werror -std=c++98
-CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
+CFLAGS      := -Wall -Wextra -Werror -std=c++98 -g
 RM          := rm -rf
 MAKEFLAGS   := --no-print-directory
 DIR_DUP     = mkdir -p $(@D)
@@ -45,7 +39,7 @@ $(NAME): $(OBJS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(DIR_DUP)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 	${info ${BOLD}Compiling -> ${WHITE}$@${NO_COLOR}}
 
 -include $(DEPS)

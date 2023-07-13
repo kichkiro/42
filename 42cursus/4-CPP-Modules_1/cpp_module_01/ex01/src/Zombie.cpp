@@ -5,24 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 17:16:00 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/13 09:05:31 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/12 21:16:53 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/13 10:10:34 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+
+// Constructors --------------------------------------------------------------->
+
+Zombie::Zombie(void)
+{
+}
 
 Zombie::Zombie(const string &name)
 {
 	this->_name = name;
 }
 
+// Destructor ----------------------------------------------------------------->
+
 Zombie::~Zombie(void)
 {
-	cout << "Destroying zombie: " << this->_name << endl;
 }
 
-void	Zombie::announce(void)
+// Methods -------------------------------------------------------------------->
+
+void Zombie::announce(void)
 {
-	cout << this->_name << ": BraiiiiiiinnnzzzZ..." << endl;	
+	cout << this->_name << ": BraiiiiiiinnnzzzZ..." << endl;
 }
