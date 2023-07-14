@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/14 12:12:52 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/14 13:30:37 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS        := \
 				main.cpp \
 				Weapon.cpp \
 				HumanA.cpp \
-				HumanB.cpp 
+				HumanB.cpp
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
@@ -25,7 +25,7 @@ OBJS        := $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
 INCS        := ./include
 CC          := c++
-CFLAGS      := -Wall -Wextra -Werror -std=c++98
+CFLAGS      := -Wall -Wextra -Werror -std=c++98 -g
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
 RM          := rm -rf
 MAKEFLAGS   := --no-print-directory

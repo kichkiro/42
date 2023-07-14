@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:32:10 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/14 12:14:13 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:24:15 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 class HumanA
 {
 	public:
-		HumanA(string name, string weapon);
+		HumanA(string name, Weapon &weapon);
 		~HumanA(void);
 
-		string	name;
-		Weapon	weapon;
-
 		void	attack(void);
+	private:
+		string	_name;
+		Weapon	&_weapon;
 };

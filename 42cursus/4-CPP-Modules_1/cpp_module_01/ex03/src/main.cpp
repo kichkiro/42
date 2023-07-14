@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:31:40 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/14 12:20:15 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:09:11 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,24 @@
 
 int main(void)
 {
-	HumanA *human_a;
-	HumanB *human_b;
+	{
+        Weapon club = Weapon("crude spiked club");
 
-	human_a = new HumanA("bob", "bow");
-	human_b = new HumanB("frank", "lance");
-	human_a->attack();
-	human_b->attack();
-	delete human_a;
-	delete human_b;
+        HumanA bob("Bob", club);
+        bob.attack();
+        club.setType("some other type of club");
+        bob.attack();
+    }
+	cout << endl;
+    {
+        Weapon club = Weapon("crude spiked club");
 
+        HumanB jim("Jim");
+        jim.setWeapon(club);
+        jim.attack();
+        club.setType("some other type of club");
+        jim.attack();
+    }
+	
 	return 0;
 }
