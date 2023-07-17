@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:16:00 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/13 09:05:31 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:52:41 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 Zombie::Zombie(const string &name)
 {
-	this->_name = name;
+    this->_name = name;
 }
 
 Zombie::~Zombie(void)
 {
-	cout << "Destroying zombie: " << this->_name << endl;
+    cout << "Destroying zombie: " << this->_name << endl;
 }
 
 void	Zombie::announce(void)
 {
-	cout << this->_name << ": BraiiiiiiinnnzzzZ..." << endl;	
+    cout << this->_name << ": BraiiiiiiinnnzzzZ..." << endl;
 }

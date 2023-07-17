@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:17:37 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/12 20:51:16 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:01:08 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ using std::endl;
 
 class Zombie
 {
-	public:
-	
-		Zombie(const string &name);
-		~Zombie(void);
+    public:
 
-		void	announce(void);
-		
-	private:
-	
-		string	_name;
+        Zombie(const string &name);
+        ~Zombie(void);
+
+        void   announce(void);
+
+    private:
+
+        string _name;
 };
 
 // Functions ------------------------------------------------------------------>

@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:15:29 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/12 21:13:04 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:51:46 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int main(void)
 {
-	Zombie *heap_zombie;
+    Zombie *heap_zombie;
 
-	heap_zombie = newZombie("Heap");
-	heap_zombie->announce();
-	delete heap_zombie;
-	randomChump("Stack");
-	return 0;
+    heap_zombie = newZombie("Heap");
+    heap_zombie->announce();
+    delete heap_zombie;
+    randomChump("Stack");
+    return 0;
 }

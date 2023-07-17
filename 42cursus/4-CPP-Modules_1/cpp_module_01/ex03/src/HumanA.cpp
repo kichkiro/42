@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:31:48 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/14 14:24:47 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:47:33 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ HumanA::HumanA(string name, Weapon &weapon) : _name(name), _weapon(weapon) {}
 
 HumanA::~HumanA(void)
 {
-	cout << "destroy HumanA: " << this->_name << endl;
+    cout << "destroy HumanA: " << this->_name << endl;
 }
 
 // Methods -------------------------------------------------------------------->
 
 void HumanA::attack(void)
 {
-	cout << this->_name << " attack with their " << this->_weapon.getType() << \
-		endl;
+    cout << this->_name << " attack with their " << this->_weapon.getType() << \
+        endl;
 }

@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:16:18 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/12 21:01:35 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:52:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 Zombie *newZombie(string name)
 {
-	return new Zombie(name);
+    return new Zombie(name);
 }

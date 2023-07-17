@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 09:00:59 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/16 10:23:06 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:50:20 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int main(void)
 {
-	Harl *harl;
+    Harl *harl;
 
-	harl = new Harl();
-	harl->complain("DEBUG");
-	harl->complain("INFO");
-	harl->complain("WARNING");
-	harl->complain("ERROR");
-	harl->complain("NOT_VALID");
-	delete harl;
-	return 0;
+    harl = new Harl();
+    harl->complain("DEBUG");
+    harl->complain("INFO");
+    harl->complain("WARNING");
+    harl->complain("ERROR");
+    harl->complain("NOT_VALID");
+    delete harl;
+    return 0;
 }

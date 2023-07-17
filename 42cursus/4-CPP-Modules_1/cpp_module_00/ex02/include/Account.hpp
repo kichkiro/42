@@ -30,7 +30,7 @@ class Account
         static int	getNbDeposits(void);
         static int	getNbWithdrawals(void);
         static void	displayAccountsInfos(void);
-        
+
         void	    makeDeposit(int deposit);
         bool	    makeWithdrawal(int withdrawal);
         int		    checkAmount(void) const;
@@ -49,7 +49,6 @@ class Account
         int			_nbWithdrawals;
 
         static void	_displayTimestamp(void);
-
 };
 
 // ************************************************************************** //

@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 10:32:10 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 13:03:45 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/17 10:19:16 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/17 13:03:05 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
-// Libraries ------------------------------------------------------------------>
-
-#include "Weapon.hpp"
-
-// Class ---------------------------------------------------------------------->
-
-class HumanA
+int main(void)
 {
-    public:
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
+	
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
 
-        HumanA(string name, Weapon &weapon);
-        ~HumanA(void);
-
-        void	attack(void);
-        
-    private:
-    
-        string  _name;
-        Weapon &_weapon;
-};
+	return 0;
+}

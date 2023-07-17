@@ -6,11 +6,11 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 22:24:16 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/05/30 12:00:53 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:44:47 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common.hpp"
+#include "Contact.hpp"
 
 Contact::Contact(void)
 {

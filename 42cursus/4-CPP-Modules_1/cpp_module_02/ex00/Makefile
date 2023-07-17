@@ -5,15 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/05 17:59:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/17 12:11:16 by kichkiro         ###   ########.fr        #
+#    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
+#    Updated: 2023/07/17 09:33:34 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
-NAME		:= phonebook
-SRCS		:= main.cpp PhoneBook.cpp Contact.cpp
+NAME        := harlFilter
+SRCS        := \
+				main.cpp \
+				Harl.cpp
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
@@ -21,7 +23,7 @@ OBJS        := $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
 INCS        := ./include
 CC          := c++
-CFLAGS      := -Wall -Wextra -Werror -std=c++98
+CFLAGS      := -Wall -Wextra -Werror -std=c++98 -g
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
 RM          := rm -rf
 MAKEFLAGS   := --no-print-directory

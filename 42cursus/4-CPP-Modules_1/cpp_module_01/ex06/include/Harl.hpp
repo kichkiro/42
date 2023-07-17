@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 09:01:31 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/16 10:27:30 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:02:34 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ using std::string;
 
 class Harl
 {
-	public:
+    public:
 
-		Harl(void);
-		~Harl(void);
+        Harl(void);
+        ~Harl(void);
 
-		void	complain(string level);
+        void complain(string level);
 
-	private:
-	
-		void	_debug(void);
-		void	_info(void);
-		void	_warning(void);
-		void	_error(void);
+    private:
+
+        void _debug(void);
+        void _info(void);
+        void _warning(void);
+        void _error(void);
 };
 
-typedef void (Harl::*action)(void);
+typedef void (Harl:: *action)(void);

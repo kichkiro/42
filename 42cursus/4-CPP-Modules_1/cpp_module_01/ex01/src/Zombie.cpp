@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 21:16:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/13 10:10:34 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:47:12 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 // Constructors --------------------------------------------------------------->
 
-Zombie::Zombie(void)
-{
-}
+Zombie::Zombie(void) {}
 
 Zombie::Zombie(const string &name)
 {
-	this->_name = name;
+    this->_name = name;
 }
 
 // Destructor ----------------------------------------------------------------->
 
-Zombie::~Zombie(void)
-{
-}
+Zombie::~Zombie(void) {}
 
 // Methods -------------------------------------------------------------------->
 
 void Zombie::announce(void)
 {
-	cout << this->_name << ": BraiiiiiiinnnzzzZ..." << endl;
+    cout << this->_name << ": BraiiiiiiinnnzzzZ..." << endl;
 }

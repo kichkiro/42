@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:31:54 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/14 14:33:02 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:47:38 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ HumanB::HumanB(string _name) : _name(_name), _weapon(NULL) {}
 
 HumanB::~HumanB(void)
 {
-	cout << "destroy HumanB: " << this->_name << endl;
+    cout << "destroy HumanB: " << this->_name << endl;
 }
 
 // Methods -------------------------------------------------------------------->
 
 void HumanB::attack(void)
 {
-	cout << this->_name << " attack with their " << this->_weapon->getType() \
-		<< endl;
+    cout << this->_name << " attack with their " << this->_weapon->getType() \
+        << endl;
 }
 
 void HumanB::setWeapon(Weapon &new_weapon)
 {
-	this->_weapon = &new_weapon;
-	cout << "set weapon: " << this->_weapon->getType() << endl;
+    this->_weapon = &new_weapon;
+    cout << "set weapon: " << this->_weapon->getType() << endl;
 }

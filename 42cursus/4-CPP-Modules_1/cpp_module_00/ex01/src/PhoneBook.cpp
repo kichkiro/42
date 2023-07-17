@@ -6,11 +6,11 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 22:23:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/05/30 12:40:34 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:44:52 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common.hpp"
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void)
 {
@@ -35,7 +35,7 @@ void PhoneBook::display_contacts(void)
     int index;
 
     cout << WHITE_B << endl << "+------------------------------------------+";
-    cout  << endl << "|    Index|First Name| Last Name|  Nickname|" << endl;
+    cout << endl << "|    Index|First Name| Last Name|  Nickname|" << endl;
     for (int i = 0; i < this->_total_contacts; ++i)
     {
         cout << "+---------+----------+----------+----------+" << endl;
