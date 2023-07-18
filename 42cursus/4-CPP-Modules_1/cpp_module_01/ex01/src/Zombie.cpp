@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 21:16:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 12:47:12 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:19:10 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 
 Zombie::Zombie(void) {}
 
-Zombie::Zombie(const string &name)
-{
+Zombie::Zombie(const string &name) {
     this->_name = name;
 }
 
@@ -27,7 +26,6 @@ Zombie::~Zombie(void) {}
 
 // Methods -------------------------------------------------------------------->
 
-void Zombie::announce(void)
-{
+void Zombie::announce(void) {
     cout << this->_name << ": BraiiiiiiinnnzzzZ..." << endl;
 }

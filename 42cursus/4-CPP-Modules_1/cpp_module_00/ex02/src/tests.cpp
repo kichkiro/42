@@ -12,8 +12,7 @@
 #include <functional>
 #include "Account.hpp"
 
-int	main(void)
-{
+int	main(void) {
 
     typedef std::vector<Account::t>							  accounts_t;
     typedef std::vector<int>								  ints_t;
@@ -42,8 +41,7 @@ int	main(void)
 
     for (acc_int_t it(acc_begin, dep_begin);
         it.first != acc_end && it.second != dep_end;
-        ++(it.first), ++(it.second))
-    {
+        ++(it.first), ++(it.second)) {
         (*(it.first)).makeDeposit(*(it.second));
     }
 
@@ -52,8 +50,7 @@ int	main(void)
 
     for (acc_int_t it(acc_begin, wit_begin);
         it.first != acc_end && it.second != wit_end;
-        ++(it.first), ++(it.second))
-    {
+        ++(it.first), ++(it.second)) {
         (*(it.first)).makeWithdrawal(*(it.second));
     }
 

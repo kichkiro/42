@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:39:15 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 12:47:28 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:19:20 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ using std::string;
 using std::cout;
 using std::endl;
 
-int main(void)
-{
+int main(void) {
     string str = "HI THIS IS BRAIN";
     string *stringPTR = &str;
     string &stringREF = str;

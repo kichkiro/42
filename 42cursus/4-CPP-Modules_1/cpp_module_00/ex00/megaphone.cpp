@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:38:38 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 12:44:58 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:17:15 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,15 @@ using std::cout;
 using std::endl;
 using std::toupper;
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     string arg;
 
-    if (argc == 1)
-    {
+    if (argc == 1) {
         cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << endl;
         return 0;
     }
-    for (int i = 1; i < argc; ++i)
-    {
+    for (int i = 1; i < argc; ++i) {
         arg = argv[i];
-
         for (int j = 0; arg[j]; ++j)
             cout << (char)toupper(arg[j]);
     }

@@ -6,14 +6,13 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:33:13 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 12:48:09 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:19:49 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "replace.hpp"
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     string infile;
     string outfile;
     string s1;
@@ -21,8 +20,7 @@ int main(int argc, char **argv)
     string line;
     size_t pos;
 
-    if (argc != 4)
-    {
+    if (argc != 4) {
         cout << "usage: ./replace <filename> <s1> <s2>" << endl;
         return 1;
     }
@@ -34,13 +32,10 @@ int main(int argc, char **argv)
     ifstream input_file(argv[1]);
     ofstream output_file(outfile.c_str());
 
-    if (input_file.is_open())
-    {
-        while (getline(input_file, line) && output_file.is_open())
-        {
+    if (input_file.is_open()) {
+        while (getline(input_file, line) && output_file.is_open()) {
             pos = line.find(s1);
-            while (pos != string::npos)
-            {
+            while (pos != string::npos) {
                 line.erase(pos, s1.length());
                 line.insert(pos, s2);
                 cout << line;
@@ -49,8 +44,7 @@ int main(int argc, char **argv)
             output_file << line << endl;
         }
     }
-    else
-    {
+    else {
         cout << "error when opening the file" << endl;
         return 1;
     }

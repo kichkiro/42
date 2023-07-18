@@ -6,14 +6,13 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 09:00:59 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 12:50:20 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:20:14 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main(void)
-{
+int main(void) {
     Harl *harl;
 
     harl = new Harl();

@@ -6,15 +6,14 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:31:40 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 12:47:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:19:37 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-int main(void)
-{
+int main(void) {
     {
         Weapon club = Weapon("crude spiked club");
 

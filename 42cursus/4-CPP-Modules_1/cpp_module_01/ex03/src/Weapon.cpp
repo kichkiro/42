@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:32:00 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 12:47:44 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:19:41 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,24 @@
 
 Weapon::Weapon(void) {}
 
-Weapon::Weapon(string type)
-{
+Weapon::Weapon(string type) {
     this->_type = type;
     cout << "create a weapon: " << this->_type << endl;
 }
 
 // Destructor ----------------------------------------------------------------->
 
-Weapon::~Weapon(void)
-{
+Weapon::~Weapon(void) {
     cout << "destroy weapon: " << this->_type << endl;
 }
 
 // Methods -------------------------------------------------------------------->
 
-const string &Weapon::getType(void)
-{
+const string &Weapon::getType(void) {
     return this->_type;
 }
 
-void Weapon::setType(string new_type)
-{
+void Weapon::setType(string new_type) {
     this->_type = new_type;
     cout << "set new type: " << this->_type << endl;
 }
