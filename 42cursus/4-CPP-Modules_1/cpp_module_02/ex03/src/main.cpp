@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 10:32:10 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/18 23:02:25 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/17 10:19:16 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/19 17:15:40 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Fixed.hpp"
+#include "Point.hpp"
+#include "bsp.hpp"
 
-// Libraries ------------------------------------------------------------------>
+int main(void) {
+    bool res;
 
-#include "Weapon.hpp"
-
-// Class ---------------------------------------------------------------------->
-
-class HumanA {
-    public:
-        HumanA(string name, Weapon &weapon);
-        ~HumanA(void);
-
-        void	attack(void);
-
-    private:
-        string  _name;
-        Weapon &_weapon;
-};
+    res = bsp(Point(0, 0), Point(25, 50), Point(50, 0), Point(1, 2.09f));
+    cout << res << endl;
+    
+    return 0;
+}

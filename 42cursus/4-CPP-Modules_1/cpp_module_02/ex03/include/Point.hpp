@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 10:21:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/18 23:04:36 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/18 22:44:06 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/19 17:06:54 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,27 @@
 // Libraries ------------------------------------------------------------------>
 
 #include <iostream>
+#include <cmath>
+
+#include "Fixed.hpp"
 
 using std::cout;
 using std::endl;
 
 // Class ---------------------------------------------------------------------->
 
-class Fixed {
+class Point {
     public:
-        Fixed(void);
-        Fixed(const Fixed &src);
-        Fixed &operator = (const Fixed &rhs);
-        ~Fixed(void);
+        Point(void);
+        Point(const float x, const float y);
+        Point(const Point &src);
+        Point operator=(const Point &rs);
+        ~Point(void);
 
-        int   getRawBits(void) const;
-        void  setRawBits(int const raw);
+        float getX(void) const;
+        float getY(void) const;
 
     private:
-        int 			 _fp_nbr;
-        static const int _f_bits = 8;
+        const Fixed _x;
+        const Fixed _y;
 };

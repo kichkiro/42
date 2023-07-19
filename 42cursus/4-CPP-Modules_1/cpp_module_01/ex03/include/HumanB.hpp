@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:32:20 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 13:03:44 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 23:02:41 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@
 
 // Class ---------------------------------------------------------------------->
 
-class HumanB
-{
+class HumanB {
     public:
-
         HumanB(string name);
         ~HumanB(void);
 
@@ -29,7 +27,6 @@ class HumanB
         void    setWeapon(Weapon &new_weapon);
 
     private:
-
         string  _name;
         Weapon *_weapon;
 };

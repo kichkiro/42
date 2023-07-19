@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:21:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/18 20:09:06 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 23:05:01 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ using std::ostream;
 
 // Class ---------------------------------------------------------------------->
 
-class Fixed
-{
+class Fixed {
     public:
-
         Fixed(void);
         Fixed(const int value);
         Fixed(const float value);
@@ -40,7 +38,6 @@ class Fixed
         int   toInt(void) const;
 
     private:
-
         int 			 _fp_nbr;
         static const int _f_bits = 8;
 };

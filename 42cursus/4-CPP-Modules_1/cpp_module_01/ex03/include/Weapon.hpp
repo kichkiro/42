@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:32:26 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 13:04:34 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 23:03:26 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ using std::string;
 
 // Class ---------------------------------------------------------------------->
 
-class Weapon
-{
+class Weapon {
     public:
-
         Weapon(void);
         Weapon(string type);
         ~Weapon(void);
@@ -34,6 +32,5 @@ class Weapon
         void          setType(string new_type);
 
     private:
-    
-        string        _type;
+        string _type;
 };

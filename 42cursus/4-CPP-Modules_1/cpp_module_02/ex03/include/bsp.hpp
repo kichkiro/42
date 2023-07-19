@@ -1,31 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   bsp.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 10:32:10 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/18 23:02:25 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/19 12:11:48 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/19 12:18:35 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Point.hpp"
 
-// Libraries ------------------------------------------------------------------>
-
-#include "Weapon.hpp"
-
-// Class ---------------------------------------------------------------------->
-
-class HumanA {
-    public:
-        HumanA(string name, Weapon &weapon);
-        ~HumanA(void);
-
-        void	attack(void);
-
-    private:
-        string  _name;
-        Weapon &_weapon;
-};
+bool bsp(Point const a, Point const b, Point const c, Point const point);

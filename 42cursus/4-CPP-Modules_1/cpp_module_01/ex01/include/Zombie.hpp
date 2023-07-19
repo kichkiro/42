@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 21:16:45 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 13:04:17 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 23:02:03 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ using std::string;
 
 // Class ---------------------------------------------------------------------->
 
-class Zombie
-{
+class Zombie {
     public:
-
         Zombie(void);
         Zombie(const string &name);
         ~Zombie(void);
@@ -33,7 +31,6 @@ class Zombie
         void   announce(void);
 
     private:
-
         string _name;
 };
 

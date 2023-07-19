@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:25:55 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/17 13:03:55 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 23:00:41 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ using std::endl;
 
 // Class ---------------------------------------------------------------------->
 
-class Contact
-{
+class Contact {
     public:
-
         Contact(void);
 
         string	first_name;

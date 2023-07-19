@@ -15,10 +15,8 @@
 //                               Account Class                                //
 // ************************************************************************** //
 
-class Account
-{
+class Account {
     public:
-
         typedef Account		t;
 
         Account(void);
@@ -37,7 +35,6 @@ class Account
         void	    displayStatus(void) const;
 
     private:
-
         static int	_nbAccounts;
         static int	_totalAmount;
         static int	_totalNbDeposits;
