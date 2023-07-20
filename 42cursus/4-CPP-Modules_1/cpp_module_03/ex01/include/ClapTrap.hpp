@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 20:29:55 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/20 12:20:18 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/20 13:03:54 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class ClapTrap {
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
 
-    private:
+    protected:
         string _name;
         int    _hit_points;
         int    _energy_points;

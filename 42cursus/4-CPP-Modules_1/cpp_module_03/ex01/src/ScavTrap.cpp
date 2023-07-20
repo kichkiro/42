@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 09:15:43 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/20 12:42:32 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/20 13:02:01 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,16 @@ void ScavTrap::attack(const string &target) {
 }
 
 void ScavTrap::guardGate(void) {
-    cout << "ScavTrap is now in Gate keeper mode" << endl;
+     if (!this->_energy_points)
+        cout << "name: " << this->_name << " - " << "You have run out of "\
+            "energy points - you can't put yourself in gate keeper mode!" 
+            << endl;
+    else if (!this->_hit_points)
+        cout << "name: " << this->_name << " - " << "You are dead - you can't "\
+            "put yourself in gate keeper mode!" << endl;
+    else {
+        cout << "name: " << this->_name << " - " << "ScavTrap " << this->_name 
+            << " is now in Gate keeper mode!"<< endl;
+        this->_energy_points--;
+    }
 }
