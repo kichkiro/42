@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 13:04:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/20 18:04:38 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/20 18:16:22 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/20 21:12:50 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <iostream>
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 using std::cout;
 using std::endl;
@@ -24,13 +26,16 @@ using std::string;
 
 // Class ---------------------------------------------------------------------->
 
-class FragTrap : public ClapTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
     public:
-        FragTrap(void);
-        FragTrap(string name);
-        FragTrap(const FragTrap &src);
-        ~FragTrap(void);
+        DiamondTrap(void);
+        DiamondTrap(string name);
+        DiamondTrap(const DiamondTrap &src);
+        ~DiamondTrap(void);
 
         void attack(const string &target);
-        void highFivesGuys(void);
+        void whoAmI(void);
+
+    private:
+        string _name;
 };

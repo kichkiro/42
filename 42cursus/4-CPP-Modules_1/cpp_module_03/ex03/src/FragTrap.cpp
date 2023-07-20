@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:04:28 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/20 18:11:53 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:19:06 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // SFM ------------------------------------------------------------------------>
 
 FragTrap::FragTrap(void) : ClapTrap() {
-    cout << "<-------- FragTrap -  Default constructor" << endl;
+    cout << "<-------- FragTrap - Default constructor" << endl;
 }
 
 FragTrap::FragTrap(string name) : ClapTrap(name) {

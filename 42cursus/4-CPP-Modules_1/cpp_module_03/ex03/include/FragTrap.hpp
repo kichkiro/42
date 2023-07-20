@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:04:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/20 18:04:38 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:08:00 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ using std::string;
 
 // Class ---------------------------------------------------------------------->
 
-class FragTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
     public:
         FragTrap(void);
         FragTrap(string name);

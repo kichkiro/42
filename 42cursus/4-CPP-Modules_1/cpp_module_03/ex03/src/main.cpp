@@ -6,24 +6,29 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 20:29:12 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/20 18:13:48 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:16:06 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void) {
-    FragTrap a("A");
-    FragTrap b("B");
-    FragTrap c(b);
+    DiamondTrap a("A");
+    DiamondTrap b("B");
+    DiamondTrap c(b);
 
+    cout << endl;
+    a.whoAmI();
+    b.whoAmI();
+    c.whoAmI();
+    
     cout << endl;
     for (int i = 0; i < 6; i++) {
         b.attack("a");
         a.takeDamage(20);
     }
-    cout << endl;
     
+    cout << endl;
     b.beRepaired(42);
     a.beRepaired(42);
     a.attack("C");

@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 09:15:43 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/20 18:12:40 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:19:31 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // SFM ------------------------------------------------------------------------>
 
 ScavTrap::ScavTrap(void) : ClapTrap() {
-    cout << "<-------- ScavTrap -  Default constructor" << endl;
+    cout << "<-------- ScavTrap - Default constructor" << endl;
 }
 
 ScavTrap::ScavTrap(string name) : ClapTrap(name) {
