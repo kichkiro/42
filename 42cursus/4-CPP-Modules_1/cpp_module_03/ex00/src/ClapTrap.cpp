@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 20:29:45 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/19 22:05:08 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/20 12:44:00 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,27 @@
 
 // SFM ------------------------------------------------------------------------>
 
-ClapTrap::ClapTrap(void) :
-    _name(""), _hit_points(0), _energy_points(0), _attack_damage(0) {
-    cout << "Default constructor" << endl;
+ClapTrap::ClapTrap(void) {
+    cout << "name: " << this->_name << "Default constructor" << endl;
 }
 
-ClapTrap::ClapTrap(string name, int h_p, int e_p, int a_d) :
-    _name(name), _hit_points(h_p), _energy_points(e_p), _attack_damage(a_d) {
-    cout << "Contructor with arguments" << endl;
+ClapTrap::ClapTrap(string name) : _name(name) {
+    cout << "name: " << this->_name << " - " << "Contructor with an argument" 
+        << endl;
+    this->_hit_points = 10;
+    this->_energy_points = 10;
+    this->_attack_damage = 0;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &src) {
-    cout << "Default copy contructor" << endl;
+    cout << "name: " << this->_name << " - " << "Default copy contructor" 
+        << endl;
     *this = src;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &rs) {
-    cout << "Overloading the assignment operator" << endl;
+    cout << "name: " << this->_name << " - " << "Overloading the assignment "\
+        "operator" << endl;
     if (this == &rs)
         return *this;
     this->_name = rs._name;
@@ -41,29 +45,33 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &rs) {
 }
 
 ClapTrap::~ClapTrap(void) {
-    cout << "Default destructor" << endl;
+    cout << "name: " << this->_name << " - " << "Default destructor" << endl;
 }
 
 // Methods -------------------------------------------------------------------->
 
 void ClapTrap::attack(const string &target) {
     if (!this->_energy_points)
-        cout << "You have run out of energy points - you cannot attack!" << endl;
+        cout << "name: " << this->_name << " - " << "You have run out of "\
+            "energy points - you cannot attack!" << endl;
     else if (!this->_hit_points)
-        cout << "You are dead - you cannot attack!" << endl;
+        cout << "name: " << this->_name << " - " << "You are dead - you cannot"\
+            " attack!" << endl;
     else {
-        cout << "ClapTrap " << this->_name << " attacks " << target << ", caus"\
-            "ing " << this->_attack_damage << " points of damage!" << endl;
+        cout << "name: " << this->_name << " - " << "ClapTrap " << this->_name 
+            << " attacks " << target << ", causing " << this->_attack_damage 
+            << " points of damage!" << endl;
         this->_energy_points--;
     }
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
     if (!this->_hit_points)
-        cout << "You're already dead, you can't take any more damage!" << endl;
+        cout << "name: " << this->_name << " - " << "You're already dead, you "\
+            "can't take any more damage!" << endl;
     else {
-        cout << "ClapTrap " << this->_name << " lost " << amount <<
-            " health points" << endl;
+        cout << "name: " << this->_name << " - " << "ClapTrap " << this->_name 
+            << " lost " << amount << " health points" << endl;
         if (this->_hit_points < static_cast<int>(amount))
             this->_hit_points = 0;
         else
@@ -73,13 +81,14 @@ void ClapTrap::takeDamage(unsigned int amount) {
 
 void ClapTrap::beRepaired(unsigned int amount) {
     if (!this->_energy_points)
-        cout << "You have run out of energy points - you can't repair yourself!"
-        << endl;
+        cout << "name: " << this->_name << " - " << "You have run out of "\
+            "energy points - you can't repair yourself!" << endl;
     else if (!this->_hit_points)
-        cout << "You are dead - you can't repair yourself!" << endl;
+        cout << "name: " << this->_name << " - " << "You are dead - you can't "\
+            "repair yourself!" << endl;
     else {
-        cout << "ClapTrap " << this->_name << " repair himself by " << amount <<
-            " health points" << endl;
+        cout << "name: " << this->_name << " - " << "ClapTrap " << this->_name 
+            << " repair himself by " << amount << " health points" << endl;
         this->_hit_points += amount;
         this->_energy_points--;
     }

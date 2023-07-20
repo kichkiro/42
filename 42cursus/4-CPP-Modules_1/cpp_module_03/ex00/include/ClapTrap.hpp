@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 20:29:55 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/19 21:49:28 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/20 12:16:13 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ using std::string;
 class ClapTrap {
     public:
         ClapTrap(void);
-        ClapTrap(string name, int h_p, int e_p, int a_d);
+        ClapTrap(string name);
         ClapTrap(const ClapTrap &src);
         ClapTrap &operator=(const ClapTrap &rs);
         ~ClapTrap(void);
