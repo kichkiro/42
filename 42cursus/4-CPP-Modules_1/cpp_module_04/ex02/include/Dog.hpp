@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:03:21 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/26 00:30:08 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:07:07 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include <iostream>
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 using std::cout;
@@ -25,7 +25,7 @@ using std::string;
 
 // Class ---------------------------------------------------------------------->
 
-class Dog : public Animal {
+class Dog : public AAnimal {
     public:
         Dog(void);
         Dog(const Dog &src);

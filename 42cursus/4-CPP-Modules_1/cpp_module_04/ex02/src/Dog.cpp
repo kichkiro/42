@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:02:54 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/26 09:24:02 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:07:01 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Dog::Dog(void) : _dog_brain(new Brain()) {
     this->_type = "Dog";
 }
 
-Dog::Dog(const Dog &src) : Animal(src) {
+Dog::Dog(const Dog &src) : AAnimal(src) {
     cout << "Dog         - Default Copy Constructor" << endl;
     *this = src;
 }
@@ -39,6 +39,5 @@ Dog::~Dog(void) {
 // Methods -------------------------------------------------------------------->
 
 void Dog::makeSound(void) const {
-    Animal::makeSound();
     cout << "Woof woof!" << endl;
 }

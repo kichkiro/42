@@ -5,37 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 11:57:23 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/26 11:07:51 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/26 11:11:10 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/26 11:12:07 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongCat.hpp"
+
 
 int main() {
-    const AAnimal *farm[6];
+    IMateriaSource *src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    ICharacter *me = new Character("me");
+    AMateria *tmp;
 
-    for (int i = 0; i < 4; i++) {
-        if (i < 2)
-            farm[i] = new Cat();
-        else
-            farm[i] = new Dog();
-    }
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
 
-    cout << endl;
-    cout << farm[0]->getType() << endl;
-    cout << farm[2]->getType() << endl;
+    ICharacter *bob = new Character("bob");
+    me->use(0, *bob);
+    me->use(1, *bob);
 
-    cout << endl;
-    farm[0]->makeSound();
-    farm[2]->makeSound();
-
-    cout << endl;
-    for (int i = 0; i < 4; i++) {
-        delete farm[i];
-    }
+    delete bob;
+    delete me;
+    delete src;
 
     return 0;
 }

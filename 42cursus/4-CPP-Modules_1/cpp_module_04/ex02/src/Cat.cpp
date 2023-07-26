@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:02:51 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/26 09:23:57 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:07:46 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Cat::Cat(void) : _cat_brain(new Brain()) {
     this->_type = "Cat";
 }
 
-Cat::Cat(const Cat &src) : Animal(src) {
+Cat::Cat(const Cat &src) : AAnimal(src) {
     cout << "Cat         - Default Copy Constructor" << endl;
     *this = src;
 }
@@ -39,6 +39,6 @@ Cat::~Cat(void) {
 // Methods -------------------------------------------------------------------->
 
 void Cat::makeSound(void) const {
-    Animal::makeSound();
     cout << "Meow meow!" << endl;
 }
+
