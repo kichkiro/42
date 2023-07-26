@@ -1,44 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 12:02:54 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/26 09:24:02 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/21 12:04:28 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/25 19:53:33 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
 // SFM ------------------------------------------------------------------------>
 
-Dog::Dog(void) : _dog_brain(new Brain()) {
-    cout << "Dog         - Default Constructor" << endl;
-    this->_type = "Dog";
+WrongCat::WrongCat(void) {
+    cout << "WrongCat    - Default Constructor" << endl;
+    this->_type = "WrongCat";
 }
 
-Dog::Dog(const Dog &src) : Animal(src) {
-    cout << "Dog         - Default Copy Constructor" << endl;
+WrongCat::WrongCat(const WrongCat &src) : WrongAnimal(src) {
+    cout << "WrongCat    - Default Copy Constructor" << endl;
     *this = src;
 }
 
-Dog &Dog::operator=(const Dog &rs) {
-    cout << "Dog         - Default Assignment Operator" << endl;
+WrongCat &WrongCat::operator=(const WrongCat &rs) {
+    cout << "WrongCat    - Default Assignment Operator" << endl;
     if (this != &rs)
         this->_type = rs._type;
     return *this;
 }
 
-Dog::~Dog(void) {
-    cout << "Dog         - Default Destructor" << endl;
-    delete this->_dog_brain;
+WrongCat::~WrongCat(void) {
+    cout << "WrongCat    - Default Destructor" << endl;
 }
 
 // Methods -------------------------------------------------------------------->
 
-void Dog::makeSound(void) const {
-    Animal::makeSound();
-    cout << "Woof woof!" << endl;
+void WrongCat::makeSound(void) const {
+    WrongAnimal::makeSound();
+    cout << "Wrong Wrong!" << endl;
 }
