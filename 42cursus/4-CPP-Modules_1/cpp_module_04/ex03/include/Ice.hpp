@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:39:55 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/27 20:06:51 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/28 00:26:52 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ class Ice : public AMateria {
         Ice &operator=(const Ice &rs);
         ~Ice(void);
 
-        // void use(ICharacter &target);
+        void use(ICharacter &target);
         AMateria *clone(void) const;        
 };

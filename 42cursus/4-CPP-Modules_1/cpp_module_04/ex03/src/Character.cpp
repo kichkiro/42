@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:30:42 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/28 00:09:04 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/28 00:20:18 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter &target) {
-
+    this->_inventory[idx]->use(target);
 }

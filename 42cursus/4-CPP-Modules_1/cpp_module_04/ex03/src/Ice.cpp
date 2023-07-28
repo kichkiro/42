@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:44:16 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/27 20:10:54 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/28 00:26:45 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ Ice::~Ice(void) {
 
 // Methods -------------------------------------------------------------------->
 
-// void Ice::use(ICharacter &target) {
-//     cout << "* shoots an ice bolt at " << target << " *" << endl;
-// }
+void Ice::use(ICharacter &target) {
+    cout << "* shoots an ice bolt at " << target.getName() << " *" << endl;
+}
 
 AMateria *Ice::clone(void) const {
     return new Ice(*this);

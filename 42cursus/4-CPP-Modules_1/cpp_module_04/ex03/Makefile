@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/27 22:51:18 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/28 00:27:22 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 
 NAME        := interface
 SRCS        := \
+				main.cpp \
 				AMateria.cpp \
 				Ice.cpp \
 				Cure.cpp \
 				Character.cpp \
-				main.cpp \
 				ICharacter.cpp 
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)

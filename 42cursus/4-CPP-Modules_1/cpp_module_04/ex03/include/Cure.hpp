@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:14:21 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/27 20:07:00 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/28 00:27:04 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ class Cure : public AMateria {
         Cure &operator=(const Cure &rs);
         ~Cure(void);
 
-        // void use(ICharacter &target);
+        void use(ICharacter &target);
         AMateria *clone(void) const;
 };
