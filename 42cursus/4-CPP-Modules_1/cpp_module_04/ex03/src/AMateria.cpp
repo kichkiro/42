@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:31:41 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/27 20:28:31 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/28 17:23:03 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ AMateria::AMateria(const AMateria &src) : _type(src._type) {
 
 AMateria &AMateria::operator=(const AMateria &rs) {
     cout << "AMateria - Default Assignment Operator" << endl;
-    if (this != &rs) {}
+    if (this != &rs) {
+        this->_type = rs._type;
+    }
     return *this;
 }
 
