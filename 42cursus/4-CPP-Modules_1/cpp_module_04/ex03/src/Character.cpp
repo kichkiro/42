@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:30:42 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/28 17:37:18 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/31 21:27:19 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,25 @@
 
 Character::Character(string name) : _name(name) {
     cout << "Character - Default Constructor" << endl;
+    for (int i = 0; i < 4; i++)
+        this->_inventory[i] = NULL;
+    for (size_t i = 0; i < sizeof(size_t); i++)
+        this->_old[i] = NULL;
 }
 
-Character::Character(const Character &src) {
+Character::Character(const Character &src) : ICharacter(src) {
     cout << "Character - Copy Constructor" << endl;
     this->_name = src._name;
     for (int i = 0; i < 4; i++) {
         if (this->_inventory[i])
             delete this->_inventory[i];
-        this->_inventory[i] = src._inventory[i];
+        this->_inventory[i] = src._inventory[i]->clone();
     }
-    for (int i = 0; i < sizeof(size_t); i++) {
+    for (size_t i = 0; i < sizeof(size_t); i++) {
         if (!this->_old[i])
             break;
         delete this->_old[i];
-        this->_old[i] = src._old[i];
+        this->_old[i] = src._old[i]->clone();
     }
 }
 
@@ -41,20 +45,24 @@ Character &Character::operator=(const Character &rs) {
     for (int i = 0; i < 4; i++) {
         if (this->_inventory[i])
             delete this->_inventory[i];
-        this->_inventory[i] = rs._inventory[i];
+        this->_inventory[i] = rs._inventory[i]->clone();
     }
-    for (int i = 0; i < sizeof(size_t); i++) {
+    for (size_t i = 0; i < sizeof(size_t); i++) {
         if (!this->_old[i])
             break;
         delete this->_old[i];
-        this->_old[i] = rs._old[i];
+        this->_old[i] = rs._old[i]->clone();
     }
     return *this;
 }
 
 Character::~Character() {
     cout << "Character - Default Destructor" << endl;
-    for (int i = 0; i < sizeof(size_t); i++) {
+    for (int i = 0; i < 4; i++) {
+        if (this->_inventory[i])
+            delete this->_inventory[i];
+    }
+    for (size_t i = 0; i < sizeof(size_t); i++) {
         if (this->_old[i])
             delete this->_old[i];
     }
@@ -69,7 +77,7 @@ string const &Character::getName(void) const {
 void Character::equip(AMateria *m) {
     if (!m)
         return;
-    for (char i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         if (!this->_inventory[i]) {
             this->_inventory[i] = m;
             break;
@@ -84,7 +92,7 @@ void Character::unequip(int idx) {
             break;
         }
     }
-    this->_inventory[idx] = NULL;    
+    this->_inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter &target) {

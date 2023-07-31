@@ -6,37 +6,53 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 11:11:10 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/28 00:30:18 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/31 21:19:44 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
 #include "Character.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
+#include "MateriaSource.hpp"
 
 int main() {
-    // IMateriaSource *src = new MateriaSource();
-    // src->learnMateria(new Ice());
-    // src->learnMateria(new Cure());
-    // ICharacter *me = new Character("me");
-    // AMateria *tmp;
+    IMateriaSource* src = new MateriaSource();
 
-    // tmp = src->createMateria("ice");
-    // me->equip(tmp);
-    // tmp = src->createMateria("cure");
-    // me->equip(tmp);
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
 
-    // ICharacter *bob = new Character("bob");
-    // me->use(0, *bob);
-    // me->use(1, *bob);
+    ICharacter* me = new Character("me");
+    AMateria* tmp;
 
-    // delete bob;
-    // delete me;
-    // delete src;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
 
-    // ICharacter *test = new Character(); 
+    ICharacter* bob = new Character("bob");
+
+    me->use(0, *bob);
+    me->use(1, *bob);
+
+    delete bob;
+    delete me;
+    delete src;
+
+    // Character b("test_target");
+    // Character *c = new Character("alfred");
+    // cout << c->getName() << endl;
+
+    // c->equip(new Ice());
+    // c->equip(new Ice());
+    // c->equip(new Ice());
+    // c->equip(new Ice());
+
+    // c->unequip(3);
+    // c->equip(new Cure());
+
+    // c->use(3, b);
+
+    // delete c;
 
     return 0;
 }

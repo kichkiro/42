@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:52:04 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/27 22:53:12 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/31 21:29:54 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ ICharacter::ICharacter(void) {
 
 ICharacter::ICharacter(const ICharacter &src) {
     cout << "ICharacter - Copy Constructor" << endl;
-}
-
-ICharacter &ICharacter::operator=(const ICharacter &rs) {
-    cout << "ICharacter - Default Assignment Operator" << endl;
-    return *this;
+    *this = src;
 }
 
 ICharacter::~ICharacter() {

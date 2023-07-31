@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:14:43 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/28 00:27:15 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/31 21:21:55 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Cure::~Cure(void) {
 // Methods -------------------------------------------------------------------->
 
 void Cure::use(ICharacter &target) {
-    cout << "* heals " << target.getName() << "’s wounds *" << endl;
+    cout << "* heals " << target.getName() << "'s wounds *" << endl;
 }
 
 AMateria *Cure::clone(void) const {

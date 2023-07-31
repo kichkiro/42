@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:31:41 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/28 17:23:03 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/31 21:33:34 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,6 @@ string const &AMateria::getType(void) const {
     return this->_type;
 }
 
-void AMateria::use(ICharacter &target) {}
+void AMateria::use(ICharacter &target) {
+    cout << "* " << target.getName() << " *" << endl;
+}

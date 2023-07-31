@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:51:54 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/27 22:52:53 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/31 21:30:03 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class ICharacter {
     public:
         ICharacter(void);
         ICharacter(const ICharacter &src);
-        ICharacter &operator=(const ICharacter &rs);
         virtual ~ICharacter(void);
 
         virtual string const &getName(void) const = 0;
