@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 23:06:54 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/08/01 11:30:56 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/01 12:22:41 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int main(void) {
         b->incrementGrade();
         b->decrementGrade();
     }
-    catch (const std::exception &e) {
-        std::cerr << e.what() << '\n';
+    catch (const exception &e) {
+        cerr << e.what() << '\n';
     }
 
     cout << b->getGrade() << endl;
