@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:21:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/18 23:04:36 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/02 08:41:47 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Fixed {
     public:
         Fixed(void);
         Fixed(const Fixed &src);
-        Fixed &operator = (const Fixed &rhs);
+        Fixed &operator = (const Fixed &rs);
         ~Fixed(void);
 
         int   getRawBits(void) const;

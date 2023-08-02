@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:21:08 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/18 22:15:46 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/02 08:41:58 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ Fixed::Fixed(const Fixed &src) {
     cout << "Copy constructor called" << endl;
 }
 
-Fixed &Fixed::operator = (const Fixed &rhs) {
-    if (this != &rhs)
-        this->_fp_nbr = rhs.getRawBits();
+Fixed &Fixed::operator = (const Fixed &rs) {
+    if (this != &rs)
+        this->_fp_nbr = rs.getRawBits();
     cout << "Copy assignment operator called" << endl;
     return *this;
 }
