@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 11:11:10 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/31 21:19:44 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/02 07:17:20 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Cure.hpp"
 #include "MateriaSource.hpp"
 
-int main() {
+int main(void) {
     IMateriaSource* src = new MateriaSource();
 
     src->learnMateria(new Ice());

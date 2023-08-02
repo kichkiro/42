@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:03:56 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/25 19:45:50 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/02 07:13:54 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class WrongAnimal {
         WrongAnimal(void);
         WrongAnimal(const WrongAnimal &src);
         WrongAnimal &operator=(const WrongAnimal &rs);
-        ~WrongAnimal(void);
+        virtual ~WrongAnimal(void);
 
         string         getType(void) const;
         virtual void   makeSound(void) const;

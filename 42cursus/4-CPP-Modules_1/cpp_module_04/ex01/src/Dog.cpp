@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:02:54 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/26 09:24:02 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/02 07:46:07 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,16 @@ Dog::Dog(void) : _dog_brain(new Brain()) {
 
 Dog::Dog(const Dog &src) : Animal(src) {
     cout << "Dog         - Default Copy Constructor" << endl;
-    *this = src;
+    this->_type = src._type;
+    this->_dog_brain = new Brain(*src._dog_brain);
 }
 
 Dog &Dog::operator=(const Dog &rs) {
     cout << "Dog         - Default Assignment Operator" << endl;
-    if (this != &rs)
+    if (this != &rs) {
         this->_type = rs._type;
+        this->_dog_brain = new Brain(*rs._dog_brain);
+    }
     return *this;
 }
 

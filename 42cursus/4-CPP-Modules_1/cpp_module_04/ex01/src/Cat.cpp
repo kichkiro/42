@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:02:51 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/31 18:04:44 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/02 07:49:40 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,16 @@ Cat::Cat(void) : _cat_brain(new Brain()) {
 
 Cat::Cat(const Cat &src) : Animal(src) {
     cout << "Cat         - Default Copy Constructor" << endl;
-    *this = src;
+    this->_type = src._type;
+    this->_cat_brain = src._cat_brain;
 }
 
 Cat &Cat::operator=(const Cat &rs) {
     cout << "Cat         - Default Assignment Operator" << endl;
-    if (this != &rs)
+    if (this != &rs) {
         this->_type = rs._type;
+        this->_cat_brain = new Brain(*rs._cat_brain);
+    }
     return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:02:51 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/31 18:04:51 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/02 07:05:29 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 // SFM ------------------------------------------------------------------------>
 
 Cat::Cat(void) {
-    cout << "Cat         - Default Constructor" << endl;
-    
+    cout << "Cat         - Default Constructor" << endl;    
     this->_type = "Cat";
 }
 

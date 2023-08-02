@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 11:57:23 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/25 19:56:04 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/02 07:17:00 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
-int main() {
+int main(void) {
     const Animal *meta = new Animal();
     const Animal *j = new Dog();
     const Animal *i = new Cat();
@@ -32,6 +32,7 @@ int main() {
     delete meta;
     delete j;
     delete i;
+    delete k;
     
     return 0;
 }

@@ -6,15 +6,14 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 11:57:23 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/26 11:07:51 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/02 08:36:23 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 
-int main() {
+int main(void) {
     const AAnimal *farm[6];
 
     for (int i = 0; i < 4; i++) {
