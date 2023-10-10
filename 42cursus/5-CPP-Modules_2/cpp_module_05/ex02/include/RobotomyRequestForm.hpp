@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.hpp                                        :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 12:03:05 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/09 13:40:36 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/10/09 13:36:55 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/10/10 20:02:50 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,26 @@
 // Libraries ------------------------------------------------------------------>
 
 #include <iostream>
+#include <cstdlib>
 
-using std::cout;
-using std::endl;
+#include "AForm.hpp"
+
 using std::string;
+using std::cout;
 
 // Class ---------------------------------------------------------------------->
 
-class AAnimal {
+class AForm;
+
+class RobotomyRequestForm : public AForm {
     public:
-        AAnimal(void);
-        AAnimal(const AAnimal &src);
-        AAnimal &operator=(const AAnimal &rs);
-        virtual ~AAnimal(void);
+        RobotomyRequestForm(string target);
+        RobotomyRequestForm(const RobotomyRequestForm &src);
+        RobotomyRequestForm &operator=(const RobotomyRequestForm &rs);
+        ~RobotomyRequestForm();
 
-        string         getType(void) const;
-        virtual void   makeSound(void) const = 0;
+        void execute(const Bureaucrat &executor) const;
 
-    protected:
-        string _type;      
+    private:
+        string _target;
 };

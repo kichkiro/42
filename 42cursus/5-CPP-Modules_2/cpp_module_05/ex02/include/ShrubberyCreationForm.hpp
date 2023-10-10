@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.hpp                                        :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 12:03:05 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/09 13:40:36 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/10/09 13:36:31 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/10/10 18:13:27 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 // Libraries ------------------------------------------------------------------>
 
+#include <fstream>
 #include <iostream>
+#include <exception>
+
+#include "AForm.hpp"
 
 using std::cout;
 using std::endl;
 using std::string;
+using std::ofstream;
+using std::runtime_error;
 
 // Class ---------------------------------------------------------------------->
 
-class AAnimal {
+class ShrubberyCreationForm : public AForm {
     public:
-        AAnimal(void);
-        AAnimal(const AAnimal &src);
-        AAnimal &operator=(const AAnimal &rs);
-        virtual ~AAnimal(void);
+        ShrubberyCreationForm(string target);
+        ShrubberyCreationForm(const ShrubberyCreationForm &src);
+        ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rs);
+        ~ShrubberyCreationForm(void);
 
-        string         getType(void) const;
-        virtual void   makeSound(void) const = 0;
-
-    protected:
-        string _type;      
+        void execute(const Bureaucrat &executor) const;
+        
+    private:
+        string _target;
 };

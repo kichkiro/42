@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 23:06:54 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/08/01 12:22:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/07 15:16:02 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ int main(void) {
 
     try {
         b = new Bureaucrat("bob", 2);
+        cout << "start grade: " << b->getGrade() << endl;
     }
     catch (const exception &e) {
-        cerr << e.what() << '\n';
+        cerr << e.what() << endl;
     }
     
     try {
@@ -28,10 +29,10 @@ int main(void) {
         b->decrementGrade();
     }
     catch (const exception &e) {
-        cerr << e.what() << '\n';
+        cerr << e.what() << endl;
     }
 
-    cout << b->getGrade() << endl;
+    cout << *b << endl;
 
     delete b;
 

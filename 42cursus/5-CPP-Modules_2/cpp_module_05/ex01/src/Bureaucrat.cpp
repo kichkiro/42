@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 23:08:37 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/07 15:35:54 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/08 12:24:15 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,18 @@ void Bureaucrat::decrementGrade(void) {
     this->_grade += 1;
 }
 
+void Bureaucrat::signForm(Form &form) {
+    try {
+        form.beSigned(*this);
+        cout << this->_name << " signed " << form.getName() << endl;
+    }
+    catch (const exception &e) {
+        cerr << this->_name << " couldn't sign " << form.getName() <<
+            " because " << e.what() << endl;
+    }
+}
+
 ostream &operator<<(ostream &out, const Bureaucrat &rs) {
-    out << rs.getName() << ", bureaucrat grade " << rs.getGrade(); 
+    out << rs.getName() << ", bureaucrat grade " << rs.getGrade();
     return (out);
 }
