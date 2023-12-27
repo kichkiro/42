@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:43:24 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/11 01:14:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/12/27 11:18:49 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,33 @@
 
 Intern::Intern(void) {}
 
-Intern::Intern(const Intern &src) {}
+Intern::Intern(const Intern &src) {*this = src;}
 
-Intern &Intern::operator=(const Intern &rs) {return *this;}
+Intern &Intern::operator=(const Intern &rs) {(void)rs; return *this;}
 
-Intern::~Intern() {}
+Intern::~Intern(void) {}
 
-AForm *makeForm(string form, string target) {
-    AForm *forms[3] = {
+AForm *Intern::makeForm(string form, string target) {
+    AForm *forms[] = {
         new ShrubberyCreationForm(target),
         new RobotomyRequestForm(target),
         new PresidentialPardonForm(target)
     };
-    string names[3] = {
+    string names[] = {
         "shrubbery creation",
         "robotomy request",
         "presidential pardon"
     };
-
-
-
+    AForm *selectedForm = NULL;
+    for (int i = 0; i < 3; ++i) {
+        if (names[i] == form) {
+            cout << "Intern creates " << form << endl;
+            selectedForm = forms[i];
+        }
+        else
+            delete forms[i];
+    }
+    if (!selectedForm)
+        cerr << "Error: Form " << form << " not found." << endl;
+    return selectedForm;
 }
