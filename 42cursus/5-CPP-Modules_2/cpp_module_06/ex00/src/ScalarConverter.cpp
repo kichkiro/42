@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:57:28 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/15 15:15:38 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:56:17 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int    ScalarConverter::_precision = 1;
 
 ScalarConverter::ScalarConverter(void) {}
 
-ScalarConverter::ScalarConverter(const ScalarConverter &src) {
-    *this = src;
-}
+ScalarConverter::ScalarConverter(const ScalarConverter &src) {*this = src;}
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rs) {
     _char = rs._char;

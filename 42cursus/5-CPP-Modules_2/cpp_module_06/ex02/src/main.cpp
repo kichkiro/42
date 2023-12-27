@@ -5,26 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 12:29:27 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/12/27 15:24:01 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/12/27 14:20:48 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/12/27 15:23:54 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
-#include "Data.hpp"
+#include "Base.hpp"
 
 int main(void) {
-	Data*		ptr;
-	uintptr_t   integer;
+    Base *ptr;
 
-	ptr = new Data;
-	integer = Serializer::serialize(ptr);
+    ptr = generate();
+    identify(ptr);
+    identify(*ptr);
     
-	cout << "ptr addr:    " << ptr << endl;
-	cout << "serialize:   " << integer << endl;
-	cout << "deserialize: " << Serializer::deserialize(integer) << endl;
-
-	delete ptr;
-
-	return 0;
+    delete ptr;
+    
+    return 0;
 }
