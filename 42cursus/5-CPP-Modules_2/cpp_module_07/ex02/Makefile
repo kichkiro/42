@@ -6,14 +6,14 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/12/28 11:21:17 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/12/28 12:09:07 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
-NAME        := serializer
-SRCS        := main.cpp Serializer.cpp
+NAME        := array
+SRCS        := main.cpp
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build

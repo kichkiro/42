@@ -6,16 +6,14 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/12/27 12:36:27 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/12/28 11:21:07 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
 NAME        := convert
-SRCS        := \
-				main.cpp \
-				ScalarConverter.cpp
+SRCS        := main.cpp ScalarConverter.cpp
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build

@@ -6,16 +6,14 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/31 23:33:24 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/12/28 11:19:59 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
 NAME        := bureaucrat
-SRCS        := \
-				main.cpp \
-				Bureaucrat.cpp
+SRCS        := main.cpp Bureaucrat.cpp
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
