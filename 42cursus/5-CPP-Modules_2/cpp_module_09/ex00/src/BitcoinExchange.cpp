@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:32:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/12 14:04:53 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:55:16 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void BitcoinExchange::_set_inputfile(string filename) {
         else {
             key.erase(key.end() - 1);
             this->_inputfile[key] = value;
-            cout << key << "=> " << value << " = " << this->_calculate(key, value) << endl;
+            cout << key << " => " << value << " = " << this->_calculate(key, value) << endl;
         }
     }
     file.close();
@@ -93,15 +93,37 @@ bool BitcoinExchange::_check_date(string date) {
     return (day <= max_days_in_month);
 }
 
-double BitcoinExchange::_calculate(string key, double value) {
-    if (_database.find(key) != _database.end()) {
-        double value = _database[key];
-        return value;
-    }
-    else {
-        // cercare la prima data antecedente presente nel db.
 
-        return 42;
+double BitcoinExchange::_calculate(string key, double value) {
+
+    // *************************************************************************
+    // Controllare che la data non sia antecedente alla prima del db...
+    // *************************************************************************
+
+    while (_database.find(key) == _database.end()) {
+        key = this->_decrement_date(key);
     }
+    return this->_database[key] * value;
 }
 
+string BitcoinExchange::_decrement_date(const string &date) {
+    istringstream iss(date);
+    int year, month, day;
+    char dash1, dash2;
+
+    iss >> year >> dash1 >> month >> dash2 >> day;
+    day--;
+    if (day < 1) {
+        month--;
+        if (month < 1) {
+            month = 12;
+            year--;
+        }
+        int lastDayOfPreviousMonth = 31;
+        day = lastDayOfPreviousMonth;
+    }
+    ostringstream oss;
+    oss << year << '-' << (month < 10 ? "0" : "") << month << '-'
+        << (day < 10 ? "0" : "") << day;
+    return oss.str();
+}

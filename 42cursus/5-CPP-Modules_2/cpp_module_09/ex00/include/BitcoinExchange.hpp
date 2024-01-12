@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:33:06 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/12 13:31:07 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:46:13 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ using std::ifstream;
 using std::istringstream;
 using std::getline;
 using std::tm;
+using std::ostringstream;
 
 typedef std::map<std::string, std::string>::iterator MapIt;
 
@@ -48,5 +49,6 @@ class BitcoinExchange {
         void _set_database(string filename);
         void _set_inputfile(string filename);
         bool _check_date(string date);
+        string _decrement_date(const string &date);
         double _calculate(string key, double value);
 };
