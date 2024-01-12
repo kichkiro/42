@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:32:59 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/11 17:08:45 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:40:21 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int main(int argc, char **argv) {
         return 1;
     }
     BitcoinExchange btc("database/data.csv", argv[1]);
-    btc.calculate();
     
     return 0;
 }
