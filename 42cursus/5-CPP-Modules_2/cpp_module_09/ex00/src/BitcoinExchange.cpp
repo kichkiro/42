@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:32:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/12 14:55:16 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:59:55 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ void BitcoinExchange::_set_database(string filename) {
         this->_database[key] = value;
     }
     file.close();
-    // for (MapIt it = this->_database.begin(); it != this->_database.end(); ++it) {
-    //     cout << "Key: " << it->first << ", Value: " << it->second << endl;
-    // }
 }
 
 void BitcoinExchange::_set_inputfile(string filename) {
@@ -68,7 +65,8 @@ void BitcoinExchange::_set_inputfile(string filename) {
         else {
             key.erase(key.end() - 1);
             this->_inputfile[key] = value;
-            cout << key << " => " << value << " = " << this->_calculate(key, value) << endl;
+            cout << key << " => " << value << " = " << 
+                this->_calculate(key, value) << endl;
         }
     }
     file.close();
@@ -93,15 +91,13 @@ bool BitcoinExchange::_check_date(string date) {
     return (day <= max_days_in_month);
 }
 
-
 double BitcoinExchange::_calculate(string key, double value) {
-
-    // *************************************************************************
-    // Controllare che la data non sia antecedente alla prima del db...
-    // *************************************************************************
-
-    while (_database.find(key) == _database.end()) {
+    while (this->_database.find(key) == this->_database.end()) {
         key = this->_decrement_date(key);
+        if (key < this->_database.begin()->first) {
+            key = this->_database.begin()->first;
+            break;
+        }
     }
     return this->_database[key] * value;
 }
@@ -119,8 +115,8 @@ string BitcoinExchange::_decrement_date(const string &date) {
             month = 12;
             year--;
         }
-        int lastDayOfPreviousMonth = 31;
-        day = lastDayOfPreviousMonth;
+        int last_day_of_prev_month = 31;
+        day = last_day_of_prev_month;
     }
     ostringstream oss;
     oss << year << '-' << (month < 10 ? "0" : "") << month << '-'
