@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:32:59 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/15 14:01:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:01:01 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
         cerr << "You must provide an input file..." << endl;
         return 1;
     }
-    BitcoinExchange btc("database/data.csv", argv[1]);
+    RPN btc("database/data.csv", argv[1]);
 
     return 0;
 }

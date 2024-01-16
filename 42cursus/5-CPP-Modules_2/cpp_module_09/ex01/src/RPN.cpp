@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 14:32:59 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/15 14:01:41 by kichkiro         ###   ########.fr       */
+/*   Created: 2024/01/11 14:32:53 by kichkiro          #+#    #+#             */
+/*   Updated: 2024/01/15 14:03:00 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
-int main(int argc, char **argv) {
-    if (argc != 2) {
-        cerr << "You must provide an input file..." << endl;
-        return 1;
-    }
-    BitcoinExchange btc("database/data.csv", argv[1]);
+RPN::RPN(void) {}
 
-    return 0;
+RPN::RPN(const RPN &src) {
+    *this = src;
 }
+
+RPN &RPN::operator=(const RPN &rs) {
+    return *this;
+}
+
+RPN::~RPN(void) {}

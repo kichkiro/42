@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:32:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/15 11:59:55 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:01:35 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool BitcoinExchange::_check_date(string date) {
         0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
     };
     int max_days_in_month = days_in_month[month];
-    if (month == 2 && (year % 4 == 0 && year % 100 != 0 || year % 400 == 0))
+    if (month == 2 && ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0))
         max_days_in_month = 29;
     return (day <= max_days_in_month);
 }
