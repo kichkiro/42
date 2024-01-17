@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:27:11 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/17 13:27:12 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:08:08 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ PmergeMe::PmergeMe(int argc, char **argv) {
         cerr << "Usage: ./PmergeMe <unsigned int> <unsigned int> <...>" << endl;
         exit(EXIT_FAILURE);
     }
-    this->_sequence = this->_parser(argc, argv);
+    this->_run(argc, argv);
 }
 
 PmergeMe::PmergeMe(const PmergeMe &src) {
@@ -25,55 +25,34 @@ PmergeMe::PmergeMe(const PmergeMe &src) {
 }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &rs) {
-    this->_sequence = rs._sequence;
+    this->_v_seq = rs._v_seq;
+    this->_d_seq = rs._d_seq;
     return *this;
 }
 
 PmergeMe::~PmergeMe(void) {}
 
-void PmergeMe::run(void) {
-    clock_t start;
-    clock_t end;
+void PmergeMe::_run(int argc, char **argv) {
+    clock_t start, end;
 
-    this->_display_sequence(this->_sequence, "Before");
+    parser(argc, argv, this->_v_seq);
+    parser(argc, argv, this->_d_seq);
+    display_sequence(this->_v_seq, "Before");
     start = clock();
-    // SORT WITH VECTOR
+    ford_johnson(this->_v_seq, 0, argc - 2);
     end = clock();
-    this->_display_sequence(this->_sequence, "After");
-    this->_display_time("First Container", start, end);
+    display_sequence(this->_v_seq, "After");
+    this->_display_time(argc - 1, "std::vector", start, end);
     start = clock();
-    // SORT WITH DEQUE
+    ford_johnson(this->_d_seq, 0, argc - 2);
     end = clock();
-    this->_display_time("Second Container", start, end);
+    this->_display_time(argc - 1, "std::deque", start, end);
 }
 
-vector<unsigned int> PmergeMe::_parser(int argc, char **argv) {
-    vector<unsigned int> result;
-    int                  value;
-
-    for (int i = 1; i < argc; ++i) {
-        try {
-            value = atoi(argv[i]);
-            result.push_back(value);
-        }
-        catch (const invalid_argument &e) {
-            cerr << "Error: Invalid argument - " << argv[i] << endl;
-            exit(EXIT_FAILURE);
-        }
-    }
-    return result;
-}
-
-void PmergeMe::_display_sequence(const vector<unsigned int> &seq, const string &label) {
-    cout << label << ": ";
-    for (size_t i = 0; i < seq.size(); ++i)
-        cout << seq[i] << " ";
-    cout << endl;
-}
-
-void PmergeMe::_display_time(const string &type, clock_t start, clock_t end) {
+void PmergeMe::_display_time(int n, string type, clock_t start, clock_t end) {
     double timer;
 
     timer = (static_cast<double>(end - start) / CLOCKS_PER_SEC) * 1e6;
-    cout << "Time to process with " << type << ": " << timer << " us" << endl;
+    cout << "Time to process a range of " << n << " elements with " << type << 
+        " : " << timer << " us" << endl;
 }
