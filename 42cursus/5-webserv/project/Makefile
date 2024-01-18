@@ -6,14 +6,17 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
-#    Updated: 2024/01/17 16:29:40 by kichkiro         ###   ########.fr        #
+#    Updated: 2024/01/18 16:29:29 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
 NAME        := webserv
-SRCS        := main.cpp
+SRCS        := \
+				main.cpp \
+				ConfigFile.cpp
+				
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build

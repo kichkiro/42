@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   webserv.hpp                                        :+:      :+:    :+:   */
+/*   ConfigFile.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 16:00:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/18 15:54:17 by kichkiro         ###   ########.fr       */
+/*   Created: 2024/01/18 14:46:15 by kichkiro          #+#    #+#             */
+/*   Updated: 2024/01/18 15:53:18 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,19 @@
 // Libraries ------------------------------------------------------------------>
 
 #include <iostream>
+#include <fstream>
 
-#include "ConfigFile.hpp"
+using std::string;
+using std::ifstream;
 
-using std::cout;
-using std::cerr;
-using std::endl;
+// Class ---------------------------------------------------------------------->
+
+class ConfigFile {
+    private:
+        
+
+    public:
+        ConfigFile(void);
+        ConfigFile(const char *filename);
+        ~ConfigFile(void);
+};
