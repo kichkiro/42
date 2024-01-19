@@ -117,3 +117,90 @@
 [ ] Support cookies and session management (prepare quick examples).
 
 [ ] Handle multiple CGI.
+
+## Contexts and Directives --------------------------------------------------->
+
+[ ] Contexts:
+
+    [ ] http
+        Module:     ngx_http_core_module
+        Syntax:	    http { ... }
+        Default:	———
+        Context:	main
+
+    [ ] server
+        Module:     ngx_http_core_module
+        Syntax:	    server { ... }
+        Default:	———
+        Context:	http
+
+    [ ] location
+        Module:     ngx_http_core_module
+        Syntax:	    location [ = | ~ | ~* | ^~ ] uri { ... }
+                    location @name { ... }
+        Default:	———
+        Context:	server, location
+    
+    [ ] limit_except
+        Module:     ngx_http_core_module
+        Syntax:	    limit_except method ... { ... }
+        Default:	———
+        Context:	location
+
+[ ] Directives:
+
+    [ ] listen
+        Module:     ngx_http_core_module
+        Syntax:	    listen address[:port] [default_server] [ssl] [http2 | quic] [proxy_protocol] [setfib=number]        [fastopen=number] [backlog=number] [rcvbuf=size] [sndbuf=size] [accept_filter=filter] [deferred] [bind] [ipv6only=on|off] [reuseport] [so_keepalive=on|off|[keepidle]:[keepintvl]:[keepcnt]];
+        listen port [default_server] [ssl] [http2 | quic] [proxy_protocol] [setfib=number] [fastopen=number] [backlog=number] [rcvbuf=size] [sndbuf=size] [accept_filter=filter] [deferred] [bind] [ipv6only=on|off] [reuseport] [so_keepalive=on|off|[keepidle]:[keepintvl]:[keepcnt]];
+        listen unix:path [default_server] [ssl] [http2 | quic] [proxy_protocol] [backlog=number] [rcvbuf=size] [sndbuf=size] [accept_filter=filter] [deferred] [bind] [so_keepalive=on|off|[keepidle]:[keepintvl]:[keepcnt]];
+        Default:	listen *:80 | *:8000;
+        Context:	server
+
+    [ ] root
+        Module:     ngx_http_core_module
+        Syntax:	    root path;
+        Default:	root html;
+        Context:	http, server, location, if in location
+
+    [ ] server_name
+        Module:     ngx_http_core_module
+        Syntax:	    server_name name ...;
+        Default:    server_name "";
+        Context:	server
+
+    [ ] index
+        Module:     ngx_http_index_module
+        Syntax:	    index file ...;
+        Default:    index index.html;
+        Context:	http, server, location
+
+    [ ] include     
+        Module:     ngx_http_core_module
+        Syntax:	    include file | mask;
+        Default:	———
+        Context:	any
+
+    [ ] error_page
+        Module:     ngx_http_core_module
+        Syntax:	    error_page code ... [=[response]] uri;
+        Default:	———
+        Context:	http, server, location, if in location
+
+    [ ] client_max_body_size
+        Module:     ngx_http_core_module
+        Syntax:	    client_max_body_size size;
+        Default:	client_max_body_size 1m;
+        Context:	http, server, location
+    
+    [ ] alias
+        Module:     ngx_http_core_module
+        Syntax:	    alias path;
+        Default:	———
+        Context:	location
+
+    [ ] autoindex
+        Module      ngx_http_autoindex_module
+        Syntax:	    autoindex on | off;
+        Default:    autoindex off;
+        Context:	http, server, location
