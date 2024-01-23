@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   webserv.hpp                                        :+:      :+:    :+:   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 16:00:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/23 11:38:24 by kichkiro         ###   ########.fr       */
+/*   Created: 2024/01/23 10:41:56 by kichkiro          #+#    #+#             */
+/*   Updated: 2024/01/23 11:53:59 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #pragma once
+#include "utils.hpp"
 
-// Libraries ------------------------------------------------------------------>
-
-// #include <iostream>
-
-// #include "ConfigFile.hpp"
-
-// using std::cout;
-// using std::cerr;
-// using std::endl;
+bool str_in_array(const char *str, const char **arr) {
+    for (size_t i = 0; arr[i]; ++i) {
+        if (!strcmp(str, arr[i]))
+            return true;
+    }
+    return false;
+}

@@ -2,10 +2,10 @@
 
 ## Mandatory ----------------------------------------------------------------->
 
-[ ] Your program has to take a configuration file as argument, or use a default 
+[x] Your program has to take a configuration file as argument, or use a default 
     path.
 
-[ ] You can’t execve another web server.
+[x] You can’t execve another web server.
 
 [ ] Your server must never block and the client can be bounced properly if 
     necessary.
@@ -169,12 +169,6 @@
         Default:    server_name "";
         Context:	server
 
-    [ ] index
-        Module:     ngx_http_index_module
-        Syntax:	    index file ...;
-        Default:    index index.html;
-        Context:	http, server, location
-
     [ ] include     
         Module:     ngx_http_core_module
         Syntax:	    include file | mask;
@@ -199,8 +193,34 @@
         Default:	———
         Context:	location
 
+    [ ] index
+        Module:     ngx_http_index_module
+        Syntax:	    index file ...;
+        Default:    index index.html;
+        Context:	http, server, location
+
     [ ] autoindex
         Module      ngx_http_autoindex_module
         Syntax:	    autoindex on | off;
         Default:    autoindex off;
         Context:	http, server, location
+
+
+[ ] Requirements:
+    [ ] Ogni direttiva e' una coppia chiave-valore.
+    [ ] Il valore di ogni direttiva puo' essere di diversi tipi anche per la stessa direttiva.
+    [ ] Ogni direttiva ha un valore di default.
+    [ ] Ogni direttiva ha puoi trovarsi in tutti o solo determinati contesti.
+    [ ] Alcune direttive come "server" o "http", definiscono un contesto.
+    [ ] 
+
+
+struct Directive {
+    int                 id;
+    int                 type;
+    string              value;
+    string              
+    vector<Directive>   context;
+
+
+}

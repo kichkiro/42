@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:15 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/22 16:41:49 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:16:11 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,28 @@
 
 // Libraries ------------------------------------------------------------------>
 
+#include <iostream>
 #include <vector>
+#include <fstream>
+#include <string>
 
 #include "Directive.hpp"
+#include "utils.hpp"
 
+using std::cout;
+using std::cerr;
+using std::endl;
 using std::string;
 using std::vector;
+using std::getline;
+
+
 
 // Class ---------------------------------------------------------------------->
 
 class ConfigFile {
     private:
-        vector<Directive> _config_file;
+        vector<Directive *> _config_file;
 
         void _parse(const char *filename);
 
@@ -34,5 +44,5 @@ class ConfigFile {
         ConfigFile(const char *filename);
         ~ConfigFile(void);
 
-        vector<Directive> get_config_file(void);
+        // vector<Directive> get_config_file(void);
 };
