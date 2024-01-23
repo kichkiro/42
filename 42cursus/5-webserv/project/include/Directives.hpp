@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Directive.hpp                                      :+:      :+:    :+:   */
+/*   Directives.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:59:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/23 17:19:16 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:06:20 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include <vector>
 #include <fstream>
 #include <string>
-#include <map>
-#include <list>
 
 #include "utils.hpp"
 
@@ -31,16 +29,13 @@ using std::string;
 using std::ifstream;
 using std::vector;
 using std::getline;
-using std::map;
-using std::list;
 
 // Classes -------------------------------------------------------------------->
 
 class Directive {
     protected:
-        string         _type;
-        bool           _is_context;
-        vector<string> _directives;
+        string _type;
+        bool   _is_context;
 
         virtual void _parse(ifstream &raw_value) = 0;
 
@@ -48,12 +43,13 @@ class Directive {
         Directive(void);
         virtual ~Directive();
         
-        vector<string> get_directives(void);
+        static const char *_directives[];
+
         static void router(
-            vector<Directive *> &value, 
-            string context, 
-            string directive, 
-            ifstream file
+            vector<Directive *> &value,
+            string context,
+            string directive,
+            ifstream &file
         );
 };
 
@@ -112,14 +108,14 @@ class Http : public Directive {
 // };
 
 class Include : public Directive {
-private:
-    string _value;
+    private:
+        string _value;
 
-    void _parse(string raw_value);
+        void _parse(string raw_value);
 
-public:
-    Include(string raw_value);
-    ~Include();
+    public:
+        Include(string raw_value);
+        ~Include();
 };
 
 // class ClientMaxBodySize : public Directive {

@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:15 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/23 17:16:11 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:05:34 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <fstream>
 #include <string>
 
-#include "Directive.hpp"
+#include "Directives.hpp"
 #include "utils.hpp"
 
 using std::cout;

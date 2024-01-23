@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
-#    Updated: 2024/01/23 11:42:12 by kichkiro         ###   ########.fr        #
+#    Updated: 2024/01/23 15:05:15 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS        := \
 				main.cpp \
 				utils.cpp \
 				ConfigFile.cpp \
-				Directive.cpp 
+				Directives.cpp 
 				
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)

@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Directive.cpp                                      :+:      :+:    :+:   */
+/*   Directives.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:15:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/23 17:26:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:05:21 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Directive.hpp"
+#include "Directives.hpp"
 
-const char *directives1[] = {
+// Directive - Base Class ----------------------------------------------------->
+
+const char *Directive::_directives[] = {
     "http",
     "server",
     "location",
@@ -29,29 +31,9 @@ const char *directives1[] = {
     NULL
 };
 
-// Directive - Base Class ----------------------------------------------------->
-
-Directive::Directive(void) {
-    // this->_directives.push_back("http");
-    // this->_directives.push_back("server");
-    // this->_directives.push_back("location");
-    // this->_directives.push_back("limit_except");
-    // this->_directives.push_back("listen");
-    // this->_directives.push_back("root");
-    // this->_directives.push_back("server_name");
-    // this->_directives.push_back("include");
-    // this->_directives.push_back("error_page");
-    // this->_directives.push_back("client_max_body_size");
-    // this->_directives.push_back("alias");
-    // this->_directives.push_back("index");
-    // this->_directives.push_back("autoindex");
-}
+Directive::Directive(void) {}
 
 Directive::~Directive() {}
-
-vector<string> Directive::get_directives(void) {
-    return this->_directives;
-}
 
 /*!
  * @brief
@@ -69,7 +51,7 @@ void Directive::router(
     vector<Directive *> &value,
     string context,
     string directive,
-    ifstream file
+    ifstream &file
 ) {
     if (directive == "http")
         value.push_back(new Http(file, context));
@@ -123,20 +105,23 @@ Http::Http(ifstream &raw_value, string context) {
     this->_parse(raw_value);
 }
 
-Http::~Http() {}
+Http::~Http() {
+    typedef vector<Directive*>::iterator IT;
+    for (IT it = _value.begin(); it != _value.end(); ++it)
+        delete *it;
+}
 
 void Http::_parse(ifstream &raw_value) {
-    string line;
+    string line, result2;
     int    brackets;
 
+    brackets = 0;
     while (getline(raw_value, line)) {
-        string result2 = line.substr(0, line.find_first_of(" \t"));
-
+        result2 = line.substr(0, line.find_first_of(" \t"));
         if (result2[0] == 35)
             continue;
-        else if (str_in_array(result2.c_str(), directives1))
+        else if (str_in_array(result2.c_str(), this->_directives))
             router(this->_value, this->_type, result2, raw_value);
-            // cout << endl;
         else if (line.find_first_of("{") != string::npos)
             brackets++;
         else if (line.find_first_of("}") != string::npos)
