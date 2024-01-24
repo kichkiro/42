@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:42:41 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/24 09:50:51 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:21:09 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,4 @@ using std::string;
 bool str_in_array(const char *str, const char **arr);
 string strip(const string &str);
 string first_token(const string &str);
+string second_token(const string &str);

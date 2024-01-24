@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:15:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/24 17:23:29 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:52:11 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,20 @@ Include::~Include() {}
 
 void Include::_first_parsing(string raw_value, vector<string> &parsed_content) {
     (void)parsed_content;
-    // ifstream included(raw_value.substr(raw_value.find_first_of(" /t"), ))
+    // ifstream included();
+    string path;
 
-    cout << "INCLUDE: " << raw_value[7] << endl;
+    path = second_token(raw_value);
+    if (path[path.length() - 1] == 42) 
+        // mettere in un vettore tutti i path dei file nella dir. 
+    else
+        // mettere nel vettore il path.
     
-    
+    // passare alla seconda fase -> eseguire _parsing per ogni file e aggiungere
+    // a parsed_content il contenuto di ogni file di configurazione 
+    // adeguatamente parsato (rimozione commenti, righe vuote ed esecuzione di 
+    // direttive include)
+
 
 
 }
