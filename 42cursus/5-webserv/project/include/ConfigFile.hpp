@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:15 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/23 15:05:34 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:32:43 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,14 @@ using std::string;
 using std::vector;
 using std::getline;
 
-
-
 // Class ---------------------------------------------------------------------->
 
 class ConfigFile {
     private:
         vector<Directive *> _config_file;
 
-        void _parse(const char *filename);
+        void _first_parsing(const char *filename);
+        void _parsing(const char *filename);
 
     public:
         ConfigFile(void);

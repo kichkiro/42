@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:59:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/23 15:06:20 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:11:29 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ using std::string;
 using std::ifstream;
 using std::vector;
 using std::getline;
+using std::streampos;
 
 // Classes -------------------------------------------------------------------->
 
@@ -37,27 +38,55 @@ class Directive {
         string _type;
         bool   _is_context;
 
-        virtual void _parse(ifstream &raw_value) = 0;
+        virtual void _parsing(ifstream &raw_value) = 0;
 
     public:
         Directive(void);
         virtual ~Directive();
-        
+
         static const char *_directives[];
 
         static void router(
             vector<Directive *> &value,
             string context,
             string directive,
+            streampos prev_pos,
             ifstream &file
         );
 };
 
+/*!
+ * @ref 
+    Docs:       https://nginx.org/en/docs/ngx_core_module.html#include
+    Syntax:	    include file | mask;
+    Default:	———
+    Context:	any
+ */
+class Include : public Directive {
+    private:
+        string _value;
+        // vector<string> _value;
+        
+        void _first_parsing(string raw_value, vector<string> &parsed_content);
+        void _parsing(ifstream &raw_value);
+        
+    public:
+        Include(string raw_value, vector<string> &parsed_content);
+        ~Include();
+};
+
+/*!
+ * @ref
+    Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#http
+    Syntax:	    http { ... }
+    Default:	———
+    Context:	main
+ */
 class Http : public Directive {
     private:
         vector<Directive *> _value;
 
-        void _parse(ifstream &raw_value);
+        void _parsing(ifstream &raw_value);
 
     public:
         Http(string context);
@@ -107,16 +136,6 @@ class Http : public Directive {
 
 // };
 
-class Include : public Directive {
-    private:
-        string _value;
-
-        void _parse(string raw_value);
-
-    public:
-        Include(string raw_value);
-        ~Include();
-};
 
 // class ClientMaxBodySize : public Directive {
 //     private:

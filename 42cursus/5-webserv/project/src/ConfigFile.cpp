@@ -6,35 +6,18 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:32 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/23 15:02:12 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:46:36 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ConfigFile.hpp"
 
-const char *directives2[] = {
-    "http",
-    "server",
-    "location",
-    "limit_except",
-    "listen",
-    "root",
-    "server_name",
-    "include",
-    "error_page",
-    "client_max_body_size",
-    "alias",
-    "index",
-    "autoindex",
-    NULL
-};
-
 ConfigFile::ConfigFile(void) {
-    this->_parse("etc/webserv/webserv.conf");
+    this->_first_parsing("etc/webserv/webserv.conf");
 }
 
 ConfigFile::ConfigFile(const char *filename) {
-    this->_parse(filename);
+    this->_first_parsing(filename);
 }
 
 ConfigFile::~ConfigFile(void) {
@@ -43,54 +26,64 @@ ConfigFile::~ConfigFile(void) {
         delete *it;
 }
 
-void ConfigFile::_parse(const char *filename) {
-    ifstream file(filename);
-    string   line;
+/*!
+ * @brief 
+    This method provides in creating a temporary file where the output of an 
+    initial parsing will be written, which consists of:
+    - deleting comments.
+    - deleting blank lines.
+    - include the files in the include directive.    
+ */
+void ConfigFile::_first_parsing(const char *filename) {
+    // tmp file
+    // 
+    vector<string> parsed_content;
+    ifstream       file(filename);
+    string         line, token;
 
     if (!file.is_open()) {
         cerr << "Error: ConfigFile: file does not exists." << endl;
         // Return an error code
     }
     while (getline(file, line)) {
-        string result = line.substr(0, line.find_first_of(" \t"));
-        // int brackets = 0;
-
-        if (result[0] == 35 || !result[0])
+        line = strip(line);
+        if (line[0] == 35 || !line[0])
             continue;
-        else if (str_in_array(result.c_str(), Directive::_directives)) {
-            // -----------------------------------------------------------------
-            // aggiungi la direttiva a this->_config_file
+        else if (first_token(line) == "include")
+            Include(line, parsed_content);
+        else
+            parsed_content.push_back(line);
+    }
+    file.close();
+    // create tmp file and insert parsed_content on it.
+}
 
-            cout << endl;
-            Directive::router(this->_config_file, "main", result, file);
+void ConfigFile::_parsing(const char *filename) {
+    ifstream file(filename);
+    streampos prev_pos;
+    string   line, token;
 
-            // if (result == "http")
-            //     this->_config_file.push_back(new Http(file, "main"));
+    prev_pos = file.tellg();
+    if (!file.is_open()) {
+        cerr << "Error: ConfigFile: file does not exists." << endl;
+        // Return an error code
+    }
+    while (getline(file, line)) {
+        token = first_token(strip(line));
 
-            // -----------------------------------------------------------------
-
-            // salta fino alla chiusura del blocco se la direttiva e' un contesto
-
-            // QUESTO POSSIAMO FARLO NELLE CLASSI Directive INQUANTO IFSTREAM 
-            // HA MEMORIA DELLA POSIZIONE CORRENTE SE PASSATO PER RIFERIMENTO
-            // while (getline(file, line)) {
-            //     string result2 = line.substr(0, line.find_first_of(" \t"));
-
-            //     if (result2[0] == 35)
-            //         continue;
-            //     else if (line.find_first_of("{") != string::npos)
-            //         brackets++;
-            //     else if (line.find_first_of("}") != string::npos)
-            //         brackets--;
-            //     if (brackets == -1)
-            //         break;
-            // }
-            // -----------------------------------------------------------------
+        if (token[0] == 35 || !token[0]) {
+            prev_pos = file.tellg();
+            continue;
+        }
+        else if (str_in_array(token.c_str(), Directive::_directives)) {
+            // cout << "configfile: " << token << endl;
+            Directive::router(this->_config_file, "main", token, prev_pos, file);
         }
         else {
             cerr << "Error: ConfigFile: sysntax error." << endl;
             // Return an error code
         }
+        prev_pos = file.tellg();
     }
     file.close();
     // assign this->_config_file

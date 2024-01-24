@@ -170,7 +170,7 @@
         Context:	server
 
     [ ] include     
-        Module:     ngx_http_core_module
+        Module:     Core functionality
         Syntax:	    include file | mask;
         Default:	———
         Context:	any

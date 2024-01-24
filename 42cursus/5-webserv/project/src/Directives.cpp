@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:15:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/23 15:05:21 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:23:29 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ Directive::~Directive() {}
 /*!
  * @brief
     Router method for handling different directives.
+
+    This method can only be called by the ConfigFile class and the derived 
+    Directive classes that are contexts.
  * @param value
     Vector of Directive pointers to store created objects.
  * @param context
@@ -51,8 +54,10 @@ void Directive::router(
     vector<Directive *> &value,
     string context,
     string directive,
+    streampos prev_pos,
     ifstream &file
 ) {
+    (void)prev_pos;
     if (directive == "http")
         value.push_back(new Http(file, context));
     // else if (directive == "server")
@@ -67,8 +72,6 @@ void Directive::router(
     //     value.push_back(new Root(file, context));
     // else if (directive == "server_name")
     //     value.push_back(new ServerName(file, context));
-    // else if (directive == "include")
-    //     value.push_back(new Include(file, context));
     // else if (directive == "error_page")
     //     value.push_back(new ErrorPage(file, context));
     // else if (directive == "client_max_body_size")
@@ -79,7 +82,35 @@ void Directive::router(
     //     value.push_back(new Index(file, context));
     // else if (directive == "autoindex")
     //     value.push_back(new Autoindex(file, context));
+    else
+        cerr << "Error: Directive: syntax error" << endl;
 }
+
+// Include -------------------------------------------------------------------->
+
+Include::Include(string raw_value, vector<string> &parsed_content) {
+    this->_type == "include";
+    this->_is_context = false;
+    this->_first_parsing(raw_value, parsed_content);
+}
+
+Include::~Include() {}
+
+void Include::_first_parsing(string raw_value, vector<string> &parsed_content) {
+    (void)parsed_content;
+    // ifstream included(raw_value.substr(raw_value.find_first_of(" /t"), ))
+
+    cout << "INCLUDE: " << raw_value[7] << endl;
+    
+    
+
+
+}
+
+void Include::_parsing(ifstream &raw_value) {
+    (void)raw_value;
+}
+
 
 // Http ----------------------------------------------------------------------->
 
@@ -102,7 +133,7 @@ Http::Http(ifstream &raw_value, string context) {
     }
     this->_type == "http";
     this->_is_context = true;
-    this->_parse(raw_value);
+    this->_parsing(raw_value);
 }
 
 Http::~Http() {
@@ -111,25 +142,33 @@ Http::~Http() {
         delete *it;
 }
 
-void Http::_parse(ifstream &raw_value) {
-    string line, result2;
+void Http::_parsing(ifstream &raw_value) {
+    streampos prev_pos;
+    string line, token;
     int    brackets;
 
+    prev_pos = raw_value.tellg();
     brackets = 0;
     while (getline(raw_value, line)) {
-        result2 = line.substr(0, line.find_first_of(" \t"));
-        if (result2[0] == 35)
+        token = first_token(strip(line));
+        cout << "http:       " << token << endl;
+        if (token[0] == 35) {
+            prev_pos = raw_value.tellg();
             continue;
-        else if (str_in_array(result2.c_str(), this->_directives))
-            router(this->_value, this->_type, result2, raw_value);
+        }
+        else if (str_in_array(token.c_str(), this->_directives))
+            router(this->_value, this->_type, token, prev_pos, raw_value);
         else if (line.find_first_of("{") != string::npos)
             brackets++;
         else if (line.find_first_of("}") != string::npos)
             brackets--;
         if (brackets == -1)
             break;
+        prev_pos = raw_value.tellg();
     }
 }
 
 // Server --------------------------------------------------------------------->
+
+// <...>
 
