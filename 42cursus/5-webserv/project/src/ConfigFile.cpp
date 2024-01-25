@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ConfigFile.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:32 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/24 16:46:36 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:33:22 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ ConfigFile::ConfigFile(const char *filename) {
 }
 
 ConfigFile::~ConfigFile(void) {
-    typedef vector<Directive*>::iterator IT;
-    for (IT it = _config_file.begin(); it != _config_file.end(); ++it)
+    for (VecDirIt it = _config_file.begin(); it != _config_file.end(); ++it)
         delete *it;
 }
 
@@ -56,13 +55,22 @@ void ConfigFile::_first_parsing(const char *filename) {
     }
     file.close();
     // create tmp file and insert parsed_content on it.
+
+    for (vector<string>::iterator it = parsed_content.begin(); it != parsed_content.end(); it++) {
+        cout << *it << endl;
+    }
+
+
+
+
 }
 
 void ConfigFile::_parsing(const char *filename) {
-    ifstream file(filename);
+    ifstream  file;
     streampos prev_pos;
-    string   line, token;
+    string    line, token;
 
+    file.open(filename);
     prev_pos = file.tellg();
     if (!file.is_open()) {
         cerr << "Error: ConfigFile: file does not exists." << endl;

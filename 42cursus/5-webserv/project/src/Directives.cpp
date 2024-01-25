@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Directives.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:15:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/24 15:52:11 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:33:23 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Directive::~Directive() {}
  * @brief
     Router method for handling different directives.
 
-    This method can only be called by the ConfigFile class and the derived 
+    This method can only be called by the ConfigFile class and the derived
     Directive classes that are contexts.
  * @param value
     Vector of Directive pointers to store created objects.
@@ -83,7 +83,7 @@ void Directive::router(
     // else if (directive == "autoindex")
     //     value.push_back(new Autoindex(file, context));
     else
-        cerr << "Error: Directive: syntax error" << endl;
+        cerr << "webserv: Directive: syntax error" << endl;
 }
 
 // Include -------------------------------------------------------------------->
@@ -91,35 +91,75 @@ void Directive::router(
 Include::Include(string raw_value, vector<string> &parsed_content) {
     this->_type == "include";
     this->_is_context = false;
-    this->_first_parsing(raw_value, parsed_content);
+    this->_ptr_parsed_content = &parsed_content;
+    this->_pre_parsing(raw_value);
 }
 
 Include::~Include() {}
 
-void Include::_first_parsing(string raw_value, vector<string> &parsed_content) {
-    (void)parsed_content;
-    // ifstream included();
-    string path;
+/*!
+ * @brief 
+    This function performs pre-parsing on the given raw_value, extracting 
+    configuration file paths, and calling the _parsing function to parse each 
+    configuration file.
+ * @param raw_value 
+    The input string containing raw configuration information.
+ */
+void Include::_pre_parsing(string raw_value) {
+    vector<string> configs;
+    string         path;
+    DIR            *dir;
+    struct dirent  *entry;
+    ifstream       config;
 
     path = second_token(raw_value);
-    if (path[path.length() - 1] == 42) 
-        // mettere in un vettore tutti i path dei file nella dir. 
+    if (path[path.length() - 1] == 42) {
+        path = path.substr(0, path.length() - 1);
+        dir = opendir(path.c_str());
+        if (dir) {
+            while ((entry = readdir(dir)) != NULL) {
+                if (strcmp(entry->d_name, ".") && strcmp(entry->d_name, ".."))
+                    configs.push_back(path + entry->d_name);
+            }
+            closedir(dir);
+        }
+    }
     else
-        // mettere nel vettore il path.
-    
-    // passare alla seconda fase -> eseguire _parsing per ogni file e aggiungere
-    // a parsed_content il contenuto di ogni file di configurazione 
-    // adeguatamente parsato (rimozione commenti, righe vuote ed esecuzione di 
-    // direttive include)
-
-
-
+        configs.push_back(path);
+    for (VecStrIt it = configs.begin(); it != configs.end(); it++) {
+        config.open(it->c_str());
+        this->_parsing(config);
+    }
 }
 
+/*!
+ * @brief 
+    This function reads and processes the content of the input file stream, 
+    extracting relevant information.
+    It identifies and handles "include" directives, updating the parsed content 
+    accordingly.
+ * @param raw_value 
+    An input file stream representing the configuration content to be parsed.
+ */
 void Include::_parsing(ifstream &raw_value) {
-    (void)raw_value;
-}
+    string line;
 
+    if (raw_value.is_open()) {
+        while (getline(raw_value, line)) {
+            line = strip(line);
+            if (line[0] == 35 || !line[0])
+                continue;
+            else if (first_token(line) == "include")
+                Include(line, *this->_ptr_parsed_content);
+            else
+                this->_ptr_parsed_content->push_back(line);
+        }
+        raw_value.close();
+    }
+    else {
+        cerr << "webserv: Include: file does not exists." << endl;
+    }
+}
 
 // Http ----------------------------------------------------------------------->
 
@@ -127,7 +167,7 @@ Http::Http(string context) {
     vector<Directive *> value;
 
     if (context != "main") {
-        cerr << "Http: http context can be used only in: main" << endl;
+        cerr << "webserv: Http: http context can be used only in: main" << endl;
         // Exit
     }
     this->_type == "http";
@@ -137,7 +177,8 @@ Http::Http(string context) {
 
 Http::Http(ifstream &raw_value, string context) {
     if (context != "main") {
-        cerr << "Http: http directive can be used only in main context" << endl;
+        cerr << "webserv: Http: http directive can be used only in main context" 
+            << endl;
         // Exit
     }
     this->_type == "http";
@@ -146,15 +187,14 @@ Http::Http(ifstream &raw_value, string context) {
 }
 
 Http::~Http() {
-    typedef vector<Directive*>::iterator IT;
-    for (IT it = _value.begin(); it != _value.end(); ++it)
+    for (VecDirIt it = _value.begin(); it != _value.end(); ++it)
         delete *it;
 }
 
 void Http::_parsing(ifstream &raw_value) {
     streampos prev_pos;
-    string line, token;
-    int    brackets;
+    string    line, token;
+    int       brackets;
 
     prev_pos = raw_value.tellg();
     brackets = 0;

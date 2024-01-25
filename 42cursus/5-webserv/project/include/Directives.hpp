@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Directives.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:59:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/24 17:11:29 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:33:16 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <dirent.h>
 
 #include "utils.hpp"
 
@@ -35,6 +36,9 @@ using std::streampos;
 
 class Directive {
     protected:
+        typedef vector<string>::iterator VecStrIt;
+        typedef vector<Directive *>::iterator VecDirIt;
+
         string _type;
         bool   _is_context;
 
@@ -64,10 +68,10 @@ class Directive {
  */
 class Include : public Directive {
     private:
-        string _value;
-        // vector<string> _value;
+        string         _value;
+        vector<string> *_ptr_parsed_content;
         
-        void _first_parsing(string raw_value, vector<string> &parsed_content);
+        void _pre_parsing(string raw_value);
         void _parsing(ifstream &raw_value);
         
     public:

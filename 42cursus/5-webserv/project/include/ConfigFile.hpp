@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ConfigFile.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:15 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/24 16:32:43 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:33:15 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ using std::getline;
 
 class ConfigFile {
     private:
+        typedef vector<Directive *>::iterator VecDirIt;
+        
         vector<Directive *> _config_file;
 
         void _first_parsing(const char *filename);
