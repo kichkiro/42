@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:59:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/25 12:33:16 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:21:04 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <fstream>
 #include <string>
 #include <dirent.h>
+#include <unistd.h>
 
 #include "utils.hpp"
 
@@ -39,14 +40,22 @@ class Directive {
         typedef vector<string>::iterator VecStrIt;
         typedef vector<Directive *>::iterator VecDirIt;
 
-        string _type;
-        bool   _is_context;
+        string              _type;
+        bool                _is_context;
+        string              _value_inline;
+        vector<Directive *> _value_block;
 
-        virtual void _parsing(ifstream &raw_value) = 0;
+        // virtual void _parsing(ifstream &raw_value) = 0;
+        
+        virtual void _parsing_inline(ifstream &raw_value);
+        virtual void _parsing_block(ifstream &raw_value);
 
     public:
         Directive(void);
         virtual ~Directive();
+
+        string              get_value_inline(void);
+        vector<Directive *> get_value_block(void);
 
         static const char *_directives[];
 
@@ -54,7 +63,6 @@ class Directive {
             vector<Directive *> &value,
             string context,
             string directive,
-            streampos prev_pos,
             ifstream &file
         );
 };
@@ -68,7 +76,7 @@ class Directive {
  */
 class Include : public Directive {
     private:
-        string         _value;
+        // string         _value;
         vector<string> *_ptr_parsed_content;
         
         void _pre_parsing(string raw_value);
@@ -88,9 +96,9 @@ class Include : public Directive {
  */
 class Http : public Directive {
     private:
-        vector<Directive *> _value;
+        // vector<Directive *> _value;
 
-        void _parsing(ifstream &raw_value);
+        // void _parsing(ifstream &raw_value);
 
     public:
         Http(string context);
@@ -98,12 +106,24 @@ class Http : public Directive {
         ~Http();
 };
 
-// class Server : public Directive {
-//     private:
+/*!
+ * @ref
+    Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#server
+    Syntax:	    server { ... }
+    Default:	———
+    Context:	http
+ */
+class Server : public Directive {
+    private:
+        // vector<Directive *> _value;
 
-//     public:
+        // void _parsing(ifstream &raw_value);
 
-// };
+    public:
+        Server(string context);
+        Server(ifstream &raw_value, string context);
+        ~Server();
+};
 
 // class Location : public Directive {
 //     private:

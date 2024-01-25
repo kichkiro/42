@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:32 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/25 12:33:22 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:16:28 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,30 @@ ConfigFile::ConfigFile(const char *filename) {
 }
 
 ConfigFile::~ConfigFile(void) {
-    for (VecDirIt it = _config_file.begin(); it != _config_file.end(); ++it)
+    for (VecDirIt it = _config.begin(); it != _config.end(); ++it)
         delete *it;
 }
 
 /*!
- * @brief 
-    This method provides in creating a temporary file where the output of an 
+ * @brief
+    This method provides in creating a temporary file where the output of an
     initial parsing will be written, which consists of:
     - deleting comments.
     - deleting blank lines.
-    - include the files in the include directive.    
+    - include the files in the include directive.
  */
 void ConfigFile::_first_parsing(const char *filename) {
-    // tmp file
-    // 
     vector<string> parsed_content;
-    ifstream       file(filename);
-    string         line, token;
+    ifstream       input_file;
+    ofstream       tmp_file;
+    string         line, token, tmp_filename;
 
-    if (!file.is_open()) {
-        cerr << "Error: ConfigFile: file does not exists." << endl;
+    input_file.open(filename);
+    if (!input_file.is_open()) {
+        cerr << "Error: ConfigFile: file does not exists" << endl;
         // Return an error code
     }
-    while (getline(file, line)) {
+    while (getline(input_file, line)) {
         line = strip(line);
         if (line[0] == 35 || !line[0])
             continue;
@@ -53,46 +53,40 @@ void ConfigFile::_first_parsing(const char *filename) {
         else
             parsed_content.push_back(line);
     }
-    file.close();
-    // create tmp file and insert parsed_content on it.
-
-    for (vector<string>::iterator it = parsed_content.begin(); it != parsed_content.end(); it++) {
-        cout << *it << endl;
+    input_file.close();
+    tmp_filename = "temp_config_file.txt";
+    tmp_file.open(tmp_filename.c_str());
+    if (!tmp_file.is_open()) {
+        cerr << "Error: ConfigFile: could not create temporary file" << endl;
+        // Return an error code
     }
-
-
-
-
+    for (size_t i = 0; i < parsed_content.size(); ++i) {
+        cout << parsed_content[i] << endl;
+        tmp_file << parsed_content[i] << endl;
+    }
+    tmp_file.close();
+    this->_parsing(tmp_filename.c_str());
 }
 
-void ConfigFile::_parsing(const char *filename) {
+void ConfigFile::_parsing(const char *config_file) {
     ifstream  file;
-    streampos prev_pos;
     string    line, token;
 
-    file.open(filename);
-    prev_pos = file.tellg();
+    file.open(config_file);
     if (!file.is_open()) {
-        cerr << "Error: ConfigFile: file does not exists." << endl;
+        cerr << "webserv: ConfigFile: file does not exists" << endl;
         // Return an error code
     }
     while (getline(file, line)) {
         token = first_token(strip(line));
-
-        if (token[0] == 35 || !token[0]) {
-            prev_pos = file.tellg();
-            continue;
-        }
-        else if (str_in_array(token.c_str(), Directive::_directives)) {
-            // cout << "configfile: " << token << endl;
-            Directive::router(this->_config_file, "main", token, prev_pos, file);
-        }
+        if (str_in_array(token.c_str(), Directive::_directives))
+            Directive::router(this->_config, "main", token, file);
         else {
-            cerr << "Error: ConfigFile: sysntax error." << endl;
+            cerr << "webserv: ConfigFile: <" << token << 
+                "> directive does not exists" << endl;
             // Return an error code
         }
-        prev_pos = file.tellg();
     }
     file.close();
-    // assign this->_config_file
+    remove(config_file);
 }

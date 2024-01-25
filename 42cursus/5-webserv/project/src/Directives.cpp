@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:15:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/25 12:33:23 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:29:23 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ Directive::Directive(void) {}
 
 Directive::~Directive() {}
 
+string Directive::get_value_inline(void) {
+    return this->_value_inline;
+}
+
+vector<Directive *> Directive::get_value_block(void) {
+    return this->_value_block;
+}
+
 /*!
  * @brief
     Router method for handling different directives.
@@ -54,14 +62,12 @@ void Directive::router(
     vector<Directive *> &value,
     string context,
     string directive,
-    streampos prev_pos,
     ifstream &file
 ) {
-    (void)prev_pos;
     if (directive == "http")
         value.push_back(new Http(file, context));
-    // else if (directive == "server")
-    //     value.push_back(new Server(file, context));   
+    else if (directive == "server")
+        value.push_back(new Server(file, context));
     // else if (directive == "location")
     //     value.push_back(new Location(file, context));
     // else if (directive == "limit_except")
@@ -83,7 +89,32 @@ void Directive::router(
     // else if (directive == "autoindex")
     //     value.push_back(new Autoindex(file, context));
     else
-        cerr << "webserv: Directive: syntax error" << endl;
+        cerr << "webserv: Directive: <" << directive <<
+        "> directive does not exists" << endl;
+}
+
+void Directive::_parsing_inline(ifstream &raw_value) {
+    (void)raw_value;
+}
+
+void Directive::_parsing_block(ifstream &raw_value) {
+    string    line, token;
+    int       brackets;
+
+    brackets = 0;
+    while (getline(raw_value, line)) {
+        token = first_token(strip(line));
+        if (token[0] == 35)
+            continue;
+        else if (str_in_array(token.c_str(), this->_directives))
+            router(this->_value_block, this->_type, token, raw_value);
+        else if (line.find_first_of("{") != string::npos)
+            brackets++;
+        else if (line.find_first_of("}") != string::npos)
+            brackets--;
+        if (brackets == -1)
+            break;
+    }
 }
 
 // Include -------------------------------------------------------------------->
@@ -98,18 +129,18 @@ Include::Include(string raw_value, vector<string> &parsed_content) {
 Include::~Include() {}
 
 /*!
- * @brief 
-    This function performs pre-parsing on the given raw_value, extracting 
-    configuration file paths, and calling the _parsing function to parse each 
+ * @brief
+    This function performs pre-parsing on the given raw_value, extracting
+    configuration file paths, and calling the _parsing function to parse each
     configuration file.
- * @param raw_value 
+ * @param raw_value
     The input string containing raw configuration information.
  */
 void Include::_pre_parsing(string raw_value) {
     vector<string> configs;
     string         path;
-    DIR            *dir;
-    struct dirent  *entry;
+    DIR *dir;
+    struct dirent *entry;
     ifstream       config;
 
     path = second_token(raw_value);
@@ -133,12 +164,12 @@ void Include::_pre_parsing(string raw_value) {
 }
 
 /*!
- * @brief 
-    This function reads and processes the content of the input file stream, 
+ * @brief
+    This function reads and processes the content of the input file stream,
     extracting relevant information.
-    It identifies and handles "include" directives, updating the parsed content 
+    It identifies and handles "include" directives, updating the parsed content
     accordingly.
- * @param raw_value 
+ * @param raw_value
     An input file stream representing the configuration content to be parsed.
  */
 void Include::_parsing(ifstream &raw_value) {
@@ -157,7 +188,7 @@ void Include::_parsing(ifstream &raw_value) {
         raw_value.close();
     }
     else {
-        cerr << "webserv: Include: file does not exists." << endl;
+        cerr << "webserv: Include: file does not exists" << endl;
     }
 }
 
@@ -167,57 +198,108 @@ Http::Http(string context) {
     vector<Directive *> value;
 
     if (context != "main") {
-        cerr << "webserv: Http: http context can be used only in: main" << endl;
+        cerr << "webserv: Http: this directive can be used only in: main" <<
+            endl;
         // Exit
     }
-    this->_type == "http";
+    this->_type = "http";
     this->_is_context = true;
-    this->_value = value;
+    this->_value_block = value;
 }
 
 Http::Http(ifstream &raw_value, string context) {
     if (context != "main") {
-        cerr << "webserv: Http: http directive can be used only in main context" 
-            << endl;
+        cerr << "webserv: Http: this directive can be used only in: main" <<
+            endl;
         // Exit
     }
-    this->_type == "http";
+    this->_type = "http";
     this->_is_context = true;
-    this->_parsing(raw_value);
+    this->_parsing_block(raw_value);
 }
 
 Http::~Http() {
-    for (VecDirIt it = _value.begin(); it != _value.end(); ++it)
+    for (VecDirIt it = this->_value_block.begin(); 
+        it != this->_value_block.end(); ++it)
         delete *it;
 }
 
-void Http::_parsing(ifstream &raw_value) {
-    streampos prev_pos;
-    string    line, token;
-    int       brackets;
+// void Http::_parsing(ifstream &raw_value) {
+//     string    line, token;
+//     int       brackets;
 
-    prev_pos = raw_value.tellg();
-    brackets = 0;
-    while (getline(raw_value, line)) {
-        token = first_token(strip(line));
-        cout << "http:       " << token << endl;
-        if (token[0] == 35) {
-            prev_pos = raw_value.tellg();
-            continue;
-        }
-        else if (str_in_array(token.c_str(), this->_directives))
-            router(this->_value, this->_type, token, prev_pos, raw_value);
-        else if (line.find_first_of("{") != string::npos)
-            brackets++;
-        else if (line.find_first_of("}") != string::npos)
-            brackets--;
-        if (brackets == -1)
-            break;
-        prev_pos = raw_value.tellg();
-    }
-}
+//     brackets = 0;
+//     while (getline(raw_value, line)) {
+//         token = first_token(strip(line));
+//         if (token[0] == 35)
+//             continue;
+//         else if (str_in_array(token.c_str(), this->_directives))
+//             router(this->_value_block, this->_type, token, raw_value);
+//         if (line.find_first_of("{") != string::npos)
+//             brackets++;
+//         else if (line.find_first_of("}") != string::npos)
+//             brackets--;
+//         if (brackets == -1)
+//             break;
+//     }
+// }
+
 
 // Server --------------------------------------------------------------------->
 
-// <...>
+Server::Server(string context) {
+    vector<Directive *> value;
 
+    if (context != "http") {
+        cerr << "webserv: Server: this directive can be used only in: http" <<
+            " and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "server";
+    this->_is_context = true;
+    this->_value_block = value;
+}
+
+Server::Server(ifstream &raw_value, string context) {
+    if (context != "http") {
+        cerr << "webserv: Server: this directive can be used only in: http" <<
+            " and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "server";
+    this->_is_context = true;
+    this->_parsing_block(raw_value);
+}
+
+Server::~Server() {
+    for (VecDirIt it = this->_value_block.begin(); 
+        it != this->_value_block.end(); ++it)
+        delete *it;
+}
+
+// void Server::_parsing(ifstream &raw_value) {
+//     streampos prev_pos;
+//     string    line, token;
+//     int       brackets;
+
+//     prev_pos = raw_value.tellg();
+//     brackets = 0;
+//     while (getline(raw_value, line)) {
+//         token = first_token(strip(line));
+//         if (token[0] == 35) {
+//             prev_pos = raw_value.tellg();
+//             continue;
+//         }
+//         else if (str_in_array(token.c_str(), this->_directives))
+//             router(this->_value_block, this->_type, token, raw_value);
+//         else if (line.find_first_of("{") != string::npos)
+//             brackets++;
+//         else if (line.find_first_of("}") != string::npos)
+//             brackets--;
+//         if (brackets == -1)
+//             break;
+//         prev_pos = raw_value.tellg();
+//     }
+// }
+
+// Location ------------------------------------------------------------------->

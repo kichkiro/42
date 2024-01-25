@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:15 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/25 12:33:15 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:54:31 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <cstdio>
+#include <cstdlib>
 
 #include "Directives.hpp"
 #include "utils.hpp"
@@ -28,6 +30,8 @@ using std::endl;
 using std::string;
 using std::vector;
 using std::getline;
+using std::remove;
+using std::ofstream;
 
 // Class ---------------------------------------------------------------------->
 
@@ -35,10 +39,10 @@ class ConfigFile {
     private:
         typedef vector<Directive *>::iterator VecDirIt;
         
-        vector<Directive *> _config_file;
+        vector<Directive *> _config;
 
         void _first_parsing(const char *filename);
-        void _parsing(const char *filename);
+        void _parsing(const char *tmp_file);
 
     public:
         ConfigFile(void);
