@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Directives.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:15:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/25 17:29:23 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/27 17:54:03 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ void Directive::router(
     string directive,
     ifstream &file
 ) {
-    if (directive == "http")
+    if (directive == "http") {
         value.push_back(new Http(file, context));
+        cout << value[0]->_type << endl;
+    }
     else if (directive == "server")
         value.push_back(new Server(file, context));
     // else if (directive == "location")
@@ -108,7 +110,7 @@ void Directive::_parsing_block(ifstream &raw_value) {
             continue;
         else if (str_in_array(token.c_str(), this->_directives))
             router(this->_value_block, this->_type, token, raw_value);
-        else if (line.find_first_of("{") != string::npos)
+        if (line.find_first_of("{") != string::npos)
             brackets++;
         else if (line.find_first_of("}") != string::npos)
             brackets--;
@@ -224,27 +226,6 @@ Http::~Http() {
         delete *it;
 }
 
-// void Http::_parsing(ifstream &raw_value) {
-//     string    line, token;
-//     int       brackets;
-
-//     brackets = 0;
-//     while (getline(raw_value, line)) {
-//         token = first_token(strip(line));
-//         if (token[0] == 35)
-//             continue;
-//         else if (str_in_array(token.c_str(), this->_directives))
-//             router(this->_value_block, this->_type, token, raw_value);
-//         if (line.find_first_of("{") != string::npos)
-//             brackets++;
-//         else if (line.find_first_of("}") != string::npos)
-//             brackets--;
-//         if (brackets == -1)
-//             break;
-//     }
-// }
-
-
 // Server --------------------------------------------------------------------->
 
 Server::Server(string context) {
@@ -276,30 +257,5 @@ Server::~Server() {
         it != this->_value_block.end(); ++it)
         delete *it;
 }
-
-// void Server::_parsing(ifstream &raw_value) {
-//     streampos prev_pos;
-//     string    line, token;
-//     int       brackets;
-
-//     prev_pos = raw_value.tellg();
-//     brackets = 0;
-//     while (getline(raw_value, line)) {
-//         token = first_token(strip(line));
-//         if (token[0] == 35) {
-//             prev_pos = raw_value.tellg();
-//             continue;
-//         }
-//         else if (str_in_array(token.c_str(), this->_directives))
-//             router(this->_value_block, this->_type, token, raw_value);
-//         else if (line.find_first_of("{") != string::npos)
-//             brackets++;
-//         else if (line.find_first_of("}") != string::npos)
-//             brackets--;
-//         if (brackets == -1)
-//             break;
-//         prev_pos = raw_value.tellg();
-//     }
-// }
 
 // Location ------------------------------------------------------------------->

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Directives.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:59:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/25 17:21:04 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/27 17:54:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ class Directive {
         string              _value_inline;
         vector<Directive *> _value_block;
 
-        // virtual void _parsing(ifstream &raw_value) = 0;
-        
         virtual void _parsing_inline(ifstream &raw_value);
         virtual void _parsing_block(ifstream &raw_value);
 
@@ -115,7 +113,7 @@ class Http : public Directive {
  */
 class Server : public Directive {
     private:
-        // vector<Directive *> _value;
+        vector<Directive *> _value;
 
         // void _parsing(ifstream &raw_value);
 
