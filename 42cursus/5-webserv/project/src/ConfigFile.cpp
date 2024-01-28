@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:32 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/27 09:44:59 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/28 04:59:39 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,8 @@ void ConfigFile::_parsing(const char *config_file) {
     }
     while (getline(file, line)) {
         token = first_token(strip(line));
-        if (str_in_array(token.c_str(), Directive::_directives)) {
-            Directive::router(this->_config, "main", token, file);
-            
-        }
+        if (str_in_array(token.c_str(), Directive::_directives))
+            Directive::router(this->_config, "main", token, line, file);
         else {
             cerr << "webserv: ConfigFile: <" << token << 
                 "> directive does not exists" << endl;

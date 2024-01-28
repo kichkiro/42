@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:59:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/27 17:54:30 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/28 06:04:42 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ class Directive {
 
         string              _type;
         bool                _is_context;
-        string              _value_inline;
+        vector<string>      _value_inline;
         vector<Directive *> _value_block;
 
-        virtual void _parsing_inline(ifstream &raw_value);
+        virtual void _parsing_inline(string raw_value);
         virtual void _parsing_block(ifstream &raw_value);
 
     public:
         Directive(void);
         virtual ~Directive();
 
-        string              get_value_inline(void);
+        vector<string>      get_value_inline(void);
         vector<Directive *> get_value_block(void);
 
         static const char *_directives[];
@@ -61,6 +61,7 @@ class Directive {
             vector<Directive *> &value,
             string context,
             string directive,
+            string line,
             ifstream &file
         );
 };
@@ -74,11 +75,7 @@ class Directive {
  */
 class Include : public Directive {
     private:
-        // string         _value;
-        vector<string> *_ptr_parsed_content;
-        
-        void _pre_parsing(string raw_value);
-        void _parsing(ifstream &raw_value);
+        void _parsing(string raw_value, vector<string> &parsed_content);
         
     public:
         Include(string raw_value, vector<string> &parsed_content);
@@ -93,11 +90,6 @@ class Include : public Directive {
     Context:	main
  */
 class Http : public Directive {
-    private:
-        // vector<Directive *> _value;
-
-        // void _parsing(ifstream &raw_value);
-
     public:
         Http(string context);
         Http(ifstream &raw_value, string context);
@@ -112,11 +104,6 @@ class Http : public Directive {
     Context:	http
  */
 class Server : public Directive {
-    private:
-        vector<Directive *> _value;
-
-        // void _parsing(ifstream &raw_value);
-
     public:
         Server(string context);
         Server(ifstream &raw_value, string context);
@@ -137,53 +124,114 @@ class Server : public Directive {
 
 // };
 
-// class Listen : public Directive {
-//     private:
+/*!
+ * @ref
+    Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
+    Syntax:	    listen address[:port];
+    Default:	listen *:80 | *:8000;
+    Context:	server
+ */
+class Listen : public Directive {
+    public:
+        Listen(string context);
+        Listen(string raw_value, string context);
+        ~Listen();
+};
 
-//     public:
+/*!
+ * @ref
+    Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#root
+    Syntax:	    root path;
+    Default:	root html;
+    Context:	http, server, location, if in location
+ */
+class Root : public Directive {
+    public:
+        Root(string context);
+        Root(string raw_value, string context);
+        ~Root();
+};
 
-// };
+/*!
+ * @ref
+    Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
+    Syntax:	    server_name name ...;
+    Default:    server_name "";
+    Context:	server
+ */
+class ServerName : public Directive {
+    public:
+        ServerName(string context);
+        ServerName(string raw_value, string context);
+        ~ServerName();
+};
 
-// class Root : public Directive {
-//     private:
+/*!
+ * @ref
+    Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#error_page
+    Syntax:	    error_page code ... [=[response]] uri;
+    Default:	———
+    Context:	http, server, location, if in location
+ */
+class ErrorPage : public Directive {
+    public:
+        ErrorPage(string context);
+        ErrorPage(string raw_value, string context);
+        ~ErrorPage();
+};
 
-//     public:
+/*!
+ * @ref
+    Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size
+    Syntax:	    client_max_body_size size;
+    Default:	client_max_body_size 1m;
+    Context:	http, server, location
+ */
+class ClientMaxBodySize : public Directive {
+    public:
+        ClientMaxBodySize(string context);
+        ClientMaxBodySize(string raw_value, string context);
+        ~ClientMaxBodySize();
+};
 
-// };
+/*!
+ * @ref
+    Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#alias
+    Syntax:	    alias path;
+    Default:	———
+    Context:	location
+ */
+class Alias : public Directive {
+    public:
+        Alias(string context);
+        Alias(string raw_value, string context);
+        ~Alias();
+};
 
-// class ServerName : public Directive {
-//     private:
+/*!
+ * @ref
+    Docs:       https://nginx.org/en/docs/http/ngx_http_index_module.html#index
+    Syntax:	    index file ...;
+    Default:    index index.html;
+    Context:	http, server, location
+ */
+class Index : public Directive {
+    public:
+        Index(string context);
+        Index(string raw_value, string context);
+        ~Index();
+};
 
-//     public:
-
-// };
-
-
-// class ClientMaxBodySize : public Directive {
-//     private:
-
-//     public:
-
-// };
-
-// class Alias : public Directive {
-//     private:
-
-//     public:
-
-// };
-
-// class Index : public Directive {
-//     private:
-
-//     public:
-
-// };
-
-// class Autoindex : public Directive {
-//     private:
-
-//     public:
-
-// };
-
+/*!
+ * @ref
+    Docs:       https://nginx.org/en/docs/http/ngx_http_autoindex_module.html#autoindex
+    Syntax:	    autoindex on | off;
+    Default:    autoindex off;
+    Context:	http, server, location
+ */
+class Autoindex : public Directive {
+    public:
+        Autoindex(string context);
+        Autoindex(string raw_value, string context);
+        ~Autoindex();
+};
