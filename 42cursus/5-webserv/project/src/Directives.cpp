@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:15:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/30 13:06:46 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:41:41 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,8 @@ void Directive::router(
     string line,
     ifstream &file
 ) {
-    if (directive == "http") {
+    if (directive == "http")
         value.push_back(new Http(file, context));
-        cout << value[0]->_type << endl;
-    }
     else if (directive == "server")
         value.push_back(new Server(file, context));
     // else if (directive == "location")
@@ -196,22 +194,16 @@ void Include::_parsing(string raw_value, vector<string> &parsed_content) {
 Http::Http(string context) {
     vector<Directive *> value;
 
-    if (context != "main") {
-        cerr << "webserv: Http: this directive can be used only in: main" <<
-            "directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "main")
+        throw WrongContextExc("Http", "main", context);
     this->_type = "http";
     this->_is_context = true;
     this->_value_block = value;
 }
 
 Http::Http(ifstream &raw_value, string context) {
-    if (context != "main") {
-        cerr << "webserv: Http: this directive can be used only in: main" <<
-            "directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "main")
+        throw WrongContextExc("Http", "main", context);
     this->_type = "http";
     this->_is_context = true;
     this->_parsing_block(raw_value);
@@ -228,22 +220,16 @@ Http::~Http() {
 Server::Server(string context) {
     vector<Directive *> value;
 
-    if (context != "http") {
-        cerr << "webserv: Server: this directive can be used only in: http" <<
-            "directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "http")
+        throw WrongContextExc("Server", "http", context);
     this->_type = "server";
     this->_is_context = true;
     this->_value_block = value;
 }
 
 Server::Server(ifstream &raw_value, string context) {
-    if (context != "http") {
-        cerr << "webserv: Server: this directive can be used only in: http" <<
-            "directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "http")
+        throw WrongContextExc("Server", "http", context);
     this->_type = "server";
     this->_is_context = true;
     this->_parsing_block(raw_value);
@@ -268,22 +254,16 @@ Server::~Server() {
 Listen::Listen(string context) {
     vector<string> value;
 
-    if (context != "server") {
-        cerr << "webserv: Listen: this directive can be used only in: server" <<
-            "directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "server")
+        throw WrongContextExc("Listen", "server", context);
     this->_type = "listen";
     this->_is_context = false;
     this->_value_inline = value;
 }
 
 Listen::Listen(string raw_value, string context) {
-    if (context != "server") {
-        cerr << "webserv: Listen: this directive can be used only in: server" <<
-            "directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "server")
+        throw WrongContextExc("Listen", "server", context);
     this->_type = "listen";
     this->_is_context = false;
     this->_parsing_inline(raw_value);
@@ -296,22 +276,16 @@ Listen::~Listen() {}
 Root::Root(string context) {
     vector<string> value;
 
-    if (context != "http" && context != "server" && context != "location") {
-        cerr << "webserv: Root: this directive can be used only in: http, " <<
-            "server, location, directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "http" && context != "server" && context != "location")
+        throw WrongContextExc("Root", "http|server|location", context);
     this->_type = "root";
     this->_is_context = false;
     this->_value_inline = value;
 }
 
 Root::Root(string raw_value, string context) {
-    if (context != "http" && context != "server" && context != "location") {
-        cerr << "webserv: Root: this directive can be used only in: http, " <<
-            "server, location, directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "http" && context != "server" && context != "location")
+        throw WrongContextExc("Root", "http|server|location", context);
     this->_type = "root";
     this->_is_context = false;
     this->_parsing_inline(raw_value);
@@ -324,22 +298,16 @@ Root::~Root() {}
 ServerName::ServerName(string context) {
     vector<string> value;
 
-    if (context != "server") {
-        cerr << "webserv: ServerName: this directive can be used only in: " <<
-            "server directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "server")
+        throw WrongContextExc("ServerName", "server", context);
     this->_type = "server_name";
     this->_is_context = false;
     this->_value_inline = value;
 }
 
 ServerName::ServerName(string raw_value, string context) {
-    if (context != "server") {
-        cerr << "webserv: ServerName: this directive can be used only in: " <<
-            "server directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "server")
+        throw WrongContextExc("ServerName", "server", context);
     this->_type = "server_name";
     this->_is_context = false;
     this->_parsing_inline(raw_value);
@@ -352,22 +320,16 @@ ServerName::~ServerName() {}
 ErrorPage::ErrorPage(string context) {
     vector<string> value;
 
-    if (context != "http" && context != "server" && context != "location") {
-        cerr << "webserv: ErrorPage: this directive can be used only in: http, " 
-            << "server, location, directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "http" && context != "server" && context != "location")
+        throw WrongContextExc("ErrorPage", "http|server|location", context);
     this->_type = "error_page";
     this->_is_context = false;
     this->_value_inline = value;
 }
 
 ErrorPage::ErrorPage(string raw_value, string context) {
-    if (context != "http" && context != "server" && context != "location") {
-        cerr << "webserv: ErrorPage: this directive can be used only in: http, " 
-            << "server, location, directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "http" && context != "server" && context != "location")
+        throw WrongContextExc("ErrorPage", "http|server|location", context);
     this->_type = "error_page";
     this->_is_context = false;
     this->_parsing_inline(raw_value);
@@ -380,24 +342,18 @@ ErrorPage::~ErrorPage() {}
 ClientMaxBodySize::ClientMaxBodySize(string context) {
     vector<string> value;
 
-    if (context != "http" && context != "server" && context != "location") {
-        cerr << "webserv: ClientMaxBodySize: this directive can be used only "
-            << "in: http, server, location, directive/s and not in: " << context 
-            << endl;
-        // Exit
-    }
+    if (context != "http" && context != "server" && context != "location")
+        throw WrongContextExc(
+            "ClientMaxBodySize", "http|server|location", context);
     this->_type = "client_max_body_size";
     this->_is_context = false;
     this->_value_inline = value;
 }
 
 ClientMaxBodySize::ClientMaxBodySize(string raw_value, string context) {
-    if (context != "http" && context != "server" && context != "location") {
-        cerr << "webserv: ClientMaxBodySize: this directive can be used only "
-            << "in: http, server, location, directive/s and not in: " << context 
-            << endl;
-        // Exit
-    }
+    if (context != "http" && context != "server" && context != "location")
+        throw WrongContextExc(
+            "ClientMaxBodySize", "http|server|location", context);
     this->_type = "client_max_body_size";
     this->_is_context = false;
     this->_parsing_inline(raw_value);
@@ -410,22 +366,16 @@ ClientMaxBodySize::~ClientMaxBodySize() {}
 Alias::Alias(string context) {
     vector<string> value;
 
-    if (context != "location") {
-        cerr << "webserv: Alias: this directive can be used only in: " <<
-            "location directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "location")
+        throw WrongContextExc("Alias", "location", context);
     this->_type = "alias";
     this->_is_context = false;
     this->_value_inline = value;
 }
 
 Alias::Alias(string raw_value, string context) {
-    if (context != "location") {
-        cerr << "webserv: Alias: this directive can be used only in: " <<
-            "location directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "location")
+        throw WrongContextExc("Alias", "location", context);
     this->_type = "alias";
     this->_is_context = false;
     this->_parsing_inline(raw_value);
@@ -438,22 +388,16 @@ Alias::~Alias() {}
 Index::Index(string context) {
     vector<string> value;
 
-    if (context != "http" && context != "server" && context != "location") {
-        cerr << "webserv: Index: this directive can be used only in: http, " << 
-            "server, location, directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "http" && context != "server" && context != "location") 
+        throw WrongContextExc("Index", "http|server|location", context);
     this->_type = "index";
     this->_is_context = false;
     this->_value_inline = value;
 }
 
 Index::Index(string raw_value, string context) {
-    if (context != "http" && context != "server" && context != "location") {
-        cerr << "webserv: Index: this directive can be used only in: http, " << 
-            "server, location, directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "http" && context != "server" && context != "location") 
+        throw WrongContextExc("Index", "http|server|location", context);
     this->_type = "index";
     this->_is_context = false;
     this->_parsing_inline(raw_value);
@@ -466,22 +410,16 @@ Index::~Index() {}
 Autoindex::Autoindex(string context) {
     vector<string> value;
 
-    if (context != "http" && context != "server" && context != "location") {
-        cerr << "webserv: Autoindex: this directive can be used only in: http, " 
-            << "server, location, directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "http" && context != "server" && context != "location") 
+        throw WrongContextExc("Autoindex", "http|server|location", context);
     this->_type = "autoindex";
     this->_is_context = false;
     this->_value_inline = value;
 }
 
 Autoindex::Autoindex(string raw_value, string context) {
-    if (context != "http" && context != "server" && context != "location") {
-        cerr << "webserv: Autoindex: this directive can be used only in: http, " 
-            << "server, location, directive/s and not in: " << context << endl;
-        // Exit
-    }
+    if (context != "http" && context != "server" && context != "location") 
+        throw WrongContextExc("Autoindex", "http|server|location", context);
     this->_type = "autoindex";
     this->_is_context = false;
     this->_parsing_inline(raw_value);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ConfigFile.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:32 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/28 04:59:39 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:56:00 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void ConfigFile::_first_parsing(const char *filename) {
 
     input_file.open(filename);
     if (!input_file.is_open()) {
-        cerr << "Error: ConfigFile: file does not exists" << endl;
-        // Return an error code
+        cerr << "webserv: ConfigFile: file does not exists" << endl;
+        throw runtime_error("");
     }
     while (getline(input_file, line)) {
         line = strip(line);
@@ -57,13 +57,11 @@ void ConfigFile::_first_parsing(const char *filename) {
     tmp_filename = "temp_config_file.txt";
     tmp_file.open(tmp_filename.c_str());
     if (!tmp_file.is_open()) {
-        cerr << "Error: ConfigFile: could not create temporary file" << endl;
-        // Return an error code
+        cerr << "webserv: ConfigFile: could not create temporary file" << endl;
+        throw runtime_error("");
     }
-    for (size_t i = 0; i < parsed_content.size(); ++i) {
-        cout << parsed_content[i] << endl;
+    for (size_t i = 0; i < parsed_content.size(); ++i)
         tmp_file << parsed_content[i] << endl;
-    }
     tmp_file.close();
     this->_parsing(tmp_filename.c_str());
 }
@@ -75,16 +73,16 @@ void ConfigFile::_parsing(const char *config_file) {
     file.open(config_file);
     if (!file.is_open()) {
         cerr << "webserv: ConfigFile: file does not exists" << endl;
-        // Return an error code
+        throw runtime_error("");
     }
     while (getline(file, line)) {
         token = first_token(strip(line));
         if (str_in_array(token.c_str(), Directive::_directives))
             Directive::router(this->_config, "main", token, line, file);
         else {
-            cerr << "webserv: ConfigFile: <" << token << 
-                "> directive does not exists" << endl;
-            // Return an error code
+            cerr << "webserv: ConfigFile: \"" << token << 
+                "\" directive does not exists" << endl;
+            throw runtime_error("");
         }
     }
     file.close();

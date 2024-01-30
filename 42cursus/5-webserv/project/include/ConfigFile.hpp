@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:46:15 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/25 13:54:31 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:54:54 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <string>
 #include <cstdio>
 #include <cstdlib>
+#include <exception>
 
 #include "Directives.hpp"
 #include "utils.hpp"
@@ -32,6 +33,7 @@ using std::vector;
 using std::getline;
 using std::remove;
 using std::ofstream;
+using std::runtime_error;
 
 // Class ---------------------------------------------------------------------->
 

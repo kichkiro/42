@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:59:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/30 13:09:16 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:53:05 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <string>
 #include <dirent.h>
 #include <unistd.h>
+#include <exception>
 
 #include "utils.hpp"
 
@@ -32,6 +33,7 @@ using std::ifstream;
 using std::vector;
 using std::getline;
 using std::streampos;
+using std::exception;
 
 // Classes -------------------------------------------------------------------->
 
@@ -64,6 +66,18 @@ class Directive {
             string line,
             ifstream &file
         );
+
+        class WrongContextExc : public exception {
+            private:
+                virtual const char *what(void) throw() {return "err";}
+            public :
+                WrongContextExc(string directive, string allow, string wrong) {
+                    cerr << "webserv: " << directive << ": this directive " << 
+                        "can be used only in: " << allow << " directive/s and "
+                        << "not in: " << wrong << endl;
+                }
+                virtual ~WrongContextExc() throw() {}
+        };
 };
 
 /*!
