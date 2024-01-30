@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Directives.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:59:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/28 06:04:42 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 13:09:16 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,18 +110,33 @@ class Server : public Directive {
         ~Server();
 };
 
+// /*!
+//  * @ref
+//     Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#location
+//     Syntax:	    location [ = | ~ | ~* | ^~ ] uri { ... }
+//                 location @name { ... }
+//     Default:	———
+//     Context:	server, location
+//  */
 // class Location : public Directive {
-//     private:
-
 //     public:
-
+//         Location(string context);
+//         Location(ifstream &raw_value, string context);
+//         ~Location();
 // };
 
-// class Limit_except : public Directive {
-//     private:
-
+// /*!
+//  * @ref
+//     Module:     https://nginx.org/en/docs/http/ngx_http_core_module.html#limit_except
+//     Syntax:	    limit_except method ... { ... }
+//     Default:	———
+//     Context:	location
+//  */
+// class LimitExcept : public Directive {
 //     public:
-
+//         LimitExcept(string context);
+//         LimitExcept(ifstream &raw_value, string context);
+//         ~LimitExcept();
 // };
 
 /*!

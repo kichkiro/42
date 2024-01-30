@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Directives.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:15:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/28 06:10:54 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 13:06:46 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,19 @@ void Directive::router(
     else if (directive == "listen")
         value.push_back(new Listen(line, context));
     else if (directive == "root")
-        value.push_back(new Root(file, context));
+        value.push_back(new Root(line, context));
     else if (directive == "server_name")
-        value.push_back(new ServerName(file, context));
+        value.push_back(new ServerName(line, context));
     else if (directive == "error_page")
-        value.push_back(new ErrorPage(file, context));
+        value.push_back(new ErrorPage(line, context));
     else if (directive == "client_max_body_size")
-        value.push_back(new ClientMaxBodySize(file, context));
+        value.push_back(new ClientMaxBodySize(line, context));
     else if (directive == "alias")
-        value.push_back(new Alias(file, context));
+        value.push_back(new Alias(line, context));
     else if (directive == "index")
-        value.push_back(new Index(file, context));
+        value.push_back(new Index(line, context));
     else if (directive == "autoindex")
-        value.push_back(new Autoindex(file, context));
+        value.push_back(new Autoindex(line, context));
     else
         cerr << "webserv: Directive: <" << directive <<
         "> directive does not exists" << endl;
@@ -259,6 +259,10 @@ Server::~Server() {
 
 // <...>
 
+// LimitExcept ---------------------------------------------------------------->
+
+// <...>
+
 // Listen --------------------------------------------------------------------->
 
 Listen::Listen(string context) {
@@ -270,50 +274,217 @@ Listen::Listen(string context) {
         // Exit
     }
     this->_type = "listen";
-    this->_is_context = true;
+    this->_is_context = false;
     this->_value_inline = value;
 }
 
 Listen::Listen(string raw_value, string context) {
-    if (context != "http") {
-        cerr << "webserv: Listen: this directive can be used only in: http" <<
+    if (context != "server") {
+        cerr << "webserv: Listen: this directive can be used only in: server" <<
             "directive/s and not in: " << context << endl;
         // Exit
     }
     this->_type = "listen";
-    this->_is_context = true;
+    this->_is_context = false;
     this->_parsing_inline(raw_value);
 }
 
-Listen::~Listen() {
-    // for (VecStrIt it = this->_value_inline.begin(); 
-    //     it != this->_value_inline.end(); ++it)
-    //     delete *it;
-}
+Listen::~Listen() {}
 
 // Root ----------------------------------------------------------------------->
 
+Root::Root(string context) {
+    vector<string> value;
 
+    if (context != "http" && context != "server" && context != "location") {
+        cerr << "webserv: Root: this directive can be used only in: http, " <<
+            "server, location, directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "root";
+    this->_is_context = false;
+    this->_value_inline = value;
+}
+
+Root::Root(string raw_value, string context) {
+    if (context != "http" && context != "server" && context != "location") {
+        cerr << "webserv: Root: this directive can be used only in: http, " <<
+            "server, location, directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "root";
+    this->_is_context = false;
+    this->_parsing_inline(raw_value);
+}
+
+Root::~Root() {}
 
 // ServerName ----------------------------------------------------------------->
 
+ServerName::ServerName(string context) {
+    vector<string> value;
 
+    if (context != "server") {
+        cerr << "webserv: ServerName: this directive can be used only in: " <<
+            "server directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "server_name";
+    this->_is_context = false;
+    this->_value_inline = value;
+}
+
+ServerName::ServerName(string raw_value, string context) {
+    if (context != "server") {
+        cerr << "webserv: ServerName: this directive can be used only in: " <<
+            "server directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "server_name";
+    this->_is_context = false;
+    this->_parsing_inline(raw_value);
+}
+
+ServerName::~ServerName() {}
 
 // ErrorPage ------------------------------------------------------------------>
 
+ErrorPage::ErrorPage(string context) {
+    vector<string> value;
 
+    if (context != "http" && context != "server" && context != "location") {
+        cerr << "webserv: ErrorPage: this directive can be used only in: http, " 
+            << "server, location, directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "error_page";
+    this->_is_context = false;
+    this->_value_inline = value;
+}
+
+ErrorPage::ErrorPage(string raw_value, string context) {
+    if (context != "http" && context != "server" && context != "location") {
+        cerr << "webserv: ErrorPage: this directive can be used only in: http, " 
+            << "server, location, directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "error_page";
+    this->_is_context = false;
+    this->_parsing_inline(raw_value);
+}
+
+ErrorPage::~ErrorPage() {}
 
 // ClientMaxBodySize ---------------------------------------------------------->
 
+ClientMaxBodySize::ClientMaxBodySize(string context) {
+    vector<string> value;
 
+    if (context != "http" && context != "server" && context != "location") {
+        cerr << "webserv: ClientMaxBodySize: this directive can be used only "
+            << "in: http, server, location, directive/s and not in: " << context 
+            << endl;
+        // Exit
+    }
+    this->_type = "client_max_body_size";
+    this->_is_context = false;
+    this->_value_inline = value;
+}
+
+ClientMaxBodySize::ClientMaxBodySize(string raw_value, string context) {
+    if (context != "http" && context != "server" && context != "location") {
+        cerr << "webserv: ClientMaxBodySize: this directive can be used only "
+            << "in: http, server, location, directive/s and not in: " << context 
+            << endl;
+        // Exit
+    }
+    this->_type = "client_max_body_size";
+    this->_is_context = false;
+    this->_parsing_inline(raw_value);
+}
+
+ClientMaxBodySize::~ClientMaxBodySize() {}
 
 // Alias ---------------------------------------------------------------------->
 
+Alias::Alias(string context) {
+    vector<string> value;
 
+    if (context != "location") {
+        cerr << "webserv: Alias: this directive can be used only in: " <<
+            "location directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "alias";
+    this->_is_context = false;
+    this->_value_inline = value;
+}
+
+Alias::Alias(string raw_value, string context) {
+    if (context != "location") {
+        cerr << "webserv: Alias: this directive can be used only in: " <<
+            "location directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "alias";
+    this->_is_context = false;
+    this->_parsing_inline(raw_value);
+}
+
+Alias::~Alias() {}
 
 // Index ---------------------------------------------------------------------->
 
+Index::Index(string context) {
+    vector<string> value;
 
+    if (context != "http" && context != "server" && context != "location") {
+        cerr << "webserv: Index: this directive can be used only in: http, " << 
+            "server, location, directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "index";
+    this->_is_context = false;
+    this->_value_inline = value;
+}
+
+Index::Index(string raw_value, string context) {
+    if (context != "http" && context != "server" && context != "location") {
+        cerr << "webserv: Index: this directive can be used only in: http, " << 
+            "server, location, directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "index";
+    this->_is_context = false;
+    this->_parsing_inline(raw_value);
+}
+
+Index::~Index() {}
 
 // Autoindex ------------------------------------------------------------------>
 
+Autoindex::Autoindex(string context) {
+    vector<string> value;
+
+    if (context != "http" && context != "server" && context != "location") {
+        cerr << "webserv: Autoindex: this directive can be used only in: http, " 
+            << "server, location, directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "autoindex";
+    this->_is_context = false;
+    this->_value_inline = value;
+}
+
+Autoindex::Autoindex(string raw_value, string context) {
+    if (context != "http" && context != "server" && context != "location") {
+        cerr << "webserv: Autoindex: this directive can be used only in: http, " 
+            << "server, location, directive/s and not in: " << context << endl;
+        // Exit
+    }
+    this->_type = "autoindex";
+    this->_is_context = false;
+    this->_parsing_inline(raw_value);
+}
+
+Autoindex::~Autoindex() {}

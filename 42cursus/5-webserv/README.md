@@ -64,7 +64,12 @@
 
 ## 📚 - References
 
-- [NGINX - Docs](https://nginx.org/en/docs/)
+- NGINX
+  - [NGINX - Docs](https://nginx.org/en/docs/)
+- RFC
+  - [9110 - HTTP Semantics](https://www.rfc-editor.org/info/rfc9110)
+  - [9111 - HTTP Caching](https://www.rfc-editor.org/info/rfc9111)
+  - [9112 - HTTP/1.1](https://www.rfc-editor.org/info/rfc9112)
 
 ## ⚖️ - License 
 
