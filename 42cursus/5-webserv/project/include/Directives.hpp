@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:59:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/30 16:53:05 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:17:00 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ class Directive {
  * @ref 
     Docs:       https://nginx.org/en/docs/ngx_core_module.html#include
     Syntax:	    include file | mask;
-    Default:	———
+    Default:	—
     Context:	any
  */
 class Include : public Directive {
@@ -100,7 +100,7 @@ class Include : public Directive {
  * @ref
     Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#http
     Syntax:	    http { ... }
-    Default:	———
+    Default:	—
     Context:	main
  */
 class Http : public Directive {
@@ -114,7 +114,7 @@ class Http : public Directive {
  * @ref
     Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#server
     Syntax:	    server { ... }
-    Default:	———
+    Default:	—
     Context:	http
  */
 class Server : public Directive {
@@ -129,7 +129,7 @@ class Server : public Directive {
 //     Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#location
 //     Syntax:	    location [ = | ~ | ~* | ^~ ] uri { ... }
 //                 location @name { ... }
-//     Default:	———
+//     Default:	—
 //     Context:	server, location
 //  */
 // class Location : public Directive {
@@ -143,7 +143,7 @@ class Server : public Directive {
 //  * @ref
 //     Module:     https://nginx.org/en/docs/http/ngx_http_core_module.html#limit_except
 //     Syntax:	    limit_except method ... { ... }
-//     Default:	———
+//     Default:	—
 //     Context:	location
 //  */
 // class LimitExcept : public Directive {
@@ -157,7 +157,7 @@ class Server : public Directive {
  * @ref
     Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
     Syntax:	    listen address[:port];
-    Default:	listen *:80 | *:8000;
+    Default:	listen *:80;
     Context:	server
  */
 class Listen : public Directive {
@@ -172,7 +172,7 @@ class Listen : public Directive {
     Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#root
     Syntax:	    root path;
     Default:	root html;
-    Context:	http, server, location, if in location
+    Context:	http, server, location
  */
 class Root : public Directive {
     public:
@@ -199,8 +199,8 @@ class ServerName : public Directive {
  * @ref
     Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#error_page
     Syntax:	    error_page code ... [=[response]] uri;
-    Default:	———
-    Context:	http, server, location, if in location
+    Default:	—
+    Context:	http, server, location
  */
 class ErrorPage : public Directive {
     public:
@@ -227,7 +227,7 @@ class ClientMaxBodySize : public Directive {
  * @ref
     Docs:       https://nginx.org/en/docs/http/ngx_http_core_module.html#alias
     Syntax:	    alias path;
-    Default:	———
+    Default:	—
     Context:	location
  */
 class Alias : public Directive {

@@ -6,12 +6,10 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:59:33 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/30 16:54:14 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:02:37 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "webserv.hpp"
-// #include "Directive.hpp"
 #include "ConfigFile.hpp"
 
 int main(int argc, char const **argv) {

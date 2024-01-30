@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:15:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/30 16:41:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:11:22 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,6 +256,7 @@ Listen::Listen(string context) {
 
     if (context != "server")
         throw WrongContextExc("Listen", "server", context);
+    value.push_back("*:80");
     this->_type = "listen";
     this->_is_context = false;
     this->_value_inline = value;
@@ -278,6 +279,7 @@ Root::Root(string context) {
 
     if (context != "http" && context != "server" && context != "location")
         throw WrongContextExc("Root", "http|server|location", context);
+    value.push_back("html");
     this->_type = "root";
     this->_is_context = false;
     this->_value_inline = value;
@@ -300,6 +302,7 @@ ServerName::ServerName(string context) {
 
     if (context != "server")
         throw WrongContextExc("ServerName", "server", context);
+    value.push_back("");
     this->_type = "server_name";
     this->_is_context = false;
     this->_value_inline = value;
@@ -345,6 +348,7 @@ ClientMaxBodySize::ClientMaxBodySize(string context) {
     if (context != "http" && context != "server" && context != "location")
         throw WrongContextExc(
             "ClientMaxBodySize", "http|server|location", context);
+    value.push_back("1m");
     this->_type = "client_max_body_size";
     this->_is_context = false;
     this->_value_inline = value;
@@ -390,6 +394,7 @@ Index::Index(string context) {
 
     if (context != "http" && context != "server" && context != "location") 
         throw WrongContextExc("Index", "http|server|location", context);
+    value.push_back("index.html");
     this->_type = "index";
     this->_is_context = false;
     this->_value_inline = value;
@@ -412,6 +417,7 @@ Autoindex::Autoindex(string context) {
 
     if (context != "http" && context != "server" && context != "location") 
         throw WrongContextExc("Autoindex", "http|server|location", context);
+    value.push_back("off");
     this->_type = "autoindex";
     this->_is_context = false;
     this->_value_inline = value;
