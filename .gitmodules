@@ -13,3 +13,6 @@
 [submodule "testers/minishell_tester"]
 	path = testers/minishell_tester
 	url = https://github.com/kichkiro/minishell_tester
+[submodule "42cursus/5-webserv"]
+	path = 42cursus/5-webserv
+	url = https://github.com/kichkiro/webserv
