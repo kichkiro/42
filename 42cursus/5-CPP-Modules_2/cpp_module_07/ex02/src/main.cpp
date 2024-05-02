@@ -3,53 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 14:20:48 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/12/28 16:03:48 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:03:18 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Array.hpp"
 
-int main(void) {
-    // Init ------------------------------------------------------------------->
-    Array<int> a1(4); 
+#define MAX_VAL 750
+int main(int, char **) {
+    Array<int> numbers(MAX_VAL);
+    int *mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++) {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
 
-    cout << "-------------------------------------------------------->" << endl;
-    cout << "size a1: " << a1.size() << endl;
-    cout << endl;
+    for (int i = 0; i < MAX_VAL; i++) {
+        if (mirror[i] != numbers[i]) {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    try {
+        numbers[-2] = 0;
+    }
+    catch (const std::exception &e) {
+        std::cerr << e.what() << '\n';
+    }
+    try {
+        numbers[MAX_VAL] = 0;
+    }
+    catch (const std::exception &e) {
+        std::cerr << e.what() << '\n';
+    }
 
-    for (size_t i = 0; i < a1.size(); i++)
-        a1[i] = i * 42;
-
-    cout << "-------------------------------------------------------->" << endl;
-    for (size_t i = 0; i < a1.size(); i++)
-        cout << "item at index: " << i << " equal to " << a1[i] << endl;
-    cout << endl;
-
-    // Test - Copy Constructor ------------------------------------------------>
-    Array<int> a2(a1);
-    cout << "-------------------------------------------------------->" << endl;
-    cout << "size a2 (copied from a1): " << a2.size() << endl;
-    cout << "Contents of a2 (copied from a1):" << endl;
-    for (size_t i = 0; i < a2.size(); i++)
-        cout << "item at index: " << i << " equal to " << a2[i] << endl;
-    cout << endl;
-    
-    a2[0] = 999;
-    cout << "First item in a2 modified: " << a2[0] << endl;
-    cout << "Corresponding item in a1: " << a1[0] << endl;
-
-    // Test - Assign Operator ------------------------------------------------->
-    Array<int> a3;
-    a3 = a1;
-    cout << "-------------------------------------------------------->" << endl;
-    cout << "size a3 (assigned from a1): " << a3.size() << endl;
-    cout << "Contents of a3 (assigned from a1):" << endl;
-    for (size_t i = 0; i < a3.size(); i++)
-        cout << "item at index: " << i << " equal to " << a3[i] << endl;
-    cout << endl;
+    for (int i = 0; i < MAX_VAL; i++) {
+        numbers[i] = rand();
+    }
+    delete[] mirror;
 
     return 0;
 }

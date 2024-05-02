@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:34:02 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/05/02 16:14:18 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:36:26 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <cstdlib>
+#include <ctime>
 
 using std::cout;
 using std::endl;
