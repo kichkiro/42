@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:34:02 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/12/28 15:45:50 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:14:18 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ using std::exception;
 
 template <typename T>
 class Array {
+    private:
+        T *_arr;
+        size_t _size;
+
     public:
         Array(void);
         Array(unsigned int n);
@@ -37,15 +41,10 @@ class Array {
         size_t size(void) const;
 
         class OutOfRangeException : public exception {
-            public:
-                virtual const char* what() const throw() {
-                    return "Index out of range";
-                }
+            virtual const char* what() const throw() {
+                return "Index out of range";
+            }
         };
-
-    private:
-        T *_arr;
-        size_t _size;
 };
 
 #include "Array.tpp"
