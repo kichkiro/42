@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 12:29:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/12/27 14:02:24 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:00:15 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 Serializer::Serializer() {}
 
-Serializer::Serializer(const Serializer &src) {*this = src;}
+Serializer::Serializer(const Serializer &src) {
+    *this = src;
+}
 
 Serializer::~Serializer() {}
 
-Serializer &Serializer::operator=(const Serializer &rs) {(void)rs;return *this;}
+Serializer &Serializer::operator=(const Serializer &rs) {
+    if (this != &rs)
+        *this = rs;
+    return *this;
+}
 
-uintptr_t Serializer::serialize(Data* ptr) {
+uintptr_t Serializer::serialize(Data *ptr) {
     return reinterpret_cast<uintptr_t>(ptr);
 }
 
-Data* Serializer::deserialize(uintptr_t raw) {
-    return reinterpret_cast<Data*>(raw);
+Data *Serializer::deserialize(uintptr_t raw) {
+    return reinterpret_cast<Data *>(raw);
 }

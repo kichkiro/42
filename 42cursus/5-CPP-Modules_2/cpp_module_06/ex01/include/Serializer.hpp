@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 12:29:10 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/12/27 14:13:56 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:53:16 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ using std::endl;
 // Class ---------------------------------------------------------------------->
 
 class Serializer {
-	public:
-		static uintptr_t serialize(Data *ptr);
-		static Data *deserialize(uintptr_t raw);
-
 	private:
 		Serializer(void);
 		Serializer(Serializer const &src);
 		Serializer &operator=(Serializer const &rs);
 		~Serializer();
+
+	public:
+		static uintptr_t serialize(Data *ptr);
+		static Data *deserialize(uintptr_t raw);
 };

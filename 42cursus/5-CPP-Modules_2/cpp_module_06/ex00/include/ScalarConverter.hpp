@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:29:28 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/15 15:06:24 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:48:13 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <climits>
 #include <limits>
+#include <string>
 
 using std::cout;
 using std::endl;
@@ -31,9 +32,6 @@ using std::numeric_limits;
 // Classes -------------------------------------------------------------------->
 
 class ScalarConverter {
-    public:
-        static void convert(string input);
-
     private:
         static char   _char;
         static int    _int;
@@ -52,4 +50,7 @@ class ScalarConverter {
         static bool _is_floatdouble(string input);
         static void _caster(string type);
         static void _display(bool is_pseudo_literal, bool is_strange_value);
+
+    public:
+        static void convert(string input);
 };
