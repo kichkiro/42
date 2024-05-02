@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:36:49 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/10 20:24:00 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:18:07 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+
+RobotomyRequestForm::RobotomyRequestForm() : 
+    AForm(), _target("def") {}
 
 RobotomyRequestForm::RobotomyRequestForm(string target) : 
     AForm("RobotomyRequestForm", 72, 45), _target(target) {}

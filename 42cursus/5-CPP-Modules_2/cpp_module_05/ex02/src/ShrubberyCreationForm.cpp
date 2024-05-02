@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:36:18 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/11 01:07:15 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:19:08 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+
+ShrubberyCreationForm::ShrubberyCreationForm() : 
+    AForm(), _target("def") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(string target) :
     AForm("ShrubberyCreationForm", 145, 137), _target(target) {}

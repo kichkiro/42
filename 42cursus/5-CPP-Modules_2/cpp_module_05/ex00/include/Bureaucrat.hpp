@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 23:07:00 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/10 19:07:43 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 10:44:42 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <exception>
+#include <string>
 
 using std::cout;
 using std::cerr;
@@ -27,7 +28,12 @@ using std::exception;
 // Class ---------------------------------------------------------------------->
 
 class Bureaucrat {
+    private:
+        const string _name;
+        int          _grade;
+
     public:
+        Bureaucrat(void);
         Bureaucrat(string name, int grade);
         Bureaucrat(const Bureaucrat &src);
         Bureaucrat &operator=(const Bureaucrat &rs);
@@ -39,16 +45,12 @@ class Bureaucrat {
         void   decrementGrade(void);
 
         class GradeTooHighException : public exception {
-            const char *what(void) const throw() {return "grade too high!";}
+            const char *what(void) const throw();
         };
 
         class GradeTooLowException : public exception {
-            const char *what(void) const throw() {return "grade too low!";}
+            const char *what(void) const throw();
         };
-
-    private:
-        const string _name;
-        int          _grade;
 };
 
 ostream &operator<<(ostream &out, const Bureaucrat &rs);

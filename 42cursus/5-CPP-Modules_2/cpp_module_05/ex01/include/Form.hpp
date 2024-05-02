@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:21:47 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/08 12:20:51 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 10:36:01 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <exception>
+#include <string>
 
 #include "Bureaucrat.hpp"
 
@@ -31,7 +32,14 @@ using std::exception;
 class Bureaucrat;
 
 class Form {
+    private:
+        const string _name;
+        bool         _is_signed;
+        const int    _to_sign;
+        const int    _to_exec;
+
     public:
+        Form(void);
         Form(string name, int grade_to_sign, int grade_to_exex);
         Form(const Form &src);
         Form &operator=(const Form &rs);
@@ -44,28 +52,12 @@ class Form {
         void   beSigned(Bureaucrat &b);
         
         class GradeTooHighException : public exception {
-            public:
-                GradeTooHighException(void) : _e("grade too high!") {}
-                virtual ~GradeTooHighException() throw() {}
-                const char *what(void) const throw() {return this->_e.c_str();}
-            private:
-                string _e;
+            const char *what(void) const throw();
         };
 
         class GradeTooLowException : public exception {
-            public:
-                GradeTooLowException(void) : _e("grade too low!") {}
-                virtual ~GradeTooLowException() throw() {}
-                const char *what(void) const throw() {return this->_e.c_str();}
-            private:
-                string _e;
-        };
-        
-    private:
-        const string _name;
-        bool         _is_signed;
-        const int    _to_sign;
-        const int    _to_exec;
+            const char *what(void) const throw();
+        };   
 };
 
 ostream &operator<<(ostream &out, const Form &rs);

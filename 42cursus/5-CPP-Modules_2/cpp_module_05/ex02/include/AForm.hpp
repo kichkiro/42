@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:21:47 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/11 01:07:08 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:13:33 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <exception>
+#include <string>
 
 #include "Bureaucrat.hpp"
 
@@ -31,7 +32,14 @@ using std::exception;
 class Bureaucrat;
 
 class AForm {
+    private:
+        const string _name;
+        bool         _is_signed;
+        const int    _to_sign;
+        const int    _to_exec;
+
     public:
+        AForm(void);
         AForm(string name, int grade_to_sign, int grade_to_exex);
         AForm(const AForm &src);
         AForm &operator=(const AForm &rs);
@@ -44,29 +52,23 @@ class AForm {
         void         beSigned(Bureaucrat &b);
         virtual void execute(const Bureaucrat &executor) const = 0;
 
-        // Exceptions -------------------------------------------------------->>
+        // Exceptions ------------------------------------------------------->>>
         
         class GradeTooHighException : public exception {
-            const char *what() const throw() {return "grade too high!";}
+            const char *what() const throw();
         };
 
         class GradeTooLowException : public exception {
-            const char *what() const throw() {return "grade too low!";}
+            const char *what() const throw();
         };
 
         class FormIsNotSignedException : public exception {
-            const char *what() const throw() {return "form is not signed!";}
+            const char *what() const throw();
         };
         
         class FormIsAlreadySignedException : public exception {
-            const char *what() const throw() {return "form is already signed!";} 
+            const char *what() const throw();
         };
-        
-    private:
-        const string _name;
-        bool         _is_signed;
-        const int    _to_sign;
-        const int    _to_exec;
 };
 
 ostream &operator<<(ostream &out, const AForm &rs);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:36:31 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/10 18:13:27 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:46:24 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <fstream>
 #include <iostream>
 #include <exception>
+#include <string>
 
 #include "AForm.hpp"
 
@@ -30,6 +31,7 @@ using std::runtime_error;
 
 class ShrubberyCreationForm : public AForm {
     public:
+        ShrubberyCreationForm(void);
         ShrubberyCreationForm(string target);
         ShrubberyCreationForm(const ShrubberyCreationForm &src);
         ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rs);

@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:21:52 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/11 00:15:20 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:36:26 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
+
+AForm::AForm(void) :
+    _name("def"),
+    _is_signed(false),
+    _to_sign(150),
+    _to_exec(150) {}
 
 AForm::AForm(string name, int to_sign, int to_exec) :
     _name(name), _is_signed(false), _to_sign(to_sign), _to_exec(to_exec) {
@@ -31,6 +37,22 @@ AForm &AForm::operator=(const AForm &rs) {
 }
 
 AForm::~AForm(void) {}
+
+const char *AForm::GradeTooHighException::what() const throw() {
+    return "AForm: grade too high!";
+}
+
+const char *AForm::GradeTooLowException::what() const throw() {
+    return "AForm: grade too low!";
+}
+
+const char *AForm::FormIsNotSignedException::what() const throw() {
+    return "AForm: not signed";
+}
+
+const char *AForm::FormIsAlreadySignedException::what() const throw() {
+    return "AForm: is alredy signed";
+}
 
 string AForm::getName(void) const {
     return this->_name;

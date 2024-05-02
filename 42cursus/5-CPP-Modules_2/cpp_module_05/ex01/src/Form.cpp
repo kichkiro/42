@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:21:52 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/08 12:48:06 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 10:31:19 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+
+Form::Form(void) : 
+    _name("def"), 
+    _is_signed(false), 
+    _to_sign(150), 
+    _to_exec(150) {}
 
 Form::Form(string name, int to_sign, int to_exec) :
     _name(name), _is_signed(false), _to_sign(to_sign), _to_exec(to_exec) {
@@ -21,7 +27,7 @@ Form::Form(string name, int to_sign, int to_exec) :
 }
 
 Form::Form(const Form &src) :
-    _name(src._name), _is_signed(src._is_signed), _to_sign(src._to_sign), 
+    _name(src._name), _is_signed(src._is_signed), _to_sign(src._to_sign),
     _to_exec(src._to_exec) {}
 
 Form &Form::operator=(const Form &rs) {
@@ -31,6 +37,14 @@ Form &Form::operator=(const Form &rs) {
 }
 
 Form::~Form(void) {}
+
+const char *Form::GradeTooHighException::what() const throw() {
+    return "Form: grade too high!";
+}
+
+const char *Form::GradeTooLowException::what() const throw() {
+    return "Form: grade too low!";
+}
 
 string Form::getName(void) const {
     return this->_name;

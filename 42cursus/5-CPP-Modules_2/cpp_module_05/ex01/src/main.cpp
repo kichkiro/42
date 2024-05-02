@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 23:06:54 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/08 12:49:42 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 10:28:28 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ int main(void) {
     delete b2;
     delete f1;
     delete f2;
+    
     return 0;
 }

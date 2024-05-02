@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:36:55 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/10 20:02:50 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:45:21 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <string>
 
 #include "AForm.hpp"
 
@@ -28,6 +29,7 @@ class AForm;
 
 class RobotomyRequestForm : public AForm {
     public:
+        RobotomyRequestForm(void);
         RobotomyRequestForm(string target);
         RobotomyRequestForm(const RobotomyRequestForm &src);
         RobotomyRequestForm &operator=(const RobotomyRequestForm &rs);

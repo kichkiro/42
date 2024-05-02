@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:37:07 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/10 20:25:28 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:18:03 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
+
+PresidentialPardonForm::PresidentialPardonForm(void) : 
+    AForm(), _target("def") {}
 
 PresidentialPardonForm::PresidentialPardonForm(string target) : 
     AForm("PresidentialPardonForm", 25, 5), _target(target) {}

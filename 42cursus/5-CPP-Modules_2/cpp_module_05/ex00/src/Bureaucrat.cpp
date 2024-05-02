@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 23:08:37 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/07 15:35:54 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:57:37 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat(void) : _name("def"), _grade(150) {}
 
 Bureaucrat::Bureaucrat(string name, int grade) : _name(name), _grade(grade) {
     if (grade < 1)
@@ -29,6 +31,14 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rs) {
 }
 
 Bureaucrat::~Bureaucrat(void) {}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw() {
+    return "grade too high!";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw() {
+    return "grade too low!";
+}
 
 string Bureaucrat::getName(void) const {
     return this->_name;
@@ -51,6 +61,6 @@ void Bureaucrat::decrementGrade(void) {
 }
 
 ostream &operator<<(ostream &out, const Bureaucrat &rs) {
-    out << rs.getName() << ", bureaucrat grade " << rs.getGrade(); 
+    out << rs.getName() << ", bureaucrat grade " << rs.getGrade();
     return (out);
 }

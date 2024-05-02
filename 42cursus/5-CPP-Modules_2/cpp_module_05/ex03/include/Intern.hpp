@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:43:54 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/12/27 11:18:23 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 10:46:31 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // Libraries ------------------------------------------------------------------>
 
 #include <iostream>
+#include <string>
 
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"

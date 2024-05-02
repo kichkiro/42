@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:37:14 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/10 20:22:08 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:44:11 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <string>
 
 #include "AForm.hpp"
 
@@ -28,6 +29,7 @@ class AForm;
 
 class PresidentialPardonForm : public AForm {
     public:
+        PresidentialPardonForm(void);
         PresidentialPardonForm(string target);
         PresidentialPardonForm(const PresidentialPardonForm &src);
         PresidentialPardonForm &operator=(const PresidentialPardonForm &rs);
