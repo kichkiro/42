@@ -6,17 +6,19 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:16:39 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/08 15:24:25 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/03 18:44:41 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 
+// TODO
 template <typename T>
-bool easyfind(T &container, int value) {
-    for (size_t i = 0; i < container.size(); i++) {
-        if (value == container[i])
-            return true;
-    }
-    throw out_of_range("Value not find!");
+int easyfind(const T& container, int value) {
+    typename T::const_iterator it = std::find(container.begin(), 
+                                              container.end(), value);
+    if (it != container.end())
+        return *it;
+    else
+        return -1;
 }

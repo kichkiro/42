@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 12:29:27 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/12/27 15:24:01 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:59:31 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,34 @@
 #include "Data.hpp"
 
 int main(void) {
-	Data*		ptr;
-	uintptr_t   integer;
+    Data       *ptr;
+    uintptr_t   integer;
 
-	ptr = new Data;
-	integer = Serializer::serialize(ptr);
+    ptr = new Data;
+    ptr->value = 42; // Assegna un valore a ptr->value per verificare che sia accessibile dopo la deserializzazione
+    integer = Serializer::serialize(ptr);
+
+    std::cout << "ptr addr:    " << ptr << std::endl;
+    std::cout << "serialize:   " << integer << std::endl;
     
-	cout << "ptr addr:    " << ptr << endl;
-	cout << "serialize:   " << integer << endl;
-	cout << "deserialize: " << Serializer::deserialize(integer) << endl;
+    // Effettua la deserializzazione
+    Data *deserializedPtr = Serializer::deserialize(integer);
 
-	delete ptr;
+    // Verifica che deserializedPtr sia diverso da nullptr prima di accedere ai suoi membri
+    if (deserializedPtr) {
+        std::cout << "deserialize: " << deserializedPtr << std::endl;
+        std::cout << "value:       " << deserializedPtr->value << std::endl;
+    } else {
+        std::cerr << "Errore durante la deserializzazione: il puntatore è nullo" << std::endl;
+    }
 
-	return 0;
+    // Dealloca la memoria allocata
+    delete ptr;
+    
+    // Dealloca la memoria deserializzata solo se non è nullo
+    // if (deserializedPtr) {
+    //     delete deserializedPtr;
+    // }
+
+    return 0;
 }
