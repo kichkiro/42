@@ -6,7 +6,7 @@
 /*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 09:16:22 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/05/04 10:53:08 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/04 13:57:11 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 // Libraries ------------------------------------------------------------------>
 
-#include <cmath>
 #include <vector>
 #include <algorithm>
 
-using std::abs;
+using std::max_element;
+using std::min_element;
+using std::min;
 using std::sort;
 using std::vector;
 using std::exception;
 
-typedef std::vector<int>::const_iterator vec_it;
+typedef std::vector<int>::iterator vec_it;
 
 // Class ---------------------------------------------------------------------->
 
@@ -43,6 +44,9 @@ class Span {
         void addNumbers(vec_it begin, vec_it end);
         int shortestSpan(void);
         int longestSpan(void);
+
+        vector<int> get_vec(void);
+        unsigned int get_limit(void);
 
         class FullException : public exception {
             const char *what(void) const throw();
