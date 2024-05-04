@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 09:16:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/09 12:33:47 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/04 11:19:53 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
+Span::Span(void) : _limit(1) {}
 
 Span::Span(unsigned int limit) : _limit(limit) {}
 
@@ -33,7 +35,7 @@ void Span::addNumber(int n) {
         throw Span::FullException();
 }
 
-void Span::addNumbers(VecIterator begin, VecIterator end) {
+void Span::addNumbers(vec_it begin, vec_it end) {
     while (begin != end) {
         this->addNumber(*begin);
         ++begin;
@@ -45,21 +47,53 @@ int Span::shortestSpan(void) {
 
     if (this->_vec.size() < 2)
         throw Span::FewNumberException();
-    for (long unsigned int i = 0; i < this->_vec.size() - 1; i++) {
+    for (long unsigned int i = 0; i < this->_vec.size() - 1; i++)
         diff_vec.push_back(abs(_vec[i] - _vec[i + 1]));
-    }
     sort(diff_vec.begin(), diff_vec.end());
     return diff_vec[0];
 }
 
-int Span::longestSpan(void) {
-    vector<int> diff_vec;
+// int Span::longestSpan(void) {
+//     vector<int> diff_vec;
 
+//     if (this->_vec.size() < 2)
+//         throw Span::FewNumberException();
+//     for (long unsigned int i = 0; i < this->_vec.size() - 1; i++)
+//         diff_vec.push_back(abs(_vec[i] - _vec[i + 1]));
+//     sort(diff_vec.begin(), diff_vec.end());
+//     return diff_vec.back();
+// }
+
+// int Span::shortestSpan(void) {
+//     if (this->_vec.size() < 2)
+//         throw Span::FewNumberException();
+
+//     std::vector<int> sortedVec = _vec;
+//     std::sort(sortedVec.begin(), sortedVec.end());
+
+//     int minSpan = INT_MAX;
+//     for (size_t i = 1; i < sortedVec.size(); ++i) {
+//         int span = sortedVec[i] - sortedVec[i - 1];
+//         minSpan = std::min(minSpan, span);
+//     }
+
+//     return minSpan;
+// }
+
+int Span::longestSpan(void) {
     if (this->_vec.size() < 2)
         throw Span::FewNumberException();
-    for (long unsigned int i = 0; i < this->_vec.size() - 1; i++) {
-        diff_vec.push_back(abs(_vec[i] - _vec[i + 1]));
-    }
-    sort(diff_vec.begin(), diff_vec.end());
-    return diff_vec.back();
+
+    int maxElement = *std::max_element(_vec.begin(), _vec.end());
+    int minElement = *std::min_element(_vec.begin(), _vec.end());
+
+    return maxElement - minElement;
+}
+
+const char *Span::FullException::what(void) const throw() {
+    return "Container is Full!";
+}
+
+const char *Span::FewNumberException::what(void) const throw() {
+    return "Few Numbers!";
 }

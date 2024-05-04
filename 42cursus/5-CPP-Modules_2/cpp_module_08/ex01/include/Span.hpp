@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 09:16:22 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/09 13:11:47 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/04 10:53:08 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,32 @@ using std::sort;
 using std::vector;
 using std::exception;
 
-typedef std::vector<int>::const_iterator VecIterator;
+typedef std::vector<int>::const_iterator vec_it;
 
 // Class ---------------------------------------------------------------------->
 
 class Span {
+    private:
+        vector<int>  _vec;
+        unsigned int _limit;
+
     public:
+        Span(void);
         Span(unsigned int limit);
         Span(const Span &src);
         Span &operator=(const Span &rs);
         ~Span(void);
 
         void addNumber(int n);
-        void addNumbers(VecIterator begin, VecIterator end);
+        void addNumbers(vec_it begin, vec_it end);
         int shortestSpan(void);
         int longestSpan(void);
 
         class FullException : public exception {
-            const char *what(void) const throw() {return "Container is Full!";}
+            const char *what(void) const throw();
         };
         
         class FewNumberException : public exception {
-            const char *what(void) const throw() {return "Few Numbers!";}
+            const char *what(void) const throw();
         };
-        
-    private:
-        vector<int>  _vec;
-        unsigned int _limit;
 };
