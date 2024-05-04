@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:27:18 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/17 16:09:26 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/04 17:35:47 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ using std::atoi;
 // Class ---------------------------------------------------------------------->
 
 class PmergeMe {
-    public:
-        PmergeMe(int argc, char **argv);
-        PmergeMe(const PmergeMe &src);
-        PmergeMe &operator=(const PmergeMe &rs);
-        ~PmergeMe(void);
-
     private:
         vector<int> _v_seq;
         deque<int> _d_seq;
 
         void _run(int argc, char **argv);
         void _display_time(int n, string type, clock_t start, clock_t end);
+        
+    public:
+        PmergeMe(int argc, char **argv);
+        PmergeMe(const PmergeMe &src);
+        PmergeMe &operator=(const PmergeMe &rs);
+        ~PmergeMe(void);
 };
 
 // Templates ------------------------------------------------------------------>
@@ -103,7 +103,6 @@ void ford_johnson(T &seq, int beg, int end) {
         insertion_sort(seq, beg, end);
     else {
         mid = beg + (end - beg) / 2;
-
         ford_johnson(seq, beg, mid);
         ford_johnson(seq, mid + 1, end);
         merge_sort(seq, beg, mid, end);

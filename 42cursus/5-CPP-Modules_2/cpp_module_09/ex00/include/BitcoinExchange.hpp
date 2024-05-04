@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:33:06 by kichkiro          #+#    #+#             */
-/*   Updated: 2024/01/15 14:01:18 by kichkiro         ###   ########.fr       */
+/*   Updated: 2024/05/04 14:07:55 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,11 @@ using std::getline;
 using std::tm;
 using std::ostringstream;
 
-typedef std::map<std::string, std::string>::iterator MapIt;
+typedef std::map<std::string, std::string>::iterator map_it;
 
 // Class ---------------------------------------------------------------------->
 
 class BitcoinExchange {
-    public:        
-        BitcoinExchange(string database, string inputfile);
-        BitcoinExchange(const BitcoinExchange &src);
-        BitcoinExchange &operator=(const BitcoinExchange &rs);
-        ~BitcoinExchange(void);
     private:
         map<string, double> _database;
         map<string, double> _inputfile;
@@ -51,4 +46,10 @@ class BitcoinExchange {
         bool _check_date(string date);
         string _decrement_date(const string &date);
         double _calculate(string key, double value);
+
+    public:        
+        BitcoinExchange(string database, string inputfile);
+        BitcoinExchange(const BitcoinExchange &src);
+        BitcoinExchange &operator=(const BitcoinExchange &rs);
+        ~BitcoinExchange(void);
 };

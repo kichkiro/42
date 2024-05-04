@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: kichkiro <kichkiro@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:53:55 by kichkiro          #+#    #+#              #
-#    Updated: 2024/01/15 13:55:33 by kichkiro         ###   ########.fr        #
+#    Updated: 2024/05/04 16:16:15 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJS        := $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
 INCS        := ./include
 CC          := c++
-CFLAGS      := -g -std=c++98 -Wall -Wextra -Werror
+CFLAGS      := -std=c++98 -Wall -Wextra -Werror
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
 RM          := rm -rf
 MAKEFLAGS   := --no-print-directory
