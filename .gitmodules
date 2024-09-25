@@ -1,18 +1,6 @@
-[submodule "42cursus/3-philosophers/_tester"]
-	path = 42cursus/3-philosophers/_tester
-	url = https://github.com/kichkiro/philosophers_tester.git
-[submodule "42cursus/3-minishell"]
-	path = 42cursus/3-minishell
-	url = https://github.com/kichkiro/minishell.git
-[submodule "42cursus/4-miniRT"]
-	path = 42cursus/4-miniRT
-	url = https://github.com/kichkiro/miniRT.git
 [submodule "testers/philosophers_tester"]
 	path = testers/philosophers_tester
 	url = https://github.com/kichkiro/philosophers_tester
 [submodule "testers/minishell_tester"]
 	path = testers/minishell_tester
 	url = https://github.com/kichkiro/minishell_tester
-[submodule "42cursus/5-webserv"]
-	path = 42cursus/5-webserv
-	url = https://github.com/kichkiro/webserv
