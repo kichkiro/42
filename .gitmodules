@@ -4,51 +4,6 @@
 [submodule "testers/minishell_tester"]
 	path = testers/minishell_tester
 	url = https://github.com/kichkiro/minishell_tester
-[submodule "42cursus/00-libft"]
-	path = 42cursus/00-libft
-	url = https://github.com/kichkiro/libft
-[submodule "42cursus/01-Born2beroot"]
-	path = 42cursus/01-Born2beroot
-	url = https://github.com/kichkiro/Born2beroot
-[submodule "42cursus/02-ft_printf"]
-	path = 42cursus/02-ft_printf
-	url = https://github.com/kichkiro/ft_printf
-[submodule "42cursus/03-get_next_line"]
-	path = 42cursus/03-get_next_line
-	url = https://github.com/kichkiro/get_next_line
-[submodule "42cursus/04-push_swap"]
-	path = 42cursus/04-push_swap
-	url = https://github.com/kichkiro/push_swap
-[submodule "42cursus/05-minitalk"]
-	path = 42cursus/05-minitalk
-	url = https://github.com/kichkiro/minitalk
-[submodule "42cursus/06-FdF"]
-	path = 42cursus/06-FdF
-	url = https://github.com/kichkiro/FdF
-[submodule "42cursus/07-Philosophers"]
-	path = 42cursus/07-Philosophers
-	url = https://github.com/kichkiro/Philosophers
-[submodule "42cursus/08-minishell"]
-	path = 42cursus/08-minishell
-	url = https://github.com/kichkiro/minishell
-[submodule "42cursus/09-miniRT"]
-	path = 42cursus/09-miniRT
-	url = https://github.com/kichkiro/miniRT
-[submodule "42cursus/10-NetPractice"]
-	path = 42cursus/10-NetPractice
-	url = https://github.com/kichkiro/NetPractice
-[submodule "42cursus/11-CPP_Modules"]
-	path = 42cursus/11-CPP_Modules
-	url = https://github.com/kichkiro/CPP_Modules
-[submodule "42cursus/12-Inception"]
-	path = 42cursus/12-Inception
-	url = https://github.com/kichkiro/Inception
-[submodule "42cursus/13-webserv"]
-	path = 42cursus/13-webserv
-	url = https://github.com/kichkiro/webserv
-[submodule "42cursus/14-ft_transcendence"]
-	path = 42cursus/14-ft_transcendence
-	url = https://github.com/kichkiro/ft_transcendence
 [submodule "42cursus/Advanced/ft_ping"]
 	path = 42cursus/Advanced/ft_ping
 	url = https://github.com/kichkiro/ft_ping.git
