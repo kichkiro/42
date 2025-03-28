@@ -4,9 +4,6 @@
 [submodule "testers/minishell_tester"]
 	path = testers/minishell_tester
 	url = https://github.com/kichkiro/minishell_tester
-[submodule "42cursus/Advanced/ft_ping"]
-	path = 42cursus/Advanced/ft_ping
-	url = https://github.com/kichkiro/ft_ping.git
 [submodule "42cursus/Common-Core/00-libft"]
 	path = 42cursus/Common-Core/00-libft
 	url = https://github.com/kichkiro/libft
@@ -52,3 +49,6 @@
 [submodule "42cursus/Common-Core/14-ft_transcendence"]
 	path = 42cursus/Common-Core/14-ft_transcendence
 	url = https://github.com/kichkiro/ft_transcendence
+[submodule "42cursus/Advanced/ft_ping"]
+	path = 42cursus/Advanced/ft_ping
+	url = https://github.com/kichkiro/ft_ping.git
