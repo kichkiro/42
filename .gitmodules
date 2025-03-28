@@ -49,3 +49,6 @@
 [submodule "42cursus/14-ft_transcendence"]
 	path = 42cursus/14-ft_transcendence
 	url = https://github.com/kichkiro/ft_transcendence
+[submodule "42cursus/Advanced/ft_ping"]
+	path = 42cursus/Advanced/ft_ping
+	url = https://github.com/kichkiro/ft_ping.git

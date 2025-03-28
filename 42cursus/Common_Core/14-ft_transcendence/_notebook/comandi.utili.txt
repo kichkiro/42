@@ -1,0 +1,51 @@
+Ottieni un Token di Accesso JWT
+
+Prima di tutto, devi autenticarti e ottenere un token di accesso valido. Ecco un esempio di come ottenere il token:
+bash
+curl -X POST http://127.0.0.1:8000/api/token/ -H "Content-Type: application/json" -d '{"username": "yourusername", "password": "yourpassword"}'
+
+Usa il Token per Fare Richieste Autenticate
+
+Una volta ottenuto il token, includilo nelle tue richieste agli endpoint protetti:
+bash
+Copia codice
+curl -X GET http://127.0.0.1:8000/api/games/ -H "Authorization: Bearer your_access_token"
+Sostituisci your_access_token con il token di accesso ottenuto dal passo precedente.
+
+
+curl -X POST -H "Content-Type: application/json" -d '{"username": "testuser", "password": "password"}' http://127.0.0.1:8000/api/register/
+
+
+# Avvia PostgreSQL (macOS con Homebrew)
+brew services start postgresql@14
+
+# Riavvia PostgreSQL (macOS con Homebrew)
+brew services restart postgresql@14
+
+# Accedi a PostgreSQL
+psql postgres
+
+# Crea un utente PostgreSQL
+CREATE USER mydbuser WITH PASSWORD 'mydbpassword';
+
+# Crea un database PostgreSQL
+CREATE DATABASE mydatabase;
+
+# Concedi privilegi all'utente sul database
+GRANT ALL PRIVILEGES ON DATABASE mydatabase TO mydbuser;
+
+# Attiva l'ambiente virtuale
+source /Users/giovannicavanna/Desktop/myenv/bin/activate
+
+# Esegui il server Django
+python3 manage.py runserver
+
+# Applica le migrazioni di database
+python3 manage.py migrate
+
+# Crea una nuova migrazione dopo aver modificato i modelli
+python3 manage.py makemigrations
+
+# Crea un superutente per accedere all'admin di Django
+python3 manage.py createsuperuser
+

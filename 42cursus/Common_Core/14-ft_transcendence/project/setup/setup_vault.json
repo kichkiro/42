@@ -1,0 +1,17 @@
+{
+   "backend":{
+      "file":{
+         "path":"/bitnami/vault/"
+      }
+   },
+   "listener":{
+      "tcp":{
+         "address":"10.0.0.1:8200",
+         "tls_disable":1
+      }
+   },
+   "default_lease_ttl":"168h",
+   "ui":true,
+   "log_level":"Info",
+   "disable_mlock":"true"
+}

@@ -1,0 +1,82 @@
+services:
+    nginx:
+        container_name: nginx
+        build:
+            context: ./requirements/nginx
+            dockerfile: Dockerfile
+        image: nginx:42
+        restart: always
+        ports:
+            - "443:443"
+        depends_on:
+            - wordpress
+        volumes:
+            - wordpress_vol:/var/www/html
+        networks:
+            inception_net:
+                ipv4_address: 10.0.0.1
+    wordpress:
+        container_name: wordpress
+        env_file:
+            - .env
+        build:
+            context: ./requirements/wordpress
+            dockerfile: Dockerfile
+            args:
+                MARIADB_DB_NAME: ${MARIADB_DB_NAME}
+                MARIADB_DB_USER: ${MARIADB_DB_USER}
+                MARIADB_DB_PASS: ${MARIADB_DB_PASS}
+        image: wordpress:42
+        restart: always
+        depends_on:
+            - mariadb
+        volumes:
+            - wordpress_vol:/var/www/html
+        networks:
+            inception_net:
+                ipv4_address: 10.0.0.2
+    mariadb:
+        container_name: mariadb
+        env_file:
+        - .env
+        build:
+            context: ./requirements/mariadb
+            dockerfile: Dockerfile
+            args:
+                MARIADB_ROOT_PASS: ${MARIADB_ROOT_PASS}
+                MARIADB_DB_NAME: ${MARIADB_DB_NAME}
+                MARIADB_DB_USER: ${MARIADB_DB_USER}
+                MARIADB_DB_PASS: ${MARIADB_DB_PASS}
+        image: mariadb:42
+        restart: always
+        volumes:
+            - db_vol:/var/lib/mysql
+        networks:
+            inception_net:
+                ipv4_address: 10.0.0.3
+
+volumes:
+  wordpress_vol:
+    driver: local
+    name: wordpress_vol
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/kichkiro/data/wordpress
+  db_vol:
+    driver: local
+    name: db_vol
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/kichkiro/data/db
+
+networks:
+    inception_net:
+        name: inception_net
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.0.0.0/24
+                  gateway: 10.0.0.254

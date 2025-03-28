@@ -1,0 +1,6 @@
+tls_server_config:
+  cert_file: "/tls/certs/nginx-exporter.crt"
+  key_file: "/tls/private/nginx-exporter.key"
+  client_auth_type: "RequireAndVerifyClientCert"
+  client_ca_file: "/tls/certs/ca_chain.crt"
+  client_allowed_sans: ["10.0.4.1","10.0.3.1"]

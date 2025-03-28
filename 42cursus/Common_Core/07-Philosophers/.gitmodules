@@ -1,0 +1,3 @@
+[submodule "_tester"]
+	path = _tester
+	url = https://github.com/kichkiro/philosophers_tester.git
